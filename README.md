@@ -224,30 +224,54 @@ Low-fidelity wireframes were created for **all MVP screens** across **three brea
 
 ## Design System Summary
 
-The design system establishes visual consistency, accessibility, and scalability across MVP.
+The design system establishes visual consistency, accessibility, and scalability across the MVP while remaining lightweight and compatible with Bootstrap defaults.
 
 ### Typography
 
-- Clear hierarchy for headins, body text, and UI labels
-- Consistent typographic scale applied across breakpoints
+The project uses Inter as the primary typeface due to its high legibiity, modern apperance, and suitability for UI-heavy applications.
+
+The typographic scale was designed to support clear hierarchy and responsive readability across all breakpoints.
+
+- **Font family:** Inter (Google Fonts)
+- **Weights used:** 400 (Regular), 600 (Semi-bold)
+
+|Element|Font|Size (px)|Line Height|Weight|Usage|
+|-------|----|----|-----------|------|-----|
+|H1|Inter|40|48|600|Primary page headings|
+|H2|Inter|32|40|600|Section headings|
+|H3|Inter|24|32|600|Subsection headings|
+|H4|Inter|16|24|600|UI Labels & card titles|
+|Body|Inter|16|24|400|Primary content text|
+|Small / Metadata|Inter|14|20|400| Supporting information & helper text|
 
 ### Colour Scheme
 
-- A neutral, high-contrast palette was chosen to prioritise readability and clarity
-- Colours support a calm, professional tone appropiate for property search
-- Primary and secondary colours are used consitently to indicate hierarchy and actions
-- Contrast ratios were considered early to support accessibility and WCAG guidelines
+A restrained, neutral colour palette was chosen to prioritise **readability, clasrity, and trust**, which are essential for a property discovery platform.
+
+The palette supports a calm, professional tone while maintaining sufficient contrast for accessibility.
+
+![BTR Directory colour palette](docs/images/colours-with-names.png)
+
+**Colour approach:**
+- Deep blues and dark neutrals for primary UI elements and emphasis
+- Soft light backgrounds to improve content scannability
+- High-contrast text colours to meet WCAG accessibility guidelines
+
+Colours are used consistently to indicate hierarchy, actions, and states, while avoiding unnescessary visual noise. Custom colours are applied sparingly on top of Bootstrap defaults.
 
 ### Imagery
 
-- Multiple images supported per development
-- Images stored externally via Cloudinary due to Heroku constraints
-- Consistent image ratios used to support scannability
+- Development listings support **multiple images** to give renters a realistic impression of each property
+- City images are used to support discovery and location context
+- Images are stored externally using **Cloudinary** to comply with Heroku's ephemeral file system
+- Consistent image ratios are used across cards and listings to maintain layout stability
 
 ### Responsiveness
 
-- Layous adapt cleanly across mobile, tablet, and desktop
-- Bootstrap grid system used to support responsive behaviour
+- Mobile-first layouts were designed for clarity and ease of navigation
+- Layouts adapt cleanly across mobile, tablet, and desktop
+- The **Bootstrap grid system** is used extensively to ensure consistent responsive behaviour
+- Spacing, typography, and image scaling were tested across breakpoints during wireframing
 
 ---
 
