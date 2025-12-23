@@ -39,7 +39,7 @@ The MVP is intentionally scoped to validate the core renter journey while establ
 - [User Goals](#user-goals)
 - [User Stories](#user-stories)
 - [Website Goals and Objectives](#website-goals-and-objectives)
-- [Target-Audience](#target-audience)
+- [Target Audience](#target-audience)
 - [UX and UI](#ux-and-ui)
 - [Wireframes](#wireframes)
 - [Design System Summary](#design-system-summary)
@@ -61,13 +61,13 @@ The MVP is intentionally scoped to validate the core renter journey while establ
 
 ### Primary user goals (Renters)
 
-**Who they are:** People actively searching for a long-term rental hoe in a Build-to-Rent development and using the site to discover, compare, and enquire.
+**Who they are:** People actively searching for a long-term rental home in a Build-to-Rent development and using the site to discover, compare, and enquire.
 
 - Discover Build-toRent developments in a specific city
 - Compare developments using clear, scannable information
 - View essential details such as amenities, tenancy information, and images
 - Submit an enquiry with minimal friction
-- Trust the platform through transparent egal and accessibility information
+- Trust the platform through transparent legal and accessibility information
 
 ### Secondary user goals (Operators / Developers — indirect for MVP)
 
@@ -116,7 +116,7 @@ The following goals define the purpose of the website and guided key design, fea
 
 ---
 
-## Target-Audience
+## Target Audience
 
 This section defines who the platform is designed for at MVP stage, as well as which users and features are intentionally out of scope. Clearly defining the target audience helped guide scope decisions and maintain focus during development.
 
@@ -228,7 +228,7 @@ The design system establishes visual consistency, accessibility, and scalability
 
 ### Typography
 
-The project uses Inter as the primary typeface due to its high legibiity, modern apperance, and suitability for UI-heavy applications.
+The project uses Inter as the primary typeface due to its high legibility, modern apperance, and suitability for UI-heavy applications.
 
 The typographic scale was designed to support clear hierarchy and responsive readability across all breakpoints.
 
@@ -246,7 +246,7 @@ The typographic scale was designed to support clear hierarchy and responsive rea
 
 ### Colour Scheme
 
-A restrained, neutral colour palette was chosen to prioritise **readability, clasrity, and trust**, which are essential for a property discovery platform.
+A restrained, neutral colour palette was chosen to prioritise **readability, clarity, and trust**, which are essential for a property discovery platform.
 
 The palette supports a calm, professional tone while maintaining sufficient contrast for accessibility.
 
@@ -276,6 +276,81 @@ Colours are used consistently to indicate hierarchy, actions, and states, while 
 ---
 
 ## Features
+
+The MVP focuses on delivering a clear, renter-first discovery experience while supporting a realistic internal workflow for managing enquiries and content.
+
+### Public-facing features (Renters)
+
+- **Hero search**
+    - A prominent search bar is positioned in the homepage hero section
+    - Users can search by:
+        - City name (e.g. *London, Manchester*)
+        - Postcode or postcode area (e.g. SW14)
+    - Postcode and area searches resolve to the relevant city results page, allowing renters to quickly access appropiate listings without complex geolocation logic
+
+- **City-based browsing**
+    - Users can browse Build-to-Rent developments grouped by city
+    - Cities act as the primary discovery entry point to simplify navigation
+
+- **Development listings**
+    - Each city displays a list of available BTR developments
+    - Listings present key summary information in a clear, scannable card-based layout
+
+- **Development detail pages**
+    - Dedicated pages provide detailed information for each development, including:
+        - Development description
+        - Amenities and key features
+        - Tenancy-related information
+        - Multiple development images hosted via CLoudinary
+    - Content is structured to support comparison and informed decision-making
+
+- **Enquiry Submission**
+    - Users can submit an enquiry directly from a development detail page
+    - The form captures essential renter intent without requiring account creation
+    - Clear confirmation feedback is provided after submission
+
+- **Trust and legal content**
+    - Dedicated pages for:
+        - What is Build-to-Rent
+        - About
+        - Disclaimer
+        - Accessibility statement
+        - Privacy policy
+        - Terms of use
+    - These pages prroote transparency and build user trust
+
+- **Responsive design**
+    - Fully responsive layouts across mobile, tablet, and desktop
+    - Mobile-first approach ensures usability on smaller screens
+
+### Staff / Admin features (MVP)
+
+- **Custom enquiries dashboard**
+    - Staff can view all enquiries in a centralised dashboard
+    - Each enquiry is linked to the relevant development
+
+- **Enquiry management (CRUD)**
+    - Staff can:
+        - View enquiry details
+        - Update enquiry status
+        - Delete enquiries when appropiate
+    
+- **Enquiry forwarding workflow**
+    - Each development stores an operator contact email
+    - Staff can forward enquiries using pre-filled email action (mailto workfllow)
+    - This enables fast manual routing without requiring automated email infrastructure
+
+- **Admin-only content management**
+    - Authenticated admin users manage:
+        - Cities
+        - Developments
+        - Development metadata and imagery
+    - Content is maintained centrally to ensure consitency and data integrity
+
+### Error handling and edge cases
+- **Custom 404 page**
+    - A user-friendly 404 page is displayed for invalid routes
+    - Ensures a graceful experience when content cannot be found
 
 ---
 
