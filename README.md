@@ -354,27 +354,442 @@ The MVP focuses on delivering a clear, renter-first discovery experience while s
 
 ---
 
+## Feature Screenshots
+
+The screenshots below show the implementated MVP features after development. They demonstrate the core renter journey and the internal staff workflow as delivered in the final application.
+
+### Home — Hero search
+![Home page showing the hero search bar used to search by city or postcode]()
+
+### Cities index
+![Cities index page showing available Build-to-Rent locations]()
+
+### City development listing
+![List of Build-to-Rent developments within a selected city]()
+
+### Development detail
+![Development detail page showing images, amenities, and key information]()
+
+### Enquiry form
+![Enquiry form allowing renter to submit interest in a development]()
+
+### Enquiry confirmation
+![Confirmation mesage displayed after a successful enuiry submission]()
+
+### Staff enquiries dashboard
+![Custom staff dashboard displaying enquiries with management actions]()
+
+---
+
 ## Future Features
+
+The following features were intentionally excluded from the MVP to maintain focus, reduce technical risk, and ensure delivery within project constraints. They represent logical next steps if the platform were to be developed beyond the initial MVP.
+
+### Enhanced search and discovery
+
+- **Postcode radius search**
+    - Allow users ti search for developments within a spacified distance of a postcode
+    - Requires geocoding and latitude/logitude data for developments
+
+- **Map-based browsing**
+    - Interactive map view showing developments by location
+    - Enables visual discovery and spatial filtering
+
+- **Advanced filtering**
+    - Filter developments by amenities, price range, tenancy length, or furnishing options
+    - Improves comparison for users with specific requirements
+
+### User accounts and personalisation
+
+- **Renter accounts**
+    - Save favouriet developments
+    - Track submitted enquiries
+    - Recieve updates on new develpoments in selected cities
+
+- **Saved searches**
+    - Allow users to store and revisit common search criteria
+
+### Operator / Developer features
+
+- **Operator dashboard**
+    - Secure login for operators to manage their own developments
+    - View and respond to enquiries within the platform
+
+- **Automated enquiry delivery**
+    - Replace manual mailto workflow with server-side email delivery
+    - Add email templates and tracking
+
+### Monetisation and platform search
+
+- **Pay-per-lead model**
+    - Charge operators for qualified enquiries
+    - Provide basic lead analytocs and reporting
+
+- **Featured listings**
+    - Allow operators to promote developments within city listings
+
+- **Analytics ad insights**
+    - Track user interactions, popular cities, and enquiry trends
+    - Support data-driven platform improvements
+
+### Accessibility and performance enhancements
+
+- **Expanded accessibility testing**
+    - Conduct user testing with assistive technologies
+    - Further refine keyboard and screen reader support
+
+- **Performance optimisation**
+    - Improve image delivery and caching
+    - Introduce pagination or lazy loading for large datasets
 
 ---
 
 ## Data Model
 
+The application uses a relational database to store and manage structured data related to Build-to-Rent developments and user enquiries. The data model was designed to support the core renter journey while remaining simple, scalable, and aligned with MVP scope.
+
+Each modelmodel uses Django's default auto-generated primary key (`id`) unless otherwise specified. Relationships between entities are implemtned using foreign keys to enforce referential integrity across the data model.
+
+### Overview
+
+The MVP data model consists of three primary entities:
+
+- **City**
+- **Development**
+- **Enquiry**
+
+These entities are related in a one-to-many structure to support city-based browsing and enquiry management.
+
+### Entity relationships
+
+- A **City** can have **many Developments**
+- A **Development** belongs to **one City**
+- A **Development** can have **many Enquiries**
+- A **Enquiry** belongs to **one Development**
+
+This structure allows users to browse developments by city and submit enquiries for individual developments, while eabling staff  to manage enquiries centrally.
+
+### City model
+
+Stores information about each city used as a primaru discovery entry point.
+
+**Key fields include:**
+- City name
+- Slug (used for clean URLs)
+- Optional description or introduction text
+- Timestamps (created / updated)
+
+### Development model
+
+Stores detailed information about each Build-to-Rent development.
+
+**Key fields include:**
+- Development name
+- Associated city (foreign key)
+- Description
+- Ammenities and key features
+- Tenancy-related information
+- Operator contact email (used for enquiry forwarding)
+- One-to-many relationship with development images (stored externally via Cloudinary)
+- Timestamps (created / updated)
+
+Each devleopment belongs to a single city and can recieve multiple enquiries.
+
+### Enquiry model
+
+Stores renter enquiries submitted through the platform.
+
+**Key fields: include:**
+- Renter name
+- Renter email address
+- Optional message
+- Associated development (foreign key)
+- Enquiry status (e.g. new, contacted, closed)
+- Timestamp of submission
+
+Enquiries  are managed through a custom staff dashboard and can be forwarded to the relevant opertator using a pre-filled email action.
+
+### Data integrity and validation
+
+Foreign key relationships enforce data integrity between cities, developments, and enquiries
+- Required fields are validated at the model anf form lavel
+- Deletion rules ensure that orphaned records are avoided (e.g. enquiries linked to developments)
+
+### Future data model extensions
+
+The current data model was intentionally kept minimal for MVP. Future enhancements could include:
+
+- User account models for renters and operators
+- Location data (latitude / longitude) to support rafius search maps
+- Analytics models for tracking engagement and enquiry performance
+
 ---
 
 ## Technologies Used
+
+This project adopts a well-documented full-stack architecture to ensure clarity, scalability, and ease of collaboration.
+
+### Core languages
+
+- **HTML**  
+Used to structure all templates and page content.
+
+- **CSS**  
+Used for lyout refinement, spacing, and light visual customisation on top of Bootstrap styling.
+
+- **JavaScript**  
+Used for minor interactive behaviour and progressive enhancement where required.
+
+- **Python**  
+Primary backend language used with the Django framework.
+
+### Frameworks & libraries
+
+- **Django**  
+A high-level web framework used to build the backend application, manage routing, models, forms, authentication, and templating.
+
+- **Bootstrap**  
+Used for the responsive grid system, layout structure, and UI components. Bootstrap defaults were used wherever possible, with minimal customisation to support accessibility and visual hierarchy.
+
+### Database
+
+- **PostgreSQL**
+Used as the relational database for both local development and production to ensure consistency across environments.
+The database stores structured data for cities, developments, and enquiries, with enforced relationships via foreign keys.
+
+### Media storage
+
+- **Cloudinary**  
+Used to store and serve images for developents and city pages. This avoids reliance on Heroku's ephemeral filesystem and supports responsive image delivery.
+
+### Deployment & hosting
+
+- **Heroku**  
+Used to deploy and host the live application.
+Heroku Postgres is used for the production database, and environment variables are used to manage configuration securely.
+
+### Version control
+
+- **Git**  
+Used for local version controll throughout development.
+
+- **GitHub**  
+Used to host the project repository and manage commits and documentation.
+
+### Design & Planning tools
+
+- **Figma**  
+Used to create low- and high-fidelity wireframes across mobile, tablet, and desktop breakpoints.
+
+- **FigJam**  
+Used for sitemap creation, navigation planning, and early UX structure.
+
+- **Airtable**  
+Used for project planning, task tracking, decision logging, and scope control.
 
 ---
 
 ## Project Setup
 
+This section explains how to set up and run the project locally. It is intended to allow another developer to clone the repository, configure the environment, and run the application successfully.
+
+### Prerequisites
+
+Ensure the following are installed on your system:
+- Python 3.11+
+- PostgreSQL
+- Git
+- pip (Python package manager)
+- Virtual environment support (e.g. venv)
+
+### Clone the repository
+
+```bash
+git clone https://github.com/creatvie-introvert/btr-directory-mvp?tab=readme-ov-file
+cd btr-directory-mvp
+```
+
+### Create and activate a virtual environment
+
+``` bash
+python -m venv venv
+```
+
+Activate the virtual environment:
+
+**macOS/Linux**
+```bash
+source venv/bin/aactivate
+```
+
+**Windows**
+```bash
+venv\Scripts\activate
+```
+
+### Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Environment variables
+
+The project use4s enironment varaiables to store sensitive configuration values.
+
+Create a `.env` file in the project root and ass the following:
+
+```bash
+SECRET_KEY=your_django_secret_key
+DEBUG=True
+DATABASE_URL=postgres://user:password@localhost:5432/btr_directory
+CLOUDINARY_URL=cloudinary://api_key:api_secret@cloud_name
+```
+
+**Notes:**
+- `SECRET_KEY` should be a unique, random string
+- `DEBUG` must be set to False in production
+- `DATABASE_URL` should point to your local PostgreSQL database
+- `CLOUDINARY_URL` is provided by CLoudinary
+
+**Important:**
+The `.env` file is included in `.gitignore` and must never be committed to version control.
+
+### Database setup
+
+Create a PostgreSQL database locally:
+
+```sql
+CREAT DATABASE btr_directory;
+```
+
+Run migrations:
+
+```bash
+python manage.py migrate
+```
+
+### Create a superuser
+
+```bash
+python manage.py createsuperuser
+```
+
+This account is used to:
+- Manage cities and developments
+- Access the Django admin panel
+- Support internal content management
+
+### Run the development server
+
+```bash
+python manage,py runserver
+```
+
+The site will be available at:
+```code
+http://127.0.0.1:8000/
+```
+
+### Admin access
+
+The Django admoin panel is available at:
+
+```code
+http://127.0.0.1:8000/admin
+```
+Admin access is restricted to authenticated users and is used solely for content and enquiry management.
+
+### Setup rationale
+
+- PostgreSQL is used in both development and production to ensure consistency 
+- Environment variables protect sensitive credentials
+- Django's built-in tooling supports rapid local setup and testing
+- The setup aligns with Heroku deployment requirements 
+
 ---
 
 ## Deployment (Heroku)
 
+The project is deployed to **Heroku**, providing a publicly accessible live version of the application. This section documents the steps required to depoy the project and configure the production environment.
+
+### Create a Heroku app
+
+1. Log in to your Heroku account
+2. From the dashboard, click **New → Create new** app
+3. Enter a unique app name
+4. Select the appropiate region
+5. Click **Create app**
+
+### Configure ebvironment variables
+
+In the Heroku dashboard:
+1. Navigate to **Settings → Config Vars**
+2. Add the following variables:
+```code
+SECRET_KEY=your_django_secret_key
+DATABASE_URL=your_heroku_postgres_url
+CLOUDINARY_URL=clodinary://api_key:api_secret@cloud_name
+DEBUG=False
+```
+
+**Important:** Do not set DEBUG=True in production.
+
+### Add postgreSQL database
+
+1. In the Heroku dashboard, go to the **Resources tab**
+2. Add the **Heroku Postgres** add-on
+3. Select the free or low-tier plan
+4. Heroku will automatically set the DATABASE_URL
+
+### Update Django settings for production
+
+Ensure the following are configured in `settings.py`:
+- `ALLOWED_HOSTS` includes the Heroku app URL
+- `DEBUG` is set via environment variable
+- Static and media files are configured correctly
+- Cloudinary is used for media storage
+
+### Prepare the project for deployment
+
+Ensure the following files are present and correctly configured:
+- requirements.txt
+- Procfile
+
+**Collect static files**
+```bash
+python manage.py collectstatic
+```
+
+**Deploy to Heroku**
+- Save and commit all changes and push to Heroku
+
+**Verify deployment**
+- Visit the live site using the Heroku app URL
+- Confirm pages load correctly
+- Test form submissions
+Confirm admin access via /admin
+- Verify Cloudinary images load correctly
+
+**Deployment rationale**
+- Heroku provides a simple deployment workflow suitable for MVPs
+- Environment variables ensure credentials remain secure
+- PostgreSQL ensures reliable relational data storage
+- Cloudinary avoids Heroku filesystem limitations
+
+**Known deployment limitations**
+- Free/low-tier dynos may sleep after inactivity
+- Cold starts can increase initial load time
+- Suitable for MVP 
+
 ---
 
 ## Testing
+
+Manual testing was carried out throughout development to ensure the application functions correctly, meets user needs, and remains accessible and responsive across devices.
+
+Detailed testing documentation, including user story testing, form validation, responsiveness checks, sccessibility checks, and bug fixes, can be found in the separate testing file:
+[View full testing documentation](TESTING.md)
 
 ---
 
