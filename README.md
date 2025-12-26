@@ -795,16 +795,116 @@ Detailed testing documentation, including user story testing, form validation, r
 
 ## Version Control
 
+This project uses **Git** for version control andis hosted on **GitHub**.
+
+**Version control workflow**
+- Changes were made locally within the VS Code workspace
+- Updates were staged and commited regularly using conventional commits
+- Work was pushed to the remote GitHub repository to maintain a clear development history
+
+**Common Git commands used**
+```bash
+git status
+git add .
+git commit
+git push
+```
+
+**Repository**
+- **GitHub Repository:** [View on Github](https://github.com/creatvie-introvert/btr-directory-mvp?tab=readme-ov-file)
+- **Main branch:** main
+
+**Rationale**  
+Using Git and GitHub supports:
+- Clear tracking of progress and feature development
+- Easier debugging through commit history
+- Safe experimentation without l;osing working versions
+- A professional workflow aligned with industry standards
+
 ---
 
 ## Attribution and Credits
+
+This project was developed solely by the author as an early-stage **Minimum Viable Product (MVP)** intended to evolve into a larger Build-to-Rent discovery platform. The current implementation prioritises core functionality, clean architecture, and scalability, with future features planned beyond MVP. All custom code, layouts, and content structure were written specifically for this project unless otherwise stated below.
+
+### Frameworks, libraries, and tools
+
+The following third-party tools and libraries were used as part of the development process:
+
+- **Django** — Python web framework used for backend development   
+https://www.djangoproject.com/
+
+- **Bootstrap** — Used for responsive grid layout and UI components   
+https://getbootstrap.com/
+
+- **PostgreSQL** – Relational database used in both developmennt and production   
+https://www.postgresql.org/
+
+- **Cloudinary** – Used for external image storage and delivery
+https://cloudinary.com/
+
+- **Gunicorn** WSGI HTTP server for running Django in production
+https://gunicorn.org/
+
+- **Heroku** – Hosting and deployment platform
+https://www.heroku.com/
+
+### Design and planning tools
+- **Figma & FigJam** – Used for wireframes, sitemap, navigation planning, and high-fidelity wireframes   
+https://www.figma.com/   
+
+- **Airtable** – Used for early project planning, task tracking, and decision logging   
+https://www.airtable.com/   
+
+### Images and media
+
+- City and hero images used in wireframes and UI design were sourced from oroyalty-free stock or AI-generated imagery during the design phase
+- Production images for developments are intended to be provided by operators or sourced with appropiate permissions
+- All iages are served via Cloudinary
+
+Where third-party images are used in the final implementation, the original source and creator will be credited accordingly.
+
+### Code references and learning resources
+
+During development, official documentation and learning resources were consulted, including:
+
+- Django Documentation   
+https://docs.djangoproject.com/
+- Bootstrap Documentation   
+https://getbootstrap.com/docs/
+- MDN Web Docs (HTML, CSS, JavaScript reference)
+https://developer.mozilla.org/
+
+No code was copied directly from tutorials or third-party repositories. where small snippets or patterns were inspired by documentation examples, they were adapted and written specifically for this project.
+
+### Acknowledgements
+
+- Course materials and guidance provided by the training programme
+- Tutor feedback during project planning and review stages
+
+### Attribution statement
+
+All third-part7y tools and resources used have been credited appropiately. Any future additions of external code, assets or media will be documented here and within the codebase where applicable.
 
 ---
 
 ## README Maintenance
 
+This README is trated as a **living document** and was updated throughout the planning and development of the MVP.
+
+Key sections such as **UX decisions, features, data model, testing, and deployment** were documented incrementally to ensure accuracy and traceability.   
+Any significant changes to scope, architecture, or implementation were reflected in the README as the occured.
+
+This approach ensures that the documentation remains reliable for future development, collaboration, and project handover.
+
 ---
 
 ## License
+
+This project is licensed under the **MIT License**.
+
+You are free to use, modify, and distribute this project, including for commercial purposes, provided that the original copyright and license notice are included.
+
+See the [LICENSE](LICENSE) file for full details.
 
 ---
