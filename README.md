@@ -4,17 +4,12 @@
 
 **Repository:** _Add GitHub repository URL_
 
-![Python](https://img.shields.io/badge/Python-3.11+-blue?logo=python&logoColor=white)
-![Built with Django](https://img.shields.io/badge/Built%20with-Django-092E20?logo=django&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.11+-blue?logo=python&logoColor=white) ![Built with Django](https://img.shields.io/badge/Built%20with-Django-092E20?logo=django&logoColor=white)
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?logo=bootstrap&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black) ![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?logo=bootstrap&logoColor=white)
 
 
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?logo=postgresql&logoColor=white)
-![Cloudinary](https://img.shields.io/badge/Cloudinary-API-blue?logo=cloudinary&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?logo=postgresql&logoColor=white) ![Cloudinary](https://img.shields.io/badge/Cloudinary-API-blue?logo=cloudinary&logoColor=white)
 
 ![Deployed on Heroku](https://img.shields.io/badge/Deployed-Heroku-430098?logo=heroku&logoColor=white)
 
@@ -63,7 +58,7 @@ The MVP is intentionally scoped to validate the core renter journey while establ
 
 **Who they are:** People actively searching for a long-term rental home in a Build-to-Rent development and using the site to discover, compare, and enquire.
 
-- Discover Build-toRent developments in a specific city
+- Discover Build-to-Rent developments in a specific city
 - Compare developments using clear, scannable information
 - View essential details such as amenities, tenancy information, and images
 - Submit an enquiry with minimal friction
@@ -73,14 +68,14 @@ The MVP is intentionally scoped to validate the core renter journey while establ
 
 **Who they are:** BTR operators or developers who receive renter enquiries about specific developments and want leads delivered in a clear, usable format.
 
-- Receive structured enquires containing relevant renter intent
+- Receive structured enquiries containing relevant renter intent
 - Reduce follow-up friction by receiving complete enquiry details in one message
 
 ---
 
 ## User Stories
 
-User stories were defined to clearly capture the needs of each type of user interacting with the platform. These stories informed feature scope, information architecture, and tresting decisions throughout the project.
+User stories were defined to clearly capture the needs of each user type interacting with the platform. These stories informed feature scope, information architecture, and tresting decisions throughout the project.
 
 ### Primary user stories (Renters)
 
@@ -89,7 +84,7 @@ User stories were defined to clearly capture the needs of each type of user inte
 - As a user, I want to browse cities so that I can quickly narrow my search by location
 - As a user, I want to view a list of developments within a city so that I can compare available options
 - As a user, I want to view detailed information about a development so that I can decide if it meets my needs
-- As a user, I wantview images of a development so that I can better understand the space and environment
+- As a user, I want view images of a development so that I can better understand the space and environment
 - As a user, I want to submit an enquiry so that I can request more information or express interest
 - As a user, I want to access clear legal and trust information so that I understand the purpose and limitations of the site
 
@@ -133,7 +128,7 @@ This section defines who the platform is designed for at MVP stage, as well as w
 
 - Short-term lets as a primary product
 - Renter accounts and saved searches
-- Operator dashboards or accouts
+- Operator dashboards or accounts
 - Payment features or monetisation
 
 ---
@@ -178,7 +173,7 @@ Enquiries List → Enquiry Detail → Status Update / Delete / Email operator (m
 
 ### Skeleton Plane
 
-- Mobile-first layouts for clarity and accesibility
+- Mobile-first layouts for clarity and accessibility
 - Consistent header and footer across all pages
 - Scannable layouts using sections and headings
 - Clearly labelled forms with logical field order
@@ -186,7 +181,7 @@ Enquiries List → Enquiry Detail → Status Update / Delete / Email operator (m
 ### Surface Plane
 
 - Bootstrap-based responsive layouts
-- Custom CSS applied for clariry and hierarachy
+- Custom CSS applied for clarity and hierarchy
 - High-contrast, accessible design decisions documented in planning notes
 
 ---
@@ -282,32 +277,32 @@ The MVP focuses on delivering a clear, renter-first discovery experience while s
 ### Public-facing features (Renters)
 
 - **Hero search**
-    - A prominent search bar is positioned in the homepage hero section
-    - Users can search by:
+    - Prominent search bar is positioned in the homepage hero section
+    - Search by:
         - City name (e.g. *London, Manchester*)
         - Postcode or postcode area (e.g. SW14)
     - Postcode and area searches resolve to the relevant city results page, allowing renters to quickly access appropiate listings without complex geolocation logic
 
 - **City-based browsing**
-    - Users can browse Build-to-Rent developments grouped by city
-    - Cities act as the primary discovery entry point to simplify navigation
+    - Browse Build-to-Rent developments grouped by city
+    - Cities used as the primary discovery entry point to simplify navigation
 
 - **Development listings**
-    - Each city displays a list of available BTR developments
-    - Listings present key summary information in a clear, scannable card-based layout
+    - List of available BTR developments shown per city
+    - Key summary information presented in a clear, scannable card-based layout
 
 - **Development detail pages**
-    - Dedicated pages provide detailed information for each development, including:
+    - Detailed information for each development, including:
         - Development description
         - Amenities and key features
         - Tenancy-related information
-        - Multiple development images hosted via CLoudinary
-    - Content is structured to support comparison and informed decision-making
+        - Multiple development images hosted via Cloudinary
+    - Content structured to support comparison and informed decision-making
 
-- **Enquiry Submission**
-    - Users can submit an enquiry directly from a development detail page
-    - The form captures essential renter intent without requiring account creation
-    - Clear confirmation feedback is provided after submission
+- **Enquiry submission**
+    - Enquiry submitted directly from a development detail page
+    - Essential renter intent captured without requiring account creation
+    - Clear confirmation feedback provided after submission
 
 - **Trust and legal content**
     - Dedicated pages for:
@@ -317,7 +312,7 @@ The MVP focuses on delivering a clear, renter-first discovery experience while s
         - Accessibility statement
         - Privacy policy
         - Terms of use
-    - These pages prroote transparency and build user trust
+    - Pages promote transparency and build user trust
 
 - **Responsive design**
     - Fully responsive layouts across mobile, tablet, and desktop
@@ -333,11 +328,11 @@ The MVP focuses on delivering a clear, renter-first discovery experience while s
     - Staff can:
         - View enquiry details
         - Update enquiry status
-        - Delete enquiries when appropiate
+        - Delete enquiries when appropriate
     
 - **Enquiry forwarding workflow**
     - Each development stores an operator contact email
-    - Staff can forward enquiries using pre-filled email action (mailto workfllow)
+    - Staff can forward enquiries using pre-filled email action (mailto workflow)
     - This enables fast manual routing without requiring automated email infrastructure
 
 - **Admin-only content management**
@@ -356,7 +351,7 @@ The MVP focuses on delivering a clear, renter-first discovery experience while s
 
 ## Feature Screenshots
 
-The screenshots below show the implementated MVP features after development. They demonstrate the core renter journey and the internal staff workflow as delivered in the final application.
+The screenshots below show the implemented MVP features after development. They demonstrate the core renter journey and the internal staff workflow as delivered in the final application.
 
 ### Home — Hero search
 ![Home page showing the hero search bar used to search by city or postcode]()
@@ -374,7 +369,7 @@ The screenshots below show the implementated MVP features after development. The
 ![Enquiry form allowing renter to submit interest in a development]()
 
 ### Enquiry confirmation
-![Confirmation mesage displayed after a successful enuiry submission]()
+![Confirmation mesage displayed after a successful enquiry submission]()
 
 ### Staff enquiries dashboard
 ![Custom staff dashboard displaying enquiries with management actions]()
@@ -389,7 +384,7 @@ The following features were intentionally excluded from the MVP to maintain focu
 
 - **Postcode radius search**
     - Allow users ti search for developments within a spacified distance of a postcode
-    - Requires geocoding and latitude/logitude data for developments
+    - Requires geocoding and latitude/longitude data for developments
 
 - **Map-based browsing**
     - Interactive map view showing developments by location
@@ -402,7 +397,7 @@ The following features were intentionally excluded from the MVP to maintain focu
 ### User accounts and personalisation
 
 - **Renter accounts**
-    - Save favouriet developments
+    - Save favourite developments
     - Track submitted enquiries
     - Recieve updates on new develpoments in selected cities
 
@@ -423,7 +418,7 @@ The following features were intentionally excluded from the MVP to maintain focu
 
 - **Pay-per-lead model**
     - Charge operators for qualified enquiries
-    - Provide basic lead analytocs and reporting
+    - Provide basic lead analytics and reporting
 
 - **Featured listings**
     - Allow operators to promote developments within city listings
@@ -493,7 +488,7 @@ Stores detailed information about each Build-to-Rent development.
 - One-to-many relationship with development images (stored externally via Cloudinary)
 - Timestamps (created / updated)
 
-Each devleopment belongs to a single city and can recieve multiple enquiries.
+Each development belongs to a single city and can recieve multiple enquiries.
 
 ### Enquiry model
 
@@ -512,7 +507,7 @@ Enquiries  are managed through a custom staff dashboard and can be forwarded to 
 ### Data integrity and validation
 
 Foreign key relationships enforce data integrity between cities, developments, and enquiries
-- Required fields are validated at the model anf form lavel
+- Required fields are validated at the model and form level
 - Deletion rules ensure that orphaned records are avoided (e.g. enquiries linked to developments)
 
 ### Future data model extensions
@@ -520,7 +515,7 @@ Foreign key relationships enforce data integrity between cities, developments, a
 The current data model was intentionally kept minimal for MVP. Future enhancements could include:
 
 - User account models for renters and operators
-- Location data (latitude / longitude) to support rafius search maps
+- Location data (latitude / longitude) to support radius search maps
 - Analytics models for tracking engagement and enquiry performance
 
 ---
@@ -635,9 +630,9 @@ pip install -r requirements.txt
 
 ### Environment variables
 
-The project use4s enironment varaiables to store sensitive configuration values.
+The project uses environment variables to store sensitive configuration values.
 
-Create a `.env` file in the project root and ass the following:
+Create a `.env` file in the project root and add the following:
 
 ```bash
 SECRET_KEY=your_django_secret_key
@@ -650,7 +645,7 @@ CLOUDINARY_URL=cloudinary://api_key:api_secret@cloud_name
 - `SECRET_KEY` should be a unique, random string
 - `DEBUG` must be set to False in production
 - `DATABASE_URL` should point to your local PostgreSQL database
-- `CLOUDINARY_URL` is provided by CLoudinary
+- `CLOUDINARY_URL` is provided by Cloudinary
 
 **Important:**
 The `.env` file is included in `.gitignore` and must never be committed to version control.
@@ -660,7 +655,7 @@ The `.env` file is included in `.gitignore` and must never be committed to versi
 Create a PostgreSQL database locally:
 
 ```sql
-CREAT DATABASE btr_directory;
+CREATE DATABASE btr_directory;
 ```
 
 Run migrations:
@@ -693,7 +688,7 @@ http://127.0.0.1:8000/
 
 ### Admin access
 
-The Django admoin panel is available at:
+The Django admin panel is available at:
 
 ```code
 http://127.0.0.1:8000/admin
@@ -702,7 +697,7 @@ Admin access is restricted to authenticated users and is used solely for content
 
 ### Setup rationale
 
-- PostgreSQL is used in both development and production to ensure consistency 
+- PostgreSQL is used in both development and production to ensure consistency across environments
 - Environment variables protect sensitive credentials
 - Django's built-in tooling supports rapid local setup and testing
 - The setup aligns with Heroku deployment requirements 
@@ -711,17 +706,17 @@ Admin access is restricted to authenticated users and is used solely for content
 
 ## Deployment (Heroku)
 
-The project is deployed to **Heroku**, providing a publicly accessible live version of the application. This section documents the steps required to depoy the project and configure the production environment.
+The project is deployed to **Heroku**, providing a publicly accessible live version of the application. This section documents the steps required to deploy the project and configure the production environment.
 
 ### Create a Heroku app
 
 1. Log in to your Heroku account
 2. From the dashboard, click **New → Create new** app
 3. Enter a unique app name
-4. Select the appropiate region
+4. Select the appropriate region
 5. Click **Create app**
 
-### Configure ebvironment variables
+### Configure environment variables
 
 In the Heroku dashboard:
 1. Navigate to **Settings → Config Vars**
@@ -729,7 +724,7 @@ In the Heroku dashboard:
 ```code
 SECRET_KEY=your_django_secret_key
 DATABASE_URL=your_heroku_postgres_url
-CLOUDINARY_URL=clodinary://api_key:api_secret@cloud_name
+CLOUDINARY_URL=cloudinary://api_key:api_secret@cloud_name
 DEBUG=False
 ```
 
@@ -788,18 +783,18 @@ Confirm admin access via /admin
 
 Manual testing was carried out throughout development to ensure the application functions correctly, meets user needs, and remains accessible and responsive across devices.
 
-Detailed testing documentation, including user story testing, form validation, responsiveness checks, sccessibility checks, and bug fixes, can be found in the separate testing file:
+Detailed testing documentation, including user story testing, form validation, responsiveness checks, accessibility checks, and bug fixes, can be found in the separate testing file:
 [View full testing documentation](TESTING.md)
 
 ---
 
 ## Version Control
 
-This project uses **Git** for version control andis hosted on **GitHub**.
+This project uses **Git** for version control and is hosted on **GitHub**.
 
 **Version control workflow**
 - Changes were made locally within the VS Code workspace
-- Updates were staged and commited regularly using conventional commits
+- Updates were staged and committed regularly using conventional commits
 - Work was pushed to the remote GitHub repository to maintain a clear development history
 
 **Common Git commands used**
@@ -818,7 +813,7 @@ git push
 Using Git and GitHub supports:
 - Clear tracking of progress and feature development
 - Easier debugging through commit history
-- Safe experimentation without l;osing working versions
+- Safe experimentation without losing working versions
 - A professional workflow aligned with industry standards
 
 ---
@@ -858,9 +853,9 @@ https://www.airtable.com/
 
 ### Images and media
 
-- City and hero images used in wireframes and UI design were sourced from oroyalty-free stock or AI-generated imagery during the design phase
+- City and hero images used in wireframes and UI design were sourced from royalty-free stock or AI-generated imagery during the design phase
 - Production images for developments are intended to be provided by operators or sourced with appropiate permissions
-- All iages are served via Cloudinary
+- All images are served via Cloudinary
 
 Where third-party images are used in the final implementation, the original source and creator will be credited accordingly.
 
@@ -884,16 +879,16 @@ No code was copied directly from tutorials or third-party repositories. where sm
 
 ### Attribution statement
 
-All third-part7y tools and resources used have been credited appropiately. Any future additions of external code, assets or media will be documented here and within the codebase where applicable.
+All third-party tools and resources used have been credited appropiately. Any future additions of external code, assets or media will be documented here and within the codebase where applicable.
 
 ---
 
 ## README Maintenance
 
-This README is trated as a **living document** and was updated throughout the planning and development of the MVP.
+This README is treated as a **living document** and was updated throughout the planning and development of the MVP.
 
 Key sections such as **UX decisions, features, data model, testing, and deployment** were documented incrementally to ensure accuracy and traceability.   
-Any significant changes to scope, architecture, or implementation were reflected in the README as the occured.
+Any significant changes to scope, architecture, or implementation were reflected in the README as they occurred.
 
 This approach ensures that the documentation remains reliable for future development, collaboration, and project handover.
 
