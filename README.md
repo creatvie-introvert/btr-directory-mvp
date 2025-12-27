@@ -2,7 +2,7 @@
 
 **Live Site:** _Add Heroku URL once deployed_
 
-**Repository:** _Add GitHub repository URL_
+**Repository:** [View on GitHub](https://github.com/creatvie-introvert/btr-directory-mvp)
 
 ![Python](https://img.shields.io/badge/Python-3.11+-blue?logo=python&logoColor=white) ![Built with Django](https://img.shields.io/badge/Built%20with-Django-092E20?logo=django&logoColor=white)
 
