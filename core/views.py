@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from cities.models import City
 
 
 # Create your views here.
 def home(request):
-    return render(request, "core/home.html")
+    cities = City.objects.filter(is_active=True, show_on_homepage=True)
+    return render(request, "core/home.html", {"cities": cities})

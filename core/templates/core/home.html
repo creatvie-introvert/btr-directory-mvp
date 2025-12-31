@@ -35,20 +35,28 @@
                 </h2>
             </div>
 
+            {% for city in cities %}
             <div class="col-12 col-sm-6 col-md-6 col-lg-4">
-            <a href="#" class="text-decoration-none">
-                <div class="card text-bg-dark border-0 overflow-hidden rounded-4 city-card">
-                    <img src="{% static 'core/images/cities/london.webp' %}" class="card-img"
-                        alt="London skyline at dusk">
-                    <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                        <h3 class="card-title mx-auto text-white">
-                            London
-                        </h3>
+                <a href="#" class="text-decoration-none">
+                    <div class="card text-bg-dark border-0 overflow-hidden rounded-4 city-card">
+                        {% if city.image %}
+                        <img 
+                          src="{{ city.image.url }}" 
+                          class="card-img"
+                          alt="{{ city.image_alt|default:city.name }}"
+                        >
+                        {% endif %}
+
+                        <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                            <h3 class="card-title mx-auto text-white">
+                                {{ city.name }}
+                            </h3>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
+            {% endfor %}
         </div>
-    </div>
     </div>
 </section>
 {% endblock %}
