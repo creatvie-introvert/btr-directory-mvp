@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+
+{% block title %}BTR Directory{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<section class="py-5 py-lg-8" id="hero-section">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                <h1 class="mb-3 text-white">
+                    Find Build-to-Rent homes
+                </h1>
+                <p class="text-light">
+                    Browse purpose-built rental developments across UK cities.
+                </p>
+                <form class="d-grid gap-3 d-sm-flex mt-4">
+                    <input 
+                      type="text" 
+                      class="form-control flex-sm-grow-1" 
+                      placeholder="London, Manchester..."
+                    >
+                    <button class="btn btn-primary px-4 py-2">
+                        Search
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
