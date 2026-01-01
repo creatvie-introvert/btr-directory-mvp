@@ -123,19 +123,22 @@ footer a:hover {
     background-position: center;
     background-repeat: no-repeat;
     /* position: relative; */
-    border-radius: 1.6rem;
+    /* border-radius: 1.6rem; */
     overflow: hidden;
-    margin: 1.6rem;
-    min-height: 40rem;
+    /* margin: 1.6rem; */
+    min-height: 45rem;
     display: flex;
     align-items: center;
 }
 
 .city-card {
     position: relative;
-    height: 22rem;
-    transition: transfotm 180ms ease, box-shadow 180ms ease;
+    transition: transform 180ms ease, box-shadow 180ms ease;
     will-change: transform;
+}
+
+.city-card.h-100 {
+    height: 14rem !important;
 }
 
 .city-card-img {
@@ -144,6 +147,8 @@ footer a:hover {
     object-fit: cover;
     display: block;
     transition: transform 220ms ease;
+    position: relative;
+    z-index: 0;
 }
 
 .city-card::after {
@@ -153,10 +158,13 @@ footer a:hover {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
     transition: background 220ms ease;
     pointer-events: none;
+    z-index: 1;
 }
 
 .city-card .card-img-overlay {
-    position: relative;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
 }
 
 .city-card-link:focus-visible {
@@ -178,12 +186,16 @@ footer a:hover {
 
 .city-card-link:hover .city-card::after,
 .city-card-link:focus-visible .city-card::after {
-    background: rgba(0, 0, 0, 0.22);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.12));
 }
 
 @media (min-width: 768px) {
     .body {
         max-width: 54rem;
+    }
+
+    .city-card.h-100 {
+        height: 22rem !important;
     }
 }
 
