@@ -127,6 +127,56 @@ footer a:hover {
     margin: 1.6rem;
 }
 
+.city-card {
+    position: relative;
+    height: 22rem;
+    transition: transfotm 180ms ease, box-shadow 180ms ease;
+    will-change: transform;
+}
+
+.city-card-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 220ms ease;
+}
+
+.city-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    transition: background 220ms ease;
+    pointer-events: none;
+}
+
+.city-card .card-img-overlay {
+    position: relative;
+}
+
+.city-card-link:focus-visible {
+    outline: 3px solid var(--btr-brand);
+    outline-offset: 4px;
+    border-radius: 1.6rem;
+}
+
+.city-card-link:hover .city-card,
+.city-card-link:focus-visible .city-card {
+    transform: translateY(-4px);
+    box-shadow: 0 1.4rem 4rem rgba(0, 0, 0, 0.18);
+}
+
+.city-card-link:hover .city-card-img,
+.city-card-link:focus-visible .city-card-img {
+    transform: scale(1.04);
+}
+
+.city-card-link:hover .city-card::after,
+.city-card-link:focus-visible .city-card::after {
+    background: rgba(0, 0, 0, 0.22);
+}
+
 @media (min-width: 992px) {
     #hero-section {
         padding: 12rem;
@@ -139,5 +189,13 @@ footer a:hover {
 @media (min-width: 1200px) {
     #hero-section {
         min-height: 60rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .city-card,
+    .city-card-img,
+    .city-card::after {
+        transition: none;
     }
 }
