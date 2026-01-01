@@ -17,7 +17,7 @@
                 </p>
                 <form class="d-grid gap-3 d-sm-flex mt-4">
                     <input type="text" class="form-control flex-sm-grow-1" placeholder="London, Manchester...">
-                    <button class="btn btn-primary px-4 py-2">
+                    <button class="btn btn-primary btn-lg px-4 py-2">
                         Search
                     </button>
                 </form>
@@ -28,23 +28,23 @@
 
 <section class="py-5">
     <div class="container">
-        <div class="row g-4">
-            <div class="col-12">
-                <h2 class="mb-4">
-                    Browse Cities
-                </h2>
-            </div>
 
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-4">
+                Browse Cities
+            </h2>
+        </div>
+
+        <!-- Cards grid -->
+        <div class="row g-4">
             {% for city in cities %}
             <div class="col-12 col-sm-6 col-md-6 col-lg-4">
                 <a href="#" class="text-decoration-none city-card-link">
-                    <div class="card text-bg-dark border-0 overflow-hidden rounded-4 city-card city-card h-100">
+                    <div class="card text-bg-dark border-0 overflow-hidden rounded-4 city-card h-100">
                         {% if city.image %}
-                        <img 
-                          src="{{ city.image.url }}" 
-                          class="card-img city-card-img"
-                          alt="{{ city.image_alt|default:city.name }}"
-                        >
+                        <img src="{{ city.image.url }}" class="card-img city-card-img"
+                            alt="{{ city.image_alt|default:city.name }}">
                         {% endif %}
 
                         <div class="card-img-overlay d-flex justify-content-center align-items-center">
@@ -56,7 +56,14 @@
                 </a>
             </div>
             {% endfor %}
+
+            <div class="col-12 mt-4">
+                <div class="d-grid d-sm-flex justify-content-sm-center">
+                    <a href="#" class="btn btn-primary btn-lg px-4">
+                        View all cities
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
 </section>
 {% endblock %}
