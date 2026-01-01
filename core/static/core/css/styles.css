@@ -126,6 +126,9 @@ footer a:hover {
     border-radius: 1.6rem;
     overflow: hidden;
     margin: 1.6rem;
+    min-height: 40rem;
+    display: flex;
+    align-items: center;
 }
 
 .city-card {
