@@ -1,10 +1,11 @@
 from django.contrib import admin
+from django_summernote.admin import SummernoteModelAdmin
 from .models import City
 
 
 # Register your models here.
 @admin.register(City)
-class CityAdmin(admin.ModelAdmin):
+class CityAdmin(SummernoteModelAdmin):
     """
     Admin configuration for City.
     """
@@ -16,3 +17,4 @@ class CityAdmin(admin.ModelAdmin):
     search_fields = ("name", "slug")
     prepopulated_fields = {"slug": ("name",)}
     ordering = ("name",)
+    summernote_fields = ("description")

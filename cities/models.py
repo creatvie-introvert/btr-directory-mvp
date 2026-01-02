@@ -8,7 +8,7 @@ class City(models.Model):
     description = models.TextField(blank=True)
 
     image = models.ImageField(upload_to="cities/", blank=True)
-    image_alt = models.CharField(max_length=120, blank=True, help_text="Describe the image for. screen readers.")
+    image_alt = models.CharField(max_length=120, blank=True, help_text="Describe the image for screen readers.")
 
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
