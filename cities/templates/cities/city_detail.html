@@ -1,0 +1,30 @@
+{% extends "core/base.html" %}
+
+{% block title %}{{ city.name }}{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4 align-items-start">
+            <!-- Text -->
+            <div class="col-12 col-md-6">
+                <h1 class="mb-3">
+                    Build-to-Rent homes in {{ city.name }}
+                </h1>
+                <p class="mb-3 body">
+                    {{ city.description }}
+                </p>
+            </div>
+
+            <!-- Image -->
+            <div class="col-12 col-md-6">
+                {% if city.image %}
+                <img src="{{ city.image.url }}" class="img-fluid rounded-4 mb-4" alt="{{ city.image_alt }}">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

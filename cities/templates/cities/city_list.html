@@ -27,7 +27,7 @@
         <div class="row g-4">
             {% for city in cities %}
             <div class="col-12 col-sm-6 col-md-6 col-lg-4">
-                <a href="#" class="text-decoration-none city-card-link">
+                <a href="{% url 'cities:detail' city.slug %}" class="text-decoration-none city-card-link">
                     <div class="card text-bg-dark border-0 overflow-hidden rounded-4 city-card h-100">
                         {% if city.image %}
                         <img src="{{ city.image.url }}" class="card-img city-card-img"
