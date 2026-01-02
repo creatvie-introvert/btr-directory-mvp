@@ -83,6 +83,19 @@ a:hover {
     border-color: var(--btr-brand-hover);
 }
 
+.btn-secondary {
+    background-color: transparent;
+    color: var(--btr-brand);
+    border: 1px solid var(--btr-brand);
+}
+
+.btn-secondary:hover {
+    background-color: var(--btr-brand-hover);
+    color: white;
+    border-color: var(--btr-brand-hover);
+    outline: var(--btr-brand-hover);
+}
+
 .navbar .nav-link:hover {
     color: var(--btr-brand-hover);
 }

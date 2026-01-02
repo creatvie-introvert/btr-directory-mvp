@@ -10,4 +10,15 @@ def city_list(request):
 
 def city_detail(request, slug):
     city = get_object_or_404(City, slug=slug, is_active=True)
-    return render(request, "cities/city_detail.html", {"city": city})
+
+    developments = (
+        city.developments.filter(is_active=True).order_by("name")
+    )
+
+    return render(
+        request, "cities/city_detail.html",
+        {
+            "city": city,
+            "developments": developments,
+        }
+    )
