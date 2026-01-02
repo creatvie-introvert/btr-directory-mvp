@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Browse Cities{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<section class="py-5" id="page-heading">
+    <div class="container">
+
+        <!-- Header -->
+        <div class="mb-4">
+            <h1 class="mb-4">
+                Browse Cities
+            </h1>
+            <p class="body">
+                Find Build-to-Rent developments by city.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="py-5" id="featured-cities">
+    <div class="container">
+
+        <!-- Cards grid -->
+        <div class="row g-4">
+            {% for city in cities %}
+            <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+                <a href="#" class="text-decoration-none city-card-link">
+                    <div class="card text-bg-dark border-0 overflow-hidden rounded-4 city-card h-100">
+                        {% if city.image %}
+                        <img src="{{ city.image.url }}" class="card-img city-card-img"
+                            alt="{{ city.image_alt|default:city.name }}">
+                        {% endif %}
+
+                        <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                            <h3 class="card-title mx-auto text-white px-4 py-2 rounded-pill bg-dark bg-opacity-50">
+                                {{ city.name }}
+                            </h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
