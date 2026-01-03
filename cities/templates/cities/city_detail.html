@@ -35,18 +35,15 @@
             {% for dev in developments %}
             <div class="col-12 col-sm-6 col-lg-4">
                 <a href="#" class="text-decoration-none">
-                    <div class="card overflow-hidden rounded-4 h-100 d-flex flex-column">
+                    <div class="card dev-card overflow-hidden rounded-4 h-100 d-flex flex-column">
                         {% if dev.cover_image %}
                         <div class="ratio ratio-16x9">
-                        <img 
-                          src="{{ dev.cover_image.url}}" 
-                          class="w-100 h-100 object-fit-cover"
-                          alt="{{ dev.cover_image_alt|default:dev.name }}"
-                        >
+                            <img src="{{ dev.cover_image.url}}" class="w-100 h-100 object-fit-cover dev-card-img"
+                                alt="{{ dev.cover_image_alt|default:dev.name }}">
                         </div>
                         {% endif %}
 
-                        <div class="card-body">
+                        <div class="card-body d-flex flex-column">
                             <h3 class="h4 mb-1">
                                 {{ dev.name }}
                             </h3>
@@ -57,9 +54,11 @@
                             </p>
                             {% endif %}
 
-                            <span class="btn btn-secondary">
-                                View details
-                            </span>
+                            <div class="mt-auto pt-2">
+                                <span class="btn btn-secondary">
+                                    View details
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -67,7 +66,7 @@
             {% endfor %}
         </div>
 
-    {% else %}
+        {% else %}
         <div class="p-4 p-md-5 rounded-4 border bg-light">
             <h2 class="h5 mb-2">
                 Developments coming soon
@@ -77,7 +76,7 @@
                 Check back soon.
             </p>
         </div>
-    {% endif %}
+        {% endif %}
     </div>
 </section>
 {% endblock %}
