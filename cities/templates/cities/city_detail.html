@@ -35,22 +35,24 @@
             {% for dev in developments %}
             <div class="col-12 col-sm-6 col-lg-4">
                 <a href="#" class="text-decoration-none">
-                    <div class="card overflow-hidden rounded-4">
+                    <div class="card overflow-hidden rounded-4 h-100 d-flex flex-column">
                         {% if dev.cover_image %}
+                        <div class="ratio ratio-16x9">
                         <img 
                           src="{{ dev.cover_image.url}}" 
-                          class="card-img-top"
+                          class="w-100 h-100 object-fit-cover"
                           alt="{{ dev.cover_image_alt|default:dev.name }}"
                         >
+                        </div>
                         {% endif %}
 
                         <div class="card-body">
-                            <h3 class="h5 mb-1">
+                            <h3 class="h4 mb-1">
                                 {{ dev.name }}
                             </h3>
 
                             {% if dev.area_name %}
-                            <p class="text-muted mb-3">
+                            <p class="small text-muted mb-3">
                                 {{ dev.area_name }}
                             </p>
                             {% endif %}
