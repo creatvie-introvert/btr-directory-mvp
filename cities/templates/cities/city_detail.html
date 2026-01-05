@@ -34,7 +34,7 @@
         <div class="row g-4">
             {% for dev in developments %}
             <div class="col-12 col-sm-6 col-lg-4">
-                <a href="#" class="text-decoration-none">
+                <a href="{% url 'developments:detail' dev.slug %}" class="text-decoration-none">
                     <div class="card dev-card overflow-hidden rounded-4 h-100 d-flex flex-column">
                         {% if dev.cover_image %}
                         <div class="ratio ratio-16x9">

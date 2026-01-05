@@ -1,0 +1,48 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}{{ development.name }}{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'cities:list' %}">Cities</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{% url 'cities:detail' development.city.slug %}">
+                        {{ development.city.name }}
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {{ development.name }}
+                </li>
+            </ol>
+        </nav>
+
+        <h1>
+            {{ development.name }}
+        </h1>
+
+        {% if development.area_name %}
+        <p class="mb-3 body">
+            {{ development.area_name }}
+        </p>
+        {% endif %}
+
+        {% if development.cover_image %}
+        <img src="{{ development.cover_image.url }}" class="img-fluid rounded-4 mt-4"
+            alt="{{ development.cover_image_alt|default:development.name }}">
+        {% endif %}
+
+        {% if development.city %}
+        <p class="text-muted mt-3">
+            {{ development.city.name }}
+        </p>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}
