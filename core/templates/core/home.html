@@ -38,31 +38,38 @@
 
         <!-- Cards grid -->
         <div class="row g-4">
+
             {% for city in cities %}
             <div class="col-12 col-sm-6 col-md-6 col-lg-4">
-                <a href="{% url 'cities:detail' city.slug %}" class="text-decoration-none city-card-link">
-                    <div class="card text-bg-dark border-0 overflow-hidden rounded-4 city-card h-100">
-                        {% if city.image %}
-                        <img src="{{ city.image.url }}" class="card-img city-card-img"
-                            alt="{{ city.image_alt|default:city.name }}">
-                        {% endif %}
 
-                        <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                            <h3 class="card-title mx-auto text-white px-4 py-2 rounded-pill bg-dark bg-opacity-50">
-                                {{ city.name }}
-                            </h3>
-                        </div>
+                <a 
+                  href="{% url 'cities:detail' city.slug %}" class="text-decoration-none city-card-link"
+                >
+                    
+                <div class="card text-bg-dark border-0 overflow-hidden rounded-4 city-card h-100">
+                    {% if city.image %}
+                    <img 
+                      src="{{ city.image.url }}" class="card-img city-card-img"
+                      alt="{{ city.image_alt|default:city.name }}"
+                    >
+                    {% endif %}
+
+                    <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                        <h3 class="card-title mx-auto text-white px-4 py-2 rounded-pill bg-dark bg-opacity-50">
+                            {{ city.name }}
+                        </h3>
                     </div>
-                </a>
-            </div>
-            {% endfor %}
-
-            <div class="col-12 mt-4">
-                <div class="d-grid d-sm-flex justify-content-sm-center">
-                    <a href="{% url 'cities:list' %}" class="btn btn-primary btn-lg px-4">
-                        View all cities
-                    </a>
                 </div>
+            </a>
+        </div>
+        {% endfor %}
+
+        <div class="col-12 mt-4">
+            <div class="d-grid d-sm-flex justify-content-sm-center">
+    
+                <a href="{% url 'cities:list' %}" class="btn btn-primary btn-lg px-4">
+                    View all cities
+                </a>
             </div>
         </div>
     </div>
@@ -80,9 +87,11 @@
 
         <div class="row g-4">
             <div class="col-12 mt-4">
+
                 <p class="body">
                     Build-to-Rent refers to homes designed specifically for long-term renting, managed by a single operator.
                 </p>
+                
                 <a href="#" class="text-decoration-none">
                     Learn more
                 </a>

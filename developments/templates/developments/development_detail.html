@@ -6,6 +6,7 @@
 {% block content %}
 <section class="py-5">
     <div class="container">
+
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
@@ -22,27 +23,168 @@
             </ol>
         </nav>
 
-        <h1>
+        <div class="image-wrapper">
+
+            {% if development.cover_image %}
+            <img src="{{ development.cover_image.url }}" class="img-fluid rounded-4 mt-4"
+                alt="{{ development.cover_image_alt|default:development.name }}">
+            {% endif %}
+        </div>
+
+        <h1 class="mt-4">
             {{ development.name }}
         </h1>
 
+        {% if development.summary %}
+        <p class="mt-4 body">
+            {{ development.summary}}
+        </p>
+        {% endif %}
+
         {% if development.area_name %}
-        <p class="mb-3 body">
-            {{ development.area_name }}
+        <p class="mt-4 body">
+            {{ development.area_name }}, {{ development.city.name }}
         </p>
         {% endif %}
 
-        {% if development.cover_image %}
-        <img src="{{ development.cover_image.url }}" class="img-fluid rounded-4 mt-4"
-            alt="{{ development.cover_image_alt|default:development.name }}">
-        {% endif %}
-
-        {% if development.city %}
-        <p class="text-muted mt-3">
-            {{ development.city.name }}
-        </p>
-        {% endif %}
+        <a href="#" class="btn btn-primary btn-lg px-4 py-2 mt-4">
+            Request a viewing
+        </a>
     </div>
 </section>
 
+<section class="py-5" id="key-facts">
+    <div class="container">
+
+        <!-- Header -->
+        <div class="mb-4">
+
+            <h2 class="mb-4">
+                Key facts
+            </h2>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+
+                <div class="card">
+
+                    <ul class="list-group list-group-flush">
+
+                        <li class="list-group-item">
+                            City:   {{ development.city.name }}
+                        </li>
+
+                        {% if development.area_name %}
+                        <li class="list-group-item">
+                            Area:  {{ development.area_name }} 
+                        </li>
+                        {% endif %}
+
+                        {% if development.website_url %}
+                        <li class="list-group-item">
+                            Website:  <a href="{{ development.website_url }}" target="_blank">Visit website</a> 
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5" id="amenities">
+    <div class="container">
+
+        <!-- Header -->
+        <div class="mb-4">
+
+            <h2 class="mb-4">
+                Amenities
+            </h2>
+
+            <p class="mb-3 body">
+                We're currently confirming the on-site facilities for this development.
+            </p>
+        </div>
+    </div>
+</section>
+
+{% if development.tenancy_options %}
+<section class="py-5" id="tenancy">
+    <div class="container">
+
+        <!-- Header -->
+        <div class="mb-4">
+
+            <h2 class="mb-4">
+                Tenancy options
+            </h2>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+
+                <div class="card">
+
+                    <ul class="list-group list-group-flush">
+
+                        <li class="list-group-item">
+                            Tenancy Option:   {{ development.tenancy_options }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<section class="py-5" id="location">
+    <div class="container">
+
+        <div class="mb-4">
+
+            <h2 class="mb-4">
+                Location
+            </h2>
+
+            <p class="mb-3 body">
+                {{ development.postcode }}
+            </p>
+
+            {% if development.postcode %}
+            <a 
+              href="https://www.google.com/maps/search/?api=1&query={{ development.postcode|urlencode }}" 
+              class="text-decoration-none"
+              target="_blank"
+              rel="noopener"
+            >
+                View on map <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            {% else %}
+            <p class="text-muted mb-0">
+                Map link coming soon.
+            </p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="py-3" id="disclaimer-note">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <p class="mb-4 text-muted">
+                    Listing details are for guidance and may change.
+                </p>
+
+                <a href="#" class="text-decoration-none">
+                    Read full disclaimer <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
