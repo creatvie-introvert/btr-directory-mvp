@@ -36,7 +36,7 @@ class Development(models.Model):
     cover_image_alt = models.CharField(
         max_length=120,
         blank=True,
-        help_text="Describe the image for screen readers."
+        help_text="Describe the image for screen readers.",
     )
 
     is_active = models.BooleanField(default=True)
@@ -50,6 +50,29 @@ class Development(models.Model):
             models.Index(fields=["city"]),
             models.Index(fields=["is_active"]),
         ]
-    
+
     def __str__(self) -> str:
         return self.name
+
+
+class DevelopmentImage(models.Model):
+    development = models.ForeignKey(
+        Development, on_delete=models.CASCADE, related_name="images"
+    )
+
+    image = models.ImageField(upload_to="developments/")
+    alt_text = models.CharField(
+        max_length=120,
+        blank=True,
+        help_text="Describe the image for screen readers.",
+    )
+
+    sort_order = models.PositiveIntegerField(default=0)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["sort_order", "id"]
+    
+    def __str__(self) -> str:
+        return f"{self.development.name} image {self.id}"

@@ -30,8 +30,11 @@
                 <div class="image-wrapper">
 
                     {% if development.cover_image %}
-                    <img src="{{ development.cover_image.url }}" class="img-fluid rounded-4"
-                        alt="{{ development.cover_image_alt|default:development.name }}">
+                    <img
+                      id="main-development-image"
+                      src="{{ development.cover_image.url }}" 
+                      class="img-fluid rounded-4"
+                      alt="{{ development.cover_image_alt|default:development.name }}">
                     {% endif %}
                 </div>
             </div>
