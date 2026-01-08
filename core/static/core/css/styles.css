@@ -232,6 +232,32 @@ footer a:hover {
     object-fit: cover;
 }
 
+.gallery-thumb {
+    transition: transform 140ms ease;
+}
+
+.gallery-thumb:focus-visible {
+    outline: 3px solid var(--btr-brand);
+    transform-origin: center;
+}
+
+.gallery-thumb img {
+    transition: transform 180ms ease, box-shadow 180ms ease;
+    transform-origin: center;
+}
+
+.gallery-thumb:hover img {
+    transform: scale(1.03);
+}
+
+.gallery-thumb:active {
+    transform: scale(0.98);
+}
+
+.gallry-thumb.is-active img {
+    box-shadow: 0 0 0 3px var(--btr-brand);
+}
+
 
 @media (min-width: 768px) {
     .body {
@@ -267,7 +293,9 @@ footer a:hover {
     .city-card-img,
     .city-card::after,
     .dev-card,
-    .dev-card-img {
+    .dev-card-img,
+    .gallery-thumb,
+    .gallery-thumb img {
         transition: none;
     }
 }
