@@ -6,50 +6,58 @@
 {% block content %}
 <section class="py-5">
     <div class="container">
+        <div class="row">
+            <div class="col-12 mb-3">
 
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="{% url 'cities:list' %}">Cities</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="{% url 'cities:detail' development.city.slug %}">
-                        {{ development.city.name }}
-                    </a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'cities:list' %}">Cities</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'cities:detail' development.city.slug %}">
+                                {{ development.city.name }}
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            {{ development.name }}
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="col-12 col-lg-8">
+                <div class="image-wrapper">
+
+                    {% if development.cover_image %}
+                    <img src="{{ development.cover_image.url }}" class="img-fluid rounded-4"
+                        alt="{{ development.cover_image_alt|default:development.name }}">
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-4">
+                <h1 class="mt-4">
                     {{ development.name }}
-                </li>
-            </ol>
-        </nav>
+                </h1>
 
-        <div class="image-wrapper">
+                {% if development.summary %}
+                <p class="mt-4 body">
+                    {{ development.summary}}
+                </p>
+                {% endif %}
 
-            {% if development.cover_image %}
-            <img src="{{ development.cover_image.url }}" class="img-fluid rounded-4 mt-4"
-                alt="{{ development.cover_image_alt|default:development.name }}">
-            {% endif %}
+                {% if development.area_name %}
+                <p class="mt-4 body">
+                    {{ development.area_name }}, {{ development.city.name }}
+                </p>
+                {% endif %}
+
+                <a href="#request-viewing" class="btn btn-primary btn-lg px-4 py-2 mt-4">
+                    Request a viewing
+                </a>
+            </div>
         </div>
-
-        <h1 class="mt-4">
-            {{ development.name }}
-        </h1>
-
-        {% if development.summary %}
-        <p class="mt-4 body">
-            {{ development.summary}}
-        </p>
-        {% endif %}
-
-        {% if development.area_name %}
-        <p class="mt-4 body">
-            {{ development.area_name }}, {{ development.city.name }}
-        </p>
-        {% endif %}
-
-        <a href="#" class="btn btn-primary btn-lg px-4 py-2 mt-4">
-            Request a viewing
-        </a>
     </div>
 </section>
 
@@ -65,25 +73,32 @@
         </div>
 
         <div class="row g-4">
-            <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+            <div class="col-12 col-md-8 col-lg-6">
 
                 <div class="card">
 
                     <ul class="list-group list-group-flush">
 
                         <li class="list-group-item">
-                            City:   {{ development.city.name }}
+                            City: {{ development.city.name }}
                         </li>
 
                         {% if development.area_name %}
                         <li class="list-group-item">
-                            Area:  {{ development.area_name }} 
+                            Area: {{ development.area_name }}
                         </li>
                         {% endif %}
 
                         {% if development.website_url %}
                         <li class="list-group-item">
-                            Website:  <a href="{{ development.website_url }}" target="_blank">Visit website</a> 
+                            Website: 
+                            <a 
+                              href="{{ development.website_url }}" target="_blank"
+                              class="text-decoration-none"
+                              rel="noopener noreferrer"
+                            >
+                                Visit website
+                            </a>
                         </li>
                         {% endif %}
                     </ul>
@@ -123,14 +138,14 @@
         </div>
 
         <div class="row g-4">
-            <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+            <div class="col-12 col-md-8 col-lg-6">
 
                 <div class="card">
 
                     <ul class="list-group list-group-flush">
 
                         <li class="list-group-item">
-                            Tenancy Option:   {{ development.tenancy_options }}
+                            Tenancy Option: {{ development.tenancy_options }}
                         </li>
                     </ul>
                 </div>
@@ -149,16 +164,18 @@
                 Location
             </h2>
 
+            {% if development.postcode %}
             <p class="mb-3 body">
                 {{ development.postcode }}
             </p>
+            {% endif %}
 
             {% if development.postcode %}
             <a 
-              href="https://www.google.com/maps/search/?api=1&query={{ development.postcode|urlencode }}" 
-              class="text-decoration-none"
-              target="_blank"
-              rel="noopener"
+              href="https://www.google.com/maps/search/?api=1&query={{ development.postcode|urlencode }}"
+              class="text-decoration-none" 
+              target="_blank" 
+              rel="noopener noreferrer"
             >
                 View on map <i class="fa-solid fa-arrow-right"></i>
             </a>
