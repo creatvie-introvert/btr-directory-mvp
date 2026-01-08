@@ -30,10 +30,16 @@
             <div class="col-12 col-lg-8">
                 <div class="image-wrapper">
 
+                    <div class="ratio ratio-16x9">
                     {% if main_image %}
-                    <img id="main-development-image" src="{{ main_image.url }}" class="img-fluid rounded-4"
-                        alt="{{ main_image_alt }}">
+                    <img 
+                      id="main-development-image" 
+                      src="{{ main_image.url }}" 
+                      class="img-fluid rounded-4 w-100 h-100 object-fit-cover"
+                      alt="{{ main_image_alt }}"
+                    >
                     {% endif %}
+                </div>
                 </div>
                 <div class="gallery-picker d-flex flex-wrap gap-2 mt-3" aria-label="Image gallery thumbnails">
                     {% if development.cover_image %}
@@ -225,4 +231,8 @@
         </div>
     </div>
 </section>
+{% block extra_js %}
+<script src="{% static 'core/js/development-detail.js' %}" defer></script>
+{% endblock %}
+
 {% endblock %}

@@ -228,6 +228,10 @@ footer a:hover {
     transform: scale(1.03);
 }
 
+.object-fit-cover {
+    object-fit: cover;
+}
+
 
 @media (min-width: 768px) {
     .body {
