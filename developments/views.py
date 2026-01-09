@@ -11,10 +11,15 @@ def development_detail(request, slug):
 
     if development.cover_image:
         main_image = development.cover_image
-        main_image_alt = first_gallery.alt_text or development.name
+        # main_image_alt = first_gallery.alt_text or development.name
     elif images.exists():
-        main_image = first_gallery.image
-        main_image_alt = first_gallery.alt_text or development.name
+        main_image = images.first()
+        # main_image_alt = first_gallery.alt_text or development.name
+
+    main_image_alt = development.name
+
+    if hasattr(main_image, "alt_text") and main_image.alt_text:
+        main_image_alt = main_image.alt_text
 
     return render(
         request,
