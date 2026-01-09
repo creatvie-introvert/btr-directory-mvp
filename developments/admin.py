@@ -11,10 +11,82 @@ class DevelopmentImageInline(admin.TabularInline):
 
 @admin.register(Development)
 class DevelopmentAdmin(SummernoteModelAdmin):
-    list_display = ("name", "city", "area_name", "is_active", "updated_at")
-    list_filter = ("city", "is_active")
-    search_fields = ("name", "area_name")
+    list_display = (
+        "name",
+        "city",
+        "area_name",
+        "is_active", 
+        "property_type",
+        "minimum_term_months",
+        "updated_at"
+    )
+    list_filter = (
+        "city",
+        "is_active",
+        "property_type",
+        "tenancy_options"
+    )
+    search_fields = ("name", "area_name", "postcode", "operator_name")
     prepopulated_fields = {"slug": ("name",)}
+    readonly_fields = ("created_at", "updated_at")
+    fieldsets = (
+        ("Core", {
+            "fields": (
+                "city",
+                "name",
+                "slug",
+                "is_active",
+            )
+        }),
+        ("Location", {
+            "fields": (
+                "area_name",
+                "address_line",
+                "postcode",
+            )
+        }),
+        ("Overview", {
+            "fields": (
+                "summary",
+                "description",
+                "website_url",
+            )
+        }),
+        ("Key facts", {
+            "fields": (
+                "property_type",
+                "number_of_homes",
+            )
+        }),
+        ("Tenancy", {
+            "fields": (
+                "tenancy_options",
+                "tenancy_length",
+                "minimum_term_months",
+                "furnishing",
+                "pet_policy",
+                "bills_included",
+            )
+        }),
+        ("Operator", {
+            "fields": (
+                "operator_name",
+                "operator_contact_email",
+            )
+        }),
+        ("Media", {
+            "fields": (
+                "cover_image",
+                "cover_image_alt",
+            )
+        }),
+        ("Timestamps", {
+            "fields": (
+                "created_at",
+                "updated_at",
+            )
+        }),
+    )
     summernote_fields = ("description")
     inlines = [DevelopmentImageInline]
 

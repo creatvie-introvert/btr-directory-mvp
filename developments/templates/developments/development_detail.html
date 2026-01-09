@@ -109,27 +109,29 @@
         <div class="row g-4">
             <div class="col-12 col-md-8 col-lg-6">
 
-                <div class="card">
+                <div class="card shadow-sm border-0 rounded-4 p-2">
 
-                    <ul class="list-group list-group-flush">
+                    <ul class="list-group list-group-flush small">
 
-                        <li class="list-group-item">
-                            City: {{ development.city.name }}
+                        {% if development.property_type %}
+                        <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                            <span class="small text-muted">Property type: </span><span class="small text-muted">{{ development.get_property_type_display }}</span>
                         </li>
+                        {% endif %}
 
-                        {% if development.area_name %}
-                        <li class="list-group-item">
-                            Area: {{ development.area_name }}
+                        {% if development.number_of_homes %}
+                        <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                            <span class="small text-muted">Number of homes:</span> <span class="small text-muted">{{ development.number_of_homes }}</span>
                         </li>
                         {% endif %}
 
                         {% if development.website_url %}
-                        <li class="list-group-item">
-                            Website:
-                            <a href="{{ development.website_url }}" target="_blank" class="text-decoration-none"
+                        <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                            <span class="small text-muted">Website:</span>
+                            <span class="small text-muted"><a href="{{ development.website_url }}" target="_blank" class="text-decoration-none"
                                 rel="noopener noreferrer">
                                 Visit website
-                            </a>
+                            </a></span>
                         </li>
                         {% endif %}
                     </ul>
@@ -171,13 +173,39 @@
         <div class="row g-4">
             <div class="col-12 col-md-8 col-lg-6">
 
-                <div class="card">
+                <div class="card shadow-sm border-0 rounded-4 p-2">
 
-                    <ul class="list-group list-group-flush">
+                    <ul class="list-group list-group-flush small">
 
-                        <li class="list-group-item">
-                            Tenancy Option: {{ development.tenancy_options }}
+                        {% if development.tenancy_length %}
+                        <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                            <span class="small text-muted">Tenancy length:</span> <span class="small text-muted">{{ development.tenancy_length }} months</span>
                         </li>
+                        {% endif %}
+
+                        {% if development.minimum_term_months %}
+                        <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                            <span class="small text-muted">Minimum term:</span> <span class="small text-muted">{{ development.minimum_term_months }} months</span>
+                        </li>
+                        {% endif %}
+
+                        {% if development.furnishing %}
+                        <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                            <span class="small text-muted">Furnishing:</span> <span class="small text-muted">{{ development.get_furnishing_display }}</span>
+                        </li>
+                        {% endif %}
+
+                        {% if development.pet_policy %}
+                        <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                            <span class="small text-muted">Pet policy:</span> <span class="small text-muted">{{ development.get_pet_policy_display }}</span>
+                        </li>
+                        {% endif %}
+
+                        {% if development.bills_included %}
+                        <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                            <span class="small text-muted">Bills included:</span> <span class="small text-muted">{{ development.get_bills_included_display }}</span>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

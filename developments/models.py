@@ -9,6 +9,27 @@ class Development(models.Model):
         FLEXIBLE = "flexible", "Flexible"
         SHORT_STAY_AVAILABLE = "short-stay-available", "Short-stay available"
 
+    class PropertyTypeOption(models.TextChoices):
+        APARTMENTS = "apartments", "Apartments"
+        STUDIO = "studio", "Studio"
+        HOUSE = "house", "House"
+
+    class FurnishingOption(models.TextChoices):
+        FURNISHED = "furnished", "Furnished"
+        PART_FURNISHED = "part-furnished", "Part-furnished"
+        UNFURNISHED = "unfurnished", "Unfurnished"
+        FLEXIBLE = "flexible", "Flexible"
+    
+    class PetPolicyOption(models.TextChoices):
+        PETS_ALLOWED = "pets-allowed", "Pets allowed"
+        PETS_CONSIDERED = "pets-considered", "Pets considered"
+        NO_PETS = "no-pets", "No pets"
+
+    class BillsIncludedOption(models.TextChoices):
+        NONE = "none", "None"
+        SOME = "some", "Some bills included"
+        ALL = "all", "All bills included"
+
     city = models.ForeignKey(City, on_delete=models.CASCADE, related_name="developments")
 
     name = models.CharField(max_length=200)
@@ -27,6 +48,45 @@ class Development(models.Model):
         choices=TenancyOption.choices,
         blank=True,
     )
+
+    property_type = models.CharField(
+        max_length=30,
+        choices=PropertyTypeOption.choices,
+        blank=True
+    )
+
+    number_of_homes = models.PositiveIntegerField(blank=True, null=True)
+
+    tenancy_length = models.PositiveIntegerField(
+        blank=True, 
+        null=True,
+        help_text="Typical/standard tenancy length in months"
+    )
+
+    minimum_term_months = models.PositiveIntegerField(
+        blank=True,
+        null=True,
+        help_text="Minimum tenancy term in months (e.g. 6, 12, etc)."
+    )
+
+    furnishing = models.CharField(
+        max_length=30,
+        choices=FurnishingOption.choices,
+        blank=True
+    )
+
+    pet_policy = models.CharField(
+        max_length=30,
+        choices=PetPolicyOption.choices,
+        blank=True
+    )
+
+    bills_included = models.CharField(
+        max_length=20,
+        choices=BillsIncludedOption.choices,
+        blank=True
+    )
+
     website_url = models.URLField(blank=True)
 
     operator_name = models.CharField(max_length=120, blank=True)
