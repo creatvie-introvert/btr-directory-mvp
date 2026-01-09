@@ -43,6 +43,8 @@ class Development(models.Model):
     summary = models.TextField(blank=True)
     description = models.TextField(blank=True)
 
+    amenities = models.ManyToManyField("Amenity", blank=True, related_name="developments")
+
     tenancy_options = models.CharField(
         max_length=30,
         choices=TenancyOption.choices,
@@ -136,3 +138,20 @@ class DevelopmentImage(models.Model):
     
     def __str__(self) -> str:
         return f"{self.development.name} image {self.id}"
+
+
+class Amenity(models.Model):
+    name = models.CharField(max_length=150, unique=True)
+
+    icon = models.CharField(max_length=150, blank=True)
+
+    is_active = models.BooleanField(default=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["name"]
+
+    def __str__(self):
+        return self.name

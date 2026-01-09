@@ -258,9 +258,14 @@ footer a:hover {
     box-shadow: 0 0 0 3px var(--btr-brand);
 }
 
+.amenities-pill {
+    color: var(--btr-text-muted);
+}
+
 
 @media (min-width: 768px) {
-    .body {
+    .body,
+    .pill-grid {
         max-width: 54rem;
     }
 
@@ -270,7 +275,8 @@ footer a:hover {
 }
 
 @media (min-width: 992px) {
-    .body {
+    .body,
+    .pill-grid {
         max-width: 74rem;
     }
 

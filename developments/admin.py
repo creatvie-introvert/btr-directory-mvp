@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import Development, DevelopmentImage
+from .models import Development, DevelopmentImage, Amenity
 
 
 # Register your models here.
@@ -15,7 +15,7 @@ class DevelopmentAdmin(SummernoteModelAdmin):
         "name",
         "city",
         "area_name",
-        "is_active", 
+        "is_active",
         "property_type",
         "minimum_term_months",
         "updated_at"
@@ -29,6 +29,7 @@ class DevelopmentAdmin(SummernoteModelAdmin):
     search_fields = ("name", "area_name", "postcode", "operator_name")
     prepopulated_fields = {"slug": ("name",)}
     readonly_fields = ("created_at", "updated_at")
+    filter_horizontal = ("amenities",)
     fieldsets = (
         ("Core", {
             "fields": (
@@ -56,6 +57,11 @@ class DevelopmentAdmin(SummernoteModelAdmin):
             "fields": (
                 "property_type",
                 "number_of_homes",
+            )
+        }),
+        ("Amenities", {
+            "fields": (
+                "amenities",
             )
         }),
         ("Tenancy", {
@@ -95,3 +101,10 @@ class DevelopmentAdmin(SummernoteModelAdmin):
 class DevelopmentImageAdmin(admin.ModelAdmin):
     list_display = ("development", "sort_order", "id")
     list_filter = ("development",)
+
+
+@admin.register(Amenity)
+class AmenityAdmin(admin.ModelAdmin):
+    list_display = ("name", "is_active", "updated_at")
+    list_filter = ("is_active",)
+    search_fields = ("name",)

@@ -31,15 +31,11 @@
                 <div class="image-wrapper">
 
                     <div class="ratio ratio-16x9">
-                    {% if main_image %}
-                    <img 
-                      id="main-development-image" 
-                      src="{{ main_image.url }}" 
-                      class="img-fluid rounded-4 w-100 h-100 object-fit-cover"
-                      alt="{{ main_image_alt }}"
-                    >
-                    {% endif %}
-                </div>
+                        {% if main_image %}
+                        <img id="main-development-image" src="{{ main_image.url }}"
+                            class="img-fluid rounded-4 w-100 h-100 object-fit-cover" alt="{{ main_image_alt }}">
+                        {% endif %}
+                    </div>
                 </div>
                 <div class="gallery-picker d-flex flex-wrap gap-2 mt-3" aria-label="Image gallery thumbnails">
                     {% if development.cover_image %}
@@ -51,8 +47,7 @@
                             <img src="{{ development.cover_image.url }}"
                                 class="w-100 h-100 object-fit-cover rounded-3 img-thumbnail"
                                 alt="Thumbnail: {{ development.cover_image_alt|default:development.name }}"
-                                loading="lazy"
-                            >
+                                loading="lazy">
                         </div>
                     </button>
                     {% endif %}
@@ -128,10 +123,10 @@
                         {% if development.website_url %}
                         <li class="d-flex justify-content-between align-items-center list-group-item py-3">
                             <span class="small text-muted">Website:</span>
-                            <span class="small text-muted"><a href="{{ development.website_url }}" target="_blank" class="text-decoration-none"
-                                rel="noopener noreferrer">
-                                Visit website
-                            </a></span>
+                            <span class="small text-muted"><a href="{{ development.website_url }}" target="_blank"
+                                    class="text-decoration-none" rel="noopener noreferrer">
+                                    Visit website
+                                </a></span>
                         </li>
                         {% endif %}
                     </ul>
@@ -150,12 +145,33 @@
             <h2 class="mb-4">
                 Amenities
             </h2>
+        </div>
 
+        {% with amenities=development.amenities.all %}
+        {% if amenities %}
+
+        <div class="row g-3 pill-grid">
+            {% for amenity in amenities %}
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="d-flex align-items-center gap-4 border rounded-pill p-3 bg-white shadow-sm h-100 amenities-pill">
+                    {% if amenity.icon %}
+                    <i class="fa-solid {{ amenity.icon}}"></i>
+                    {% endif %}
+                    <span class="small">
+                        {{ amenity.name }}
+                    </span>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
             <p class="mb-3 body">
                 We're currently confirming the on-site facilities for this development.
             </p>
+            {% endif %}
+            {% endwith %}
         </div>
     </div>
+
 </section>
 
 {% if development.tenancy_options %}
