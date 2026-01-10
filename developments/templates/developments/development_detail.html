@@ -78,12 +78,6 @@
                 </h2>
                 {% endif %}
 
-                {% if development.summary %}
-                <p class="mt-4 body">
-                    {{ development.summary}}
-                </p>
-                {% endif %}
-
                 {% if development.area_name %}
                 <p class="mt-4 body">
                     {{ development.area_name }}, {{ development.city.name }}
@@ -114,6 +108,16 @@
                 </div>
             </div>
         </div>
+    </div>
+</section>
+
+<section class="py-5" id="overview">
+    <div class="container">
+        {% if development.description %}
+        <div class="mt-4 overview-body">
+            {{ development.description|safe }}
+        </div>
+        {% endif %}
     </div>
 </section>
 

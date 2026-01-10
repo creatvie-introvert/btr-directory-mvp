@@ -265,7 +265,8 @@ footer a:hover {
 
 @media (min-width: 768px) {
     .body,
-    .pill-grid {
+    .pill-grid,
+    .overview-body {
         max-width: 54rem;
     }
 
@@ -276,7 +277,8 @@ footer a:hover {
 
 @media (min-width: 992px) {
     .body,
-    .pill-grid {
+    .pill-grid,
+    .overview-body {
         max-width: 74rem;
     }
 
