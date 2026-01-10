@@ -9,12 +9,14 @@ def development_detail(request, slug):
     images = DevelopmentImage.objects.filter(development=development).order_by("sort_order", "id")
     first_gallery = images.first()
 
+    unit_types = development.unit_types.order_by("bedrooms")
+
     if development.cover_image:
         main_image = development.cover_image
-        # main_image_alt = first_gallery.alt_text or development.name
     elif images.exists():
         main_image = images.first()
-        # main_image_alt = first_gallery.alt_text or development.name
+    else:
+        main_image = None
 
     main_image_alt = development.name
 
@@ -29,5 +31,6 @@ def development_detail(request, slug):
             "images": images,
             "main_image": main_image,
             "main_image_alt": main_image_alt,
+            "unit_types": unit_types,
         },
     )
