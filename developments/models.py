@@ -43,6 +43,10 @@ class Development(models.Model):
     summary = models.TextField(blank=True)
     description = models.TextField(blank=True)
 
+    rent_from_pcm = models.PositiveIntegerField(blank=True, null=True)
+    deposit_from = models.PositiveIntegerField(blank=True, null=True)
+    pricing_note = models.TextField(blank=True)
+
     amenities = models.ManyToManyField("Amenity", blank=True, related_name="developments")
 
     tenancy_options = models.CharField(
@@ -155,3 +159,44 @@ class Amenity(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class UnitType(models.Model):
+    class BedroomCount(models.IntegerChoices):
+        STUDIO = 0, "Studio"
+        ONE = 1, "1-bedroom"
+        TWO = 2, "2-bedroom"
+        THREE = 3, "3-bedroom"
+        FOUR = 4, "4-bedroom"
+
+    development = models.ForeignKey(
+        Development, on_delete=models.CASCADE, related_name="unit_types"
+    )
+
+    bedrooms = models.PositiveSmallIntegerField(
+        choices=BedroomCount.choices
+    )
+
+    rent_from_pcm = models.PositiveIntegerField(blank=True, null=True)
+    rent_to_pcm = models.PositiveIntegerField(blank=True, null=True)
+
+    is_available = models.BooleanField(default=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["bedrooms"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["development", "bedrooms"],
+                name="unique_unit_type_per_development"
+            )
+        ]
+        indexes = [
+            models.Index(fields=["development"]),
+            models.Index(fields=["development", "bedrooms"]),
+        ]
+
+    def __str__(self):
+        return f"{self.get_bedrooms_display()} - {self.development.name}"

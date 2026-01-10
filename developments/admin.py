@@ -1,12 +1,18 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import Development, DevelopmentImage, Amenity
+from .models import Development, DevelopmentImage, Amenity, UnitType
 
 
 # Register your models here.
 class DevelopmentImageInline(admin.TabularInline):
     model = DevelopmentImage
-    extra = 1
+    extra = 0
+
+
+class UnitTypeInline(admin.TabularInline):
+    model = UnitType
+    extra = 0
+    fields = ("bedrooms", "rent_from_pcm", "rent_to_pcm", "is_available")
 
 
 @admin.register(Development)
@@ -93,14 +99,15 @@ class DevelopmentAdmin(SummernoteModelAdmin):
             )
         }),
     )
-    summernote_fields = ("description")
-    inlines = [DevelopmentImageInline]
+    summernote_fields = ("description",)
+    inlines = [DevelopmentImageInline, UnitTypeInline]
 
 
 @admin.register(DevelopmentImage)
 class DevelopmentImageAdmin(admin.ModelAdmin):
     list_display = ("development", "sort_order", "id")
     list_filter = ("development",)
+    readonly_fields = ("created_at",)
 
 
 @admin.register(Amenity)
@@ -108,3 +115,15 @@ class AmenityAdmin(admin.ModelAdmin):
     list_display = ("name", "is_active", "updated_at")
     list_filter = ("is_active",)
     search_fields = ("name",)
+    readonly_fields = ("created_at", "updated_at")
+
+
+@admin.register(UnitType)
+class UnitTypeAdmin(admin.ModelAdmin):
+    list_display = ("development", "bedrooms", "rent_from_pcm", "rent_to_pcm", "is_available", "updated_at")
+    list_filter = ("is_available", "bedrooms", "development__city")
+    search_fields = ("development__name", "development__city__name", "development__postcode")
+    readonly_fields = ("created_at", "updated_at")
+    ordering = ("development", "bedrooms")
+    autocomplete_fields = ("development",)
+

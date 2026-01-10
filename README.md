@@ -455,6 +455,22 @@ The MVP data model consists of three primary entities:
 
 These entities are related in a one-to-many structure to support city-based browsing and enquiry management.
 
+### Data model updates
+
+During development, the data model was expanded beyond the initial MVP ERD to support renter expectation and improve listing completedness.
+
+**Additions:**
+- **Pricing**
+    - Added optional pricing fields to `Development`:
+        - `rent_from_pcm` (integer)
+        - `deposit_from` (integer, optional)
+        - `pricing_note` (short text, optional)
+- **Bedroom types**
+    - Added a `BedroomType` model linked to `Development` to represent unit mixes (e.g. Studio, 1-bed, 2-bed, etc.) and per-bedroom pricing ranges
+
+    These changes are documented in the updated ERD (`dbdiagram.io` script) and should be treated as the current source of truth for the MVP database structure.
+
+
 ### Entity relationships
 
 - A **City** can have **many Developments**
