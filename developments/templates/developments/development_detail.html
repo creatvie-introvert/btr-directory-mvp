@@ -153,6 +153,53 @@
     </div>
 </section>
 
+<section class="py-5" id="unit-types">
+    <div class="container">
+        <div class="mb-4">
+            <h2 class="mb-4">
+                Unit types
+            </h2>
+        </div>
+
+        {% with unit_types=development.unit_types.all %}
+        {% if unit_types %}
+        <div class="row g-4">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card shadow-sm border-0 rounded-4 p-2">
+                    
+                    <ul class="list-group list-group-flush small">
+                        {% for unit in unit_types %}
+                        {% if unit.is_available %}
+                        <li class="list-group-item py-3 d-flex justify-content-between align-items-center">
+                            <span class="small text-muted">
+                                {{ unit.get_bedrooms_display }}
+                            </span>
+
+                            <span class="small text-muted">
+                                {% if unit.rent_from_pcm and unit.rent_to_pcm %}
+                                £{{ unit.rent_from_pcm }}&mdash;£{{ unit.rent_to_pcm }} pcm
+                                {% elif unit.rent_from_pcm %}
+                                From £{{ unit.rent_from_pcm }} pcm
+                                {% else %}
+                                Pricing on request
+                                {% endif %}
+                            </span>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p class="mb-3 body">
+            Unit pricing is being confirmed for this development.
+        </p>
+        {% endif %}
+        {% endwith %}
+    </div>
+</section>
+
 <section class="py-5" id="amenities">
     <div class="container">
 
