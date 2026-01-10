@@ -61,8 +61,11 @@ class DevelopmentAdmin(SummernoteModelAdmin):
         }),
         ("Key facts", {
             "fields": (
+                "rent_from_pcm",
+                "deposit_from",
                 "property_type",
                 "number_of_homes",
+                "pricing_note"
             )
         }),
         ("Amenities", {
