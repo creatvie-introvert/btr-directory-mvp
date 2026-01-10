@@ -1,4 +1,5 @@
 {% extends "core/base.html" %}
+{% load humanize %}
 {% load static %}
 
 {% block title %}{{ development.name }}{% endblock %}
@@ -73,7 +74,7 @@
 
                 {% if development.rent_from_pcm %}
                 <h2 class="mt-4">
-                    £{{ development.rent_from_pcm }} pcm
+                    £{{ development.rent_from_pcm|intcomma }} pcm
                 </h2>
                 {% endif %}
 
@@ -135,7 +136,7 @@
                     <ul class="list-group list-group-flush small">
                         {% if development.rent_from_pcm %}
                         <li class="d-flex justify-content-between align-items-center list-group-item py-3">
-                            <span class="small text-muted">Rent from: </span><span class="small text-muted">£{{ development.rent_from_pcm }} pcm</span>
+                            <span class="small text-muted">Rent from: </span><span class="small text-muted">£{{ development.rent_from_pcm|intcomma }} pcm</span>
                         </li>
                         {% endif %}
 
@@ -197,7 +198,7 @@
 
                             <span class="small text-muted">
                                 {% if unit.rent_from_pcm and unit.rent_to_pcm %}
-                                £{{ unit.rent_from_pcm }}&mdash;£{{ unit.rent_to_pcm }} pcm
+                                £{{ unit.rent_from_pcm|intcomma }}&mdash;£{{ unit.rent_to_pcm|intcomma }} pcm
                                 {% elif unit.rent_from_pcm %}
                                 From £{{ unit.rent_from_pcm }} pcm
                                 {% else %}

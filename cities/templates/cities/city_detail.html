@@ -1,10 +1,11 @@
 {% extends "core/base.html" %}
+{% load humanize %}
+{% load static %}
 
 {% block title %}{{ city.name }}{% endblock %}
 
 {% block content %}
 
-{% load static %}
 <section class="py-5">
     <div class="container">
         <div class="row g-4 align-items-start">
@@ -54,10 +55,61 @@
                             </p>
                             {% endif %}
 
-                            <div class="mt-auto pt-2">
-                                <span class="btn btn-secondary">
-                                    View details
+                            {% if dev.summary %}
+                            <p class="small text-muted mb-3 dev-summary">
+                                {{ dev.summary }}
+                            </p>
+                            {% endif %}
+
+                            <div class="d-flex justify-content-between align-items-baseline gap-3 text-muted small opacity-75 mb-2">
+                                <span class="text-nowrap">
+                                    {% if dev.rent_from_pcm %}
+                                    From <strong>£{{ dev.rent_from_pcm|intcomma }} pcm</strong>
+                                    {% else %}
+                                    Pricing on request
+                                    {% endif %}
                                 </span>
+
+                                <span class="text-sm-end">
+                                    {% if dev.min_bedrooms is not None %}
+                                    {% if dev.min_bedrooms == dev.max_bedrooms %}
+                                    {% if dev.min_bedrooms == 0 %}
+                                    Studio
+                                    {% elif dev.min_bedrooms == 1 %}
+                                    1 bed
+                                    {% else %}
+                                    {{ dev.min_bedrooms }} beds
+                                    {% endif %}
+                                    {% else %}
+                                    {% if dev.min_bedrooms == 0 %}
+                                    Studio
+                                    {% else %}
+                                    {{ dev.min_bedrooms }}
+                                    {% endif %}
+                                    &ndash;
+                                    {% if dev.max_bedrooms == 0 %}
+                                    Studio
+                                    {% else %}
+                                    {{ dev.max_bedrooms }}
+                                    {% endif %}
+                                    {% if dev.max_bedrooms == 1 %}
+                                    bed
+                                    {% else %}
+                                    beds
+                                    {% endif %}
+                                    {% endif %}
+                                    {% else %}
+                                    Bedroom types coming soon
+                                    {% endif %}
+                                </span>
+                            </div>
+
+                            <div class="mt-auto pt-2">
+                                <div class="d-grid">
+                                    <span class="btn btn-secondary">
+                                        View details
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
