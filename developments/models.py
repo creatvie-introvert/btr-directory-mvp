@@ -1,9 +1,17 @@
+"""
+Database models for developments, amenities, and unit types.
+"""
+
 from django.db import models
+
 from cities.models import City
 
 
-# Create your models here.
 class Development(models.Model):
+    """
+    A build-to-rent development in a city.
+    """
+
     class TenancyOption(models.TextChoices):
         LONG_TERM = "long-term", "Long-term"
         FLEXIBLE = "flexible", "Flexible"
@@ -19,7 +27,7 @@ class Development(models.Model):
         PART_FURNISHED = "part-furnished", "Part-furnished"
         UNFURNISHED = "unfurnished", "Unfurnished"
         FLEXIBLE = "flexible", "Flexible"
-    
+
     class PetPolicyOption(models.TextChoices):
         PETS_ALLOWED = "pets-allowed", "Pets allowed"
         PETS_CONSIDERED = "pets-considered", "Pets considered"
@@ -30,7 +38,11 @@ class Development(models.Model):
         SOME = "some", "Some bills included"
         ALL = "all", "All bills included"
 
-    city = models.ForeignKey(City, on_delete=models.CASCADE, related_name="developments")
+    city = models.ForeignKey(
+        City,
+        on_delete=models.CASCADE,
+        related_name="developments"
+    )
 
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
@@ -47,7 +59,11 @@ class Development(models.Model):
     deposit_from = models.PositiveIntegerField(blank=True, null=True)
     pricing_note = models.TextField(blank=True)
 
-    amenities = models.ManyToManyField("Amenity", blank=True, related_name="developments")
+    amenities = models.ManyToManyField(
+        "Amenity",
+        blank=True,
+        related_name="developments"
+    )
 
     tenancy_options = models.CharField(
         max_length=30,
@@ -64,7 +80,7 @@ class Development(models.Model):
     number_of_homes = models.PositiveIntegerField(blank=True, null=True)
 
     tenancy_length = models.PositiveIntegerField(
-        blank=True, 
+        blank=True,
         null=True,
         help_text="Typical/standard tenancy length in months"
     )
@@ -122,6 +138,10 @@ class Development(models.Model):
 
 
 class DevelopmentImage(models.Model):
+    """
+    An image in a development gallery.
+    """
+
     development = models.ForeignKey(
         Development, on_delete=models.CASCADE, related_name="images"
     )
@@ -139,12 +159,16 @@ class DevelopmentImage(models.Model):
 
     class Meta:
         ordering = ["sort_order", "id"]
-    
+
     def __str__(self) -> str:
         return f"{self.development.name} image {self.id}"
 
 
 class Amenity(models.Model):
+    """
+    A reusable amenity that can be linked to many developments.
+    """
+
     name = models.CharField(max_length=150, unique=True)
 
     icon = models.CharField(max_length=150, blank=True)
@@ -157,11 +181,16 @@ class Amenity(models.Model):
     class Meta:
         ordering = ["name"]
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
 
 class UnitType(models.Model):
+    """
+    Pricing and availability for bedroom type within a development.
+    """
+
+    # Choices used for select fields in the admin and forms
     class BedroomCount(models.IntegerChoices):
         STUDIO = 0, "Studio"
         ONE = 1, "1-bedroom"
@@ -190,7 +219,7 @@ class UnitType(models.Model):
         constraints = [
             models.UniqueConstraint(
                 fields=["development", "bedrooms"],
-                name="unique_unit_type_per_development"
+                name="unique_unit_type_per_development",
             )
         ]
         indexes = [
@@ -198,5 +227,5 @@ class UnitType(models.Model):
             models.Index(fields=["development", "bedrooms"]),
         ]
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.get_bedrooms_display()} - {self.development.name}"

@@ -24,7 +24,7 @@ def city_detail(request, slug):
             ),
         )
         .order_by("name")
-    )    
+    )
 
     return render(
         request, "cities/city_detail.html",

@@ -258,6 +258,10 @@ footer a:hover {
     box-shadow: 0 0 0 3px var(--btr-brand);
 }
 
+.gallery-thumb-frame {
+    width: 8.8rem;
+}
+
 .amenities-pill {
     color: var(--btr-text-muted);
 }

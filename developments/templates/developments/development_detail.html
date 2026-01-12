@@ -5,11 +5,13 @@
 {% block title %}{{ development.name }}{% endblock %}
 
 {% block content %}
-<section class="py-5">
+
+<!-- Development header: breadcrumbs, gallery, and core info -->
+<section class="py-5" id="dev-hero">
     <div class="container">
         <div class="row">
             <div class="col-12 mb-3">
-
+                <!-- Breadcrumbs: Cities → City → Development -->
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
@@ -27,64 +29,82 @@
                 </nav>
             </div>
 
-            <!-- Left column -->
+            <!-- Development images (main image + gallery) -->
             <div class="col-12 col-lg-8">
                 <div class="image-wrapper">
-
                     <div class="ratio ratio-16x9">
                         {% if main_image %}
-                        <img id="main-development-image" src="{{ main_image.url }}"
-                            class="img-fluid rounded-4 w-100 h-100 object-fit-cover" alt="{{ main_image_alt }}">
+                            <img 
+                            id="main-development-image" 
+                            src="{{ main_image.url }}"
+                            class="img-fluid rounded-4 w-100 h-100 object-fit-cover" 
+                            alt="{{ main_image_alt }}"
+                            >
                         {% endif %}
                     </div>
                 </div>
+
+                <!-- Thumbnail gallery -->
                 <div class="gallery-picker d-flex flex-wrap gap-2 mt-3" aria-label="Image gallery thumbnails">
                     {% if development.cover_image %}
-                    <button type="button" class="p-0 border-0 bg-transparent gallery-thumb"
-                        data-full-url="{{ development.cover_image.url }}"
-                        data-alt="{{ development.cover_image_alt|default:development.name }}"
-                        aria-label="View cover image">
-                        <div class="ratio ratio-1x1 rounded-4 overflow-hidden" style="width: 88px;">
-                            <img src="{{ development.cover_image.url }}"
-                                class="w-100 h-100 object-fit-cover rounded-3 img-thumbnail"
-                                alt="Thumbnail: {{ development.cover_image_alt|default:development.name }}"
-                                loading="lazy">
-                        </div>
-                    </button>
+                        <button 
+                          type="button" 
+                          class="p-0 border-0 bg-transparent gallery-thumb"
+                          data-full-url="{{ development.cover_image.url }}"
+                          data-alt="{{ development.cover_image_alt|default:development.name }}"
+                          aria-label="View cover image"
+                        >
+                            <div class="ratio ratio-1x1 rounded-4 overflow-hidden gallery-thumb-frame">
+                                <img src="{{ development.cover_image.url }}"
+                                    class="w-100 h-100 object-fit-cover rounded-3 img-thumbnail"
+                                    alt="Thumbnail: {{ development.cover_image_alt|default:development.name }}"
+                                    loading="lazy">
+                            </div>
+                        </button>
                     {% endif %}
 
                     {% for img in images %}
-                    <button type="button" class="p-0 border-0 bg-transparent gallery-thumb"
-                        data-full-url="{{ img.image.url }}" data-alt="{{ img.alt_text|default:development.name }}"
-                        aria-label="View image {{ forloop.counter }}">
-                        <div class="ratio ratio-1x1 rounded-3 overflow-hidden" style="width: 88px;">
-                            <img src="{{ img.image.url }}" class="w-100 h-100 img-thumbnail"
-                                alt="Thumbnail {{img.alt_text|default:development.name }}">
-                        </div>
-                    </button>
+                        <button 
+                          type="button" 
+                          class="p-0 border-0 bg-transparent gallery-thumb"
+                          data-full-url="{{ img.image.url }}" 
+                          data-alt="{{ img.alt_text|default:development.name }}"
+                          aria-label="View image {{ forloop.counter }}"
+                        >
+                            <div class="ratio ratio-1x1 rounded-4 overflow-hidden gallery-thumb-frame">
+                                <img 
+                                  src="{{ img.image.url }}" 
+                                  class="w-100 h-100 img-thumbnail"
+                                  alt="Thumbnail {{img.alt_text|default:development.name }}"
+                                >
+                            </div>
+                        </button>
                     {% endfor %}
                 </div>
             </div>
 
-            <!-- Right column -->
+            <!-- Development core info + CTA + in-page links -->
             <div class="col-12 col-lg-4">
                 <h1 class="mt-4">
                     {{ development.name }}
                 </h1>
 
                 {% if development.rent_from_pcm %}
-                <h2 class="mt-4">
-                    £{{ development.rent_from_pcm|intcomma }} pcm
-                </h2>
+                    <h2 class="mt-4">
+                        £{{ development.rent_from_pcm|intcomma }} pcm
+                    </h2>
                 {% endif %}
 
                 {% if development.area_name %}
-                <p class="mt-4 body">
-                    {{ development.area_name }}, {{ development.city.name }}
-                </p>
+                    <p class="mt-4 body">
+                        {{ development.area_name }}, {{ development.city.name }}
+                    </p>
                 {% endif %}
 
-                <a href="#request-viewing" class="btn btn-primary btn-lg px-4 py-2 mt-4">
+                <a 
+                  href="#request-viewing" 
+                  class="btn btn-primary btn-lg px-4 py-2 mt-4"
+                >
                     Request a viewing
                 </a>
 
@@ -111,22 +131,22 @@
     </div>
 </section>
 
+<!-- Overview -->
 <section class="py-5" id="overview">
     <div class="container">
         {% if development.description %}
-        <div class="mt-4 overview-body">
-            {{ development.description|safe }}
-        </div>
+            <div class="mt-4 overview-body">
+                {{ development.description|safe }}
+            </div>
         {% endif %}
     </div>
 </section>
 
+<!-- Key facts list -->
 <section class="py-5" id="key-facts">
     <div class="container">
-
-        <!-- Header -->
+        <!-- Section header -->
         <div class="mb-4">
-
             <h2 class="mb-4">
                 Key facts
             </h2>
@@ -134,42 +154,62 @@
 
         <div class="row g-4">
             <div class="col-12 col-md-8 col-lg-6">
-
                 <div class="card shadow-sm border-0 rounded-4 p-2">
-
                     <ul class="list-group list-group-flush small">
                         {% if development.rent_from_pcm %}
-                        <li class="d-flex justify-content-between align-items-center list-group-item py-3">
-                            <span class="small text-muted">Rent from: </span><span class="small text-muted">£{{ development.rent_from_pcm|intcomma }} pcm</span>
-                        </li>
+                            <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                                <span class="small text-muted">
+                                    Rent from: 
+                                </span>
+                                <span class="small text-muted">
+                                    £{{ development.rent_from_pcm|intcomma }} pcm
+                                </span>
+                            </li>
                         {% endif %}
 
                         {% if development.property_type %}
-                        <li class="d-flex justify-content-between align-items-center list-group-item py-3">
-                            <span class="small text-muted">Property type: </span><span class="small text-muted">{{ development.get_property_type_display }}</span>
-                        </li>
+                            <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                                <span class="small text-muted">
+                                    Property type: 
+                                </span>
+                                <span class="small text-muted">
+                                    {{ development.get_property_type_display }}
+                                </span>
+                            </li>
                         {% endif %}
 
                         {% if development.number_of_homes %}
-                        <li class="d-flex justify-content-between align-items-center list-group-item py-3">
-                            <span class="small text-muted">Number of homes:</span> <span class="small text-muted">{{ development.number_of_homes }}</span>
-                        </li>
+                            <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                                <span class="small text-muted">
+                                    Number of homes: 
+                                </span> 
+                                <span class="small text-muted">
+                                    {{ development.number_of_homes }}
+                                </span>
+                            </li>
                         {% endif %}
 
                         {% if development.website_url %}
-                        <li class="d-flex justify-content-between align-items-center list-group-item py-3">
-                            <span class="small text-muted">Website:</span>
-                            <span class="small text-muted"><a href="{{ development.website_url }}" target="_blank"
-                                    class="text-decoration-none" rel="noopener noreferrer">
-                                    Visit website
-                                </a></span>
-                        </li>
+                            <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                                <span class="small text-muted">Website: </span>
+                                <span class="small text-muted">
+                                    <a 
+                                      href="{{ development.website_url }}" target="_blank"
+                                      class="text-decoration-none"
+                                      rel="noopener noreferrer"
+                                    >
+                                        Visit website
+                                    </a>
+                                </span>
+                            </li>
                         {% endif %}
 
                         {% if development.pricing_note %}
-                        <li class="list-group-item py-3 text-center">
-                            <span class="small text-muted fst-italic opacity-75">{{ development.pricing_note }}</span>
-                        </li>
+                            <li class="list-group-item py-3 text-center">
+                                <span class="small text-muted fst-italic opacity-75">
+                                    {{ development.pricing_note }}
+                                </span>
+                            </li>
                         {% endif %}
                     </ul>
                 </div>
@@ -186,173 +226,192 @@
             </h2>
         </div>
 
+        <!-- Unit types list -->
         {% with unit_types=development.unit_types.all %}
-        {% if unit_types %}
-        <div class="row g-4">
-            <div class="col-12 col-md-8 col-lg-6">
-                <div class="card shadow-sm border-0 rounded-4 p-2">
-                    
-                    <ul class="list-group list-group-flush small">
-                        {% for unit in unit_types %}
-                        {% if unit.is_available %}
-                        <li class="list-group-item py-3 d-flex justify-content-between align-items-center">
-                            <span class="small text-muted">
-                                {{ unit.get_bedrooms_display }}
-                            </span>
+            {% if unit_types %}
+                <div class="row g-4">
+                    <div class="col-12 col-md-8 col-lg-6">
+                        <div class="card shadow-sm border-0 rounded-4 p-2">
+                            <ul class="list-group list-group-flush small">
+                                {% for unit in unit_types %}
+                                    {% if unit.is_available %}
+                                        <li class="list-group-item py-3 d-flex justify-content-between align-items-center">
+                                            <span class="text-muted">
+                                                {{ unit.get_bedrooms_display }}
+                                            </span>
 
-                            <span class="small text-muted">
-                                {% if unit.rent_from_pcm and unit.rent_to_pcm %}
-                                £{{ unit.rent_from_pcm|intcomma }}&mdash;£{{ unit.rent_to_pcm|intcomma }} pcm
-                                {% elif unit.rent_from_pcm %}
-                                From £{{ unit.rent_from_pcm }} pcm
-                                {% else %}
-                                Pricing on request
-                                {% endif %}
-                            </span>
-                        </li>
-                        {% endif %}
-                        {% endfor %}
-                    </ul>
+                                            <span class="text-muted">
+                                                {% if unit.rent_from_pcm and unit.rent_to_pcm %}
+                                                    £{{ unit.rent_from_pcm|intcomma }}&mdash;£{{ unit.rent_to_pcm|intcomma }} pcm
+                                                {% elif unit.rent_from_pcm %}
+                                                    From £{{ unit.rent_from_pcm|intcomma }} pcm
+                                                {% else %}
+                                                    Pricing on request
+                                                {% endif %}
+                                            </span>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        {% else %}
-        <p class="mb-3 body">
-            Unit pricing is being confirmed for this development.
-        </p>
-        {% endif %}
+            {% else %}
+                <!-- Empty state -->
+                <p class="mb-3 body">
+                    Unit pricing is being confirmed for this development.
+                </p>
+            {% endif %}
         {% endwith %}
     </div>
 </section>
 
+<!-- Amenities list (on-site facilities and shared spaces) -->
 <section class="py-5" id="amenities">
     <div class="container">
-
-        <!-- Header -->
+        <!-- Section header -->
         <div class="mb-4">
-
             <h2 class="mb-4">
                 Amenities
             </h2>
         </div>
 
+        <!-- Alias the amenities queryset for cleaner code -->
         {% with amenities=development.amenities.all %}
-        {% if amenities %}
-
-        <div class="row g-3 pill-grid">
-            {% for amenity in amenities %}
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="d-flex align-items-center gap-4 border rounded-pill p-3 bg-white shadow-sm h-100 amenities-pill">
-                    {% if amenity.icon %}
-                    <i class="fa-solid {{ amenity.icon}}"></i>
-                    {% endif %}
-                    <span class="small">
-                        {{ amenity.name }}
-                    </span>
-                </div>
-            </div>
-            {% endfor %}
+            {% if amenities %}
+                <div class="row g-3 pill-grid">
+                    {% for amenity in amenities %}
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="d-flex align-items-center gap-4 border rounded-pill p-3 bg-white shadow-sm h-100 amenities-pill">
+                                {% if amenity.icon %}
+                                    <i class="fa-solid {{ amenity.icon}}"></i>
+                                {% endif %}
+                                <span class="small">
+                                    {{ amenity.name }}
+                                </span>
+                            </div>
+                        </div>
+                    {% endfor %}
             {% else %}
-            <p class="mb-3 body">
-                We're currently confirming the on-site facilities for this development.
-            </p>
+                    <p class="mb-3 body">
+                        We're currently confirming the on-site facilities for this development.
+                    </p>   
+                </div>
             {% endif %}
-            {% endwith %}
-        </div>
+        {% endwith %}
     </div>
-
 </section>
 
-{% if development.tenancy_options %}
-<section class="py-5" id="tenancy">
-    <div class="container">
+<!-- Tenancy details (only shown when tenancy options are provided) -->
+{% if development.tenancy_options or development.tenancy_length or development.minimum_term_months or development.furnishing or development.pet_policy or development.bills_included %}
+    <section class="py-5" id="tenancy">
+        <div class="container">
+            <!-- Section header -->
+            <div class="mb-4">
+                <h2 class="mb-4">
+                    Tenancy options
+                </h2>
+            </div>
 
-        <!-- Header -->
-        <div class="mb-4">
+            <div class="row g-4">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <div class="card shadow-sm border-0 rounded-4 p-2">
+                        <ul class="list-group list-group-flush small">
+                            {% if development.tenancy_length %}
+                                <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                                    <span class="small text-muted">
+                                        Tenancy length: 
+                                    </span>
+                                    <span class="small text-muted">
+                                        {{ development.tenancy_length }} months
+                                    </span>
+                                </li>
+                            {% endif %}
 
-            <h2 class="mb-4">
-                Tenancy options
-            </h2>
-        </div>
+                            {% if development.minimum_term_months %}
+                                <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                                    <span class="small text-muted">
+                                        Minimum term: 
+                                    </span>
+                                    <span class="small text-muted">
+                                        {{ development.minimum_term_months }} months
+                                    </span>
+                                </li>
+                            {% endif %}
 
-        <div class="row g-4">
-            <div class="col-12 col-md-8 col-lg-6">
+                            {% if development.furnishing %}
+                                <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                                    <span class="small text-muted">
+                                        Furnishing: 
+                                    </span>
+                                    <span class="small text-muted">
+                                        {{ development.get_furnishing_display }}
+                                    </span>
+                                </li>
+                            {% endif %}
 
-                <div class="card shadow-sm border-0 rounded-4 p-2">
+                            {% if development.pet_policy %}
+                            <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                                <span class="small text-muted">
+                                    Pet policy: 
+                                </span>
+                                <span class="small text-muted">
+                                    {{ development.get_pet_policy_display }}
+                                </span>
+                            </li>
+                            {% endif %}
 
-                    <ul class="list-group list-group-flush small">
-
-                        {% if development.tenancy_length %}
-                        <li class="d-flex justify-content-between align-items-center list-group-item py-3">
-                            <span class="small text-muted">Tenancy length:</span> <span class="small text-muted">{{ development.tenancy_length }} months</span>
-                        </li>
-                        {% endif %}
-
-                        {% if development.minimum_term_months %}
-                        <li class="d-flex justify-content-between align-items-center list-group-item py-3">
-                            <span class="small text-muted">Minimum term:</span> <span class="small text-muted">{{ development.minimum_term_months }} months</span>
-                        </li>
-                        {% endif %}
-
-                        {% if development.furnishing %}
-                        <li class="d-flex justify-content-between align-items-center list-group-item py-3">
-                            <span class="small text-muted">Furnishing:</span> <span class="small text-muted">{{ development.get_furnishing_display }}</span>
-                        </li>
-                        {% endif %}
-
-                        {% if development.pet_policy %}
-                        <li class="d-flex justify-content-between align-items-center list-group-item py-3">
-                            <span class="small text-muted">Pet policy:</span> <span class="small text-muted">{{ development.get_pet_policy_display }}</span>
-                        </li>
-                        {% endif %}
-
-                        {% if development.bills_included %}
-                        <li class="d-flex justify-content-between align-items-center list-group-item py-3">
-                            <span class="small text-muted">Bills included:</span> <span class="small text-muted">{{ development.get_bills_included_display }}</span>
-                        </li>
-                        {% endif %}
-                    </ul>
+                            {% if development.bills_included %}
+                                <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                                    <span class="small text-muted">
+                                        Bills included: 
+                                    </span>
+                                    <span class="small text-muted">
+                                        {{ development.get_bills_included_display }}
+                                    </span>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 {% endif %}
 
+<!-- Postcode + Google Maps link (fallback if postcode not provided) -->
 <section class="py-5" id="location">
     <div class="container">
-
         <div class="mb-4">
-
+            <!-- Section heading -->
             <h2 class="mb-4">
                 Location
             </h2>
 
+            <!-- Location: show postcode + Google maps link when available -->
             {% if development.postcode %}
-            <p class="mb-3 body">
-                {{ development.postcode }}
-            </p>
-            {% endif %}
+                <p class="mb-3 body">
+                    {{ development.postcode }}
+                </p>
 
-            {% if development.postcode %}
-            <a href="https://www.google.com/maps/search/?api=1&query={{ development.postcode|urlencode }}"
-                class="text-decoration-none" target="_blank" rel="noopener noreferrer">
-                View on map <i class="fa-solid fa-arrow-right"></i>
-            </a>
+                <a href="https://www.google.com/maps/search/?api=1&query={{ development.postcode|urlencode }}"
+                    class="text-decoration-none" target="_blank" rel="noopener noreferrer">
+                    View on map <i class="fa-solid fa-arrow-right"></i>
+                </a>
             {% else %}
-            <p class="text-muted mb-0">
-                Map link coming soon.
-            </p>
+                <p class="text-muted mb-0">
+                    Map link coming soon.
+                </p>
             {% endif %}
         </div>
     </div>
 </section>
 
+<!-- Disclaimer note -->
 <section class="py-3" id="disclaimer-note">
     <div class="container">
         <div class="row">
             <div class="col-12">
-
                 <p class="mb-4 text-muted">
                     Listing details are for guidance and may change.
                 </p>
