@@ -14,6 +14,7 @@
     --btr-bg: #F8FAFC;
 }
 
+/* Base document styles */
 html {
     font-size: 10px;
     scroll-behavior: smooth;
@@ -27,6 +28,7 @@ body {
     color: var(--btr-text-primary);
 }
 
+/* Typography */
 h1 {
     font-size: 4rem;
     font-weight: 600;
@@ -71,6 +73,15 @@ h4 {
     line-height: 2rem;
 }
 
+.text-muted {
+    color: var(--btr-text-muted) !important;
+}
+
+.text-secondary {
+    color: var(--btr-text-secondary);
+}
+
+/* Links & buttons */
 a {
     color: var(--btr-brand);
 }
@@ -103,6 +114,7 @@ a:hover {
     outline: var(--btr-brand-hover);
 }
 
+/* Navigation */
 .navbar .nav-link:hover {
     color: var(--btr-brand-hover);
 }
@@ -117,10 +129,7 @@ a:hover {
     color: var(--btr-brand-hover);
 }
 
-.text-muted {
-    color: var(--btr-text-muted) !important;
-}
-
+/* Footer */
 footer {
     background-color: var(--btr-brand-tint);
 }
@@ -133,24 +142,19 @@ footer a:hover {
     color: var(--btr-brand-hover) !important;
 }
 
-.text-secondary {
-    color: var(--btr-text-secondary);
-}
-
+/* Hero */
 #hero-section {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../images/hero/hero-btr-directory.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* position: relative; */
-    /* border-radius: 1.6rem; */
     overflow: hidden;
-    /* margin: 1.6rem; */
     min-height: 45rem;
     display: flex;
     align-items: center;
 }
 
+/* City cards */
 .city-card {
     position: relative;
     transition: transform 180ms ease, box-shadow 180ms ease;
@@ -232,6 +236,7 @@ footer a:hover {
     object-fit: cover;
 }
 
+/* Image gallery */
 .gallery-thumb {
     transition: transform 140ms ease;
 }
@@ -262,11 +267,13 @@ footer a:hover {
     width: 8.8rem;
 }
 
+/* Amenities */
 .amenities-pill {
     color: var(--btr-text-muted);
 }
 
 
+/* Tablet */
 @media (min-width: 768px) {
     .body,
     .pill-grid,
@@ -279,6 +286,7 @@ footer a:hover {
     }
 }
 
+/* Desktop */
 @media (min-width: 992px) {
     .body,
     .pill-grid,
@@ -294,12 +302,14 @@ footer a:hover {
     }
 }
 
+/* Large desktop */
 @media (min-width: 1200px) {
     #hero-section {
         min-height: 60rem;
     }
 }
 
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
     .city-card,
     .city-card-img,
