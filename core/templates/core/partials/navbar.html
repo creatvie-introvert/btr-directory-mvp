@@ -9,21 +9,24 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        <!-- Primary nav links -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a 
                       class="nav-link {% if request.resolver_match.view_name == 'core:home' %}active{% endif %}"
-                      {% if request.resolver_match.view_name == 'core:home'%}aria-current="page"{% endif %} 
-                      href="{% url 'core:home' %}">
+                      { % if request.resolver_match.view_name == 'core:home' % }aria-current="page"{ % endif % } 
+                      href="{% url 'core:home' %}"
+                    >
                         Home
                     </a>
                 </li>
                 <li class="nav-item">
                     <a 
                       class="nav-link {% if request.resolver_match.view_name == 'cities:list' %}active{% endif %}" 
-                      {% if request.resolver_match.view_name == 'core:home'%}aria-current="page"{% endif %} 
-                      href="{% url 'cities:list' %}">
+                      { % if request.resolver_match.view_name == 'core:list'% }aria-current="page"{ % endif % } 
+                      href="{% url 'cities:list' %}"
+                    >
                         Cities
                     </a>
                 </li>
@@ -39,8 +42,9 @@
                 </li>
             </ul>
 
+            <!-- Search form -->
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-primary btn-lg" type="submit">Search</button>
             </form>
         </div>
