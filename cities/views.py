@@ -55,22 +55,31 @@ def city_detail(request, slug):
 
     if max_rent is not None:
         unit_filters &= Q(unit_types__rent_from_pcm__lte=max_rent)
+    
+    filters_active = any(v is not None for v in [min_beds, max_beds, min_rent, max_rent])
 
     # Only apply unit-type filtering if at least 1 filter selected by the user
-    if any(v is not None for v in [min_beds, max_beds, min_rent, max_rent]):
+    if filters_active:
         developments = developments.filter(unit_filters).distinct()
 
-    # Add bedroo range per development for the listing cards
-    developments = developments.annotate(
-        min_bedrooms=Min(
+    annotations = {
+        "min_bedrooms": Min(
             "unit_types__bedrooms",
             filter=Q(unit_types__is_available=True)
         ),
-        max_bedrooms=Max(
+        "max_bedrooms": Max(
             "unit_types__bedrooms",
             filter=Q(unit_types__is_available=True)
         ),
-    ).order_by("name")
+    }
+
+    if filters_active:
+        annotations["card_rent_from_pcm"] = Min(
+            "unit_types__rent_from_pcm",
+            filter=unit_filters,
+        )
+
+    developments = developments.annotate(**annotations).order_by("name")
 
     return render(
         request,
