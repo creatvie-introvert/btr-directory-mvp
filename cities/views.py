@@ -28,6 +28,16 @@ def city_detail(request, slug):
     """
     city = get_object_or_404(City, slug=slug, is_active=True)
 
+    min_beds = request.GET.get("min_beds")
+    max_beds = request.GET.get("max_beds")
+    min_rent = request.GET.get("min_rent")
+    max_rent = request.GET.get("max_rent")
+
+    min_beds = int(min_beds) if min_beds and min_beds.isdigit() else None
+    max_beds = int(max_beds) if max_beds and max_beds.isdigit() else None
+    min_rent = int(min_rent) if min_rent and min_rent.isdigit() else None
+    max_rent = int(max_rent) if max_rent and max_rent.isdigit() else None
+
     # Add bedroom range per development for the listing cards
     developments = (
         city.developments.filter(is_active=True)
@@ -43,6 +53,18 @@ def city_detail(request, slug):
         )
         .order_by("name")
     )
+
+    if min_beds is not None:
+        developments = developments.filter(max_bedrooms__gte=min_beds)
+
+    if max_beds is not None:
+        developments = developments.filter(min_bedrooms__lte=max_beds)
+
+    if min_rent is not None:
+        developments = developments.filter(rent_from_pcm__gte=min_rent)
+
+    if max_rent is not None:
+        developments = developments.filter(rent_from_pcm__lte=max_beds)    
 
     return render(
         request,

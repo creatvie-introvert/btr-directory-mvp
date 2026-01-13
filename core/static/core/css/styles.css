@@ -272,6 +272,14 @@ footer a:hover {
     color: var(--btr-text-muted);
 }
 
+.filter-chevron {
+    transition: transform 180ms ease;
+}
+
+button[aria-expanded="true"] .filter-chevron {
+    transform: rotate(180deg);
+}
+
 
 /* Tablet */
 @media (min-width: 768px) {
