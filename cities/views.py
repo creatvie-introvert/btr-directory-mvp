@@ -39,32 +39,38 @@ def city_detail(request, slug):
     max_rent = int(max_rent) if max_rent and max_rent.isdigit() else None
 
     # Add bedroom range per development for the listing cards
-    developments = (
-        city.developments.filter(is_active=True)
-        .annotate(
-            min_bedrooms=Min(
-                "unit_types__bedrooms",
-                filter=Q(unit_types__is_available=True),
-            ),
-            max_bedrooms=Max(
-                "unit_types__bedrooms",
-                filter=Q(unit_types__is_available=True),
-            ),
-        )
-        .order_by("name")
-    )
+    developments = city.developments.filter(is_active=True)
+
+    # Filter developments by matching available unit types
+    unit_filters = Q(unit_types__is_available=True)
 
     if min_beds is not None:
-        developments = developments.filter(max_bedrooms__gte=min_beds)
+        unit_filters &= Q(unit_types__bedrooms__gte=min_beds)
 
     if max_beds is not None:
-        developments = developments.filter(min_bedrooms__lte=max_beds)
+        unit_filters &= Q(unit_types__bedrooms__lte=max_beds)
 
     if min_rent is not None:
-        developments = developments.filter(rent_from_pcm__gte=min_rent)
+        unit_filters &= Q(unit_types__rent_from_pcm__gte=min_rent)
 
     if max_rent is not None:
-        developments = developments.filter(rent_from_pcm__lte=max_rent)    
+        unit_filters &= Q(unit_types__rent_from_pcm__lte=max_rent)
+
+    # Only apply unit-type filtering if at least 1 filter selected by the user
+    if any(v is not None for v in [min_beds, max_beds, min_rent, max_rent]):
+        developments = developments.filter(unit_filters).distinct()
+
+    # Add bedroo range per development for the listing cards
+    developments = developments.annotate(
+        min_bedrooms=Min(
+            "unit_types__bedrooms",
+            filter=Q(unit_types__is_available=True)
+        ),
+        max_bedrooms=Max(
+            "unit_types__bedrooms",
+            filter=Q(unit_types__is_available=True)
+        ),
+    ).order_by("name")
 
     return render(
         request,
