@@ -64,7 +64,7 @@ def city_detail(request, slug):
         developments = developments.filter(rent_from_pcm__gte=min_rent)
 
     if max_rent is not None:
-        developments = developments.filter(rent_from_pcm__lte=max_beds)    
+        developments = developments.filter(rent_from_pcm__lte=max_rent)    
 
     return render(
         request,
