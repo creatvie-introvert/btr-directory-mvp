@@ -1,0 +1,60 @@
+{% extends "core/base.html" %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+<section class="py-5" id="search-results">
+    <div class="container">
+        <h1 class="mb-3">Search</h1>
+
+        {% if query %}
+            <p class="text-muted">
+                You searched for: <strong>{{ query }}</strong>
+            </p>
+
+            {% if cities %}
+                <h2 class="h4 mb-3">Cities</h2>
+                <ul class="list-unstyled mb-4">
+                    {% for city in cities %}
+                        <li class="mb-2">
+                            <a 
+                              href="{% url 'cities:detail' city.slug %}" class="text-decoration-none"
+                            >
+                                {{ city.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <h2 class="h4 mb-3">Developments</h2>
+
+            {% if developments %}
+                <ul class="list-unstyled mb-0">
+                    {% for dev in developments %}
+                        <li class="mb-2">
+                            <a 
+                            href="{% url 'developments:detail' dev.slug %}"
+                            class="text-decoration-none"
+                            >
+                                {{ dev.name }}
+                            </a>
+                            <span class="text-muted">{{ dev.city.name }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+            <p class="text-muted">
+                Enter a search term to see results.
+            </p>
+            {% endif %}
+
+            {% if not cities and not developments %}
+                <p class="text-muted mb-0">No results found.</p>
+            {% endif %}
+        {% else %}
+            <p class="text-muted">Enter a search term to see results</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
