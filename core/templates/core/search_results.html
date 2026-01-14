@@ -31,6 +31,7 @@
             <h2 class="h4 mb-3">Developments</h2>
 
             {% if developments %}
+                <h2 class="h4 mb-3">Developments</h2>
                 <div class="row g-4">
                     {% for dev in developments %}
                         <div class="col-12 col-sm-6 col-lg-4">
@@ -38,9 +39,17 @@
                         </div>
                     {% endfor %}
                 </div>
-            {% else %}
-                <p class="text-muted">No developments found.</p>
             {% endif %}
+
+            {% if not cities and not devlopments %}
+                <p class="text-muted mt-3 mb-0">
+                    No results found.
+                </p>
+            {% endif %}
+        {% else %}
+            <p class="text-muted mt-3 mb-0">
+                Enter a search term to see results.
+            </p>
         {% endif %}
     </div>
 </section>
