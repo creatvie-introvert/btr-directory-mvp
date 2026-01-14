@@ -3,6 +3,7 @@
 {% block title %}Search{% endblock %}
 
 {% block content %}
+
 <section class="py-5" id="search-results">
     <div class="container">
         <h1 class="mb-3">Search</h1>
@@ -30,30 +31,16 @@
             <h2 class="h4 mb-3">Developments</h2>
 
             {% if developments %}
-                <ul class="list-unstyled mb-0">
+                <div class="row g-4">
                     {% for dev in developments %}
-                        <li class="mb-2">
-                            <a 
-                            href="{% url 'developments:detail' dev.slug %}"
-                            class="text-decoration-none"
-                            >
-                                {{ dev.name }}
-                            </a>
-                            <span class="text-muted">{{ dev.city.name }}</span>
-                        </li>
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            {% include "developments/partials/development_card.html" with dev=dev %}
+                        </div>
                     {% endfor %}
-                </ul>
+                </div>
             {% else %}
-            <p class="text-muted">
-                Enter a search term to see results.
-            </p>
+                <p class="text-muted">No developments found.</p>
             {% endif %}
-
-            {% if not cities and not developments %}
-                <p class="text-muted mb-0">No results found.</p>
-            {% endif %}
-        {% else %}
-            <p class="text-muted">Enter a search term to see results</p>
         {% endif %}
     </div>
 </section>

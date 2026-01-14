@@ -5,7 +5,7 @@ This module contains the homepage view.
 """
 
 from django.shortcuts import render
-from django.db.models import Q
+from django.db.models import Min, Max, Q
 
 from cities.models import City
 from developments.models import Development
@@ -43,17 +43,7 @@ def search(request):
                 | Q(postcode__icontains=query)
                 | Q(city__name__icontains=query)
             )
-            .order_by("name")
-            .distinct()
-        )
-
-        cities = (
-            City.objects.filter(is_active=True)
-            .filter(
-                Q(name__icontains=query)
-                | Q(slug__icontains=query)
-            )
-            .order_by("name")
+            .order_by("id")
             .distinct()
         )
 
