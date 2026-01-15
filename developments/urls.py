@@ -9,5 +9,6 @@ from . import views
 app_name = "developments"
 
 urlpatterns = [
+    path("<slug:slug>/enquire/", views.enquiry_create, name="enquire"),
     path("<slug:slug>/", views.development_detail, name="detail"),
 ]

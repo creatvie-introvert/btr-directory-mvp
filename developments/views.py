@@ -47,3 +47,20 @@ def development_detail(request, slug):
             "unit_types": unit_types,
         },
     )
+
+
+def enquiry_create(request, slug):
+    """
+    Shows the enquiry form page for one development.
+
+    Loads the development from the URL slug so the form is tied to the correct 
+    listing.
+    """
+
+    development = get_object_or_404(Development, slug=slug, is_active=True)
+
+    return render(
+        request,
+        "developments/enquiry_form.html",
+        {"development": development},
+    )
