@@ -70,8 +70,13 @@ def enquiry_create(request, slug):
         full_name = request.POST.get("full_name", "").strip()
         email = request.POST.get("email", "").strip()
         message = request.POST.get("message", "").strip()
+        honeypot = request.POST.get("website", "").strip()
 
         errors = {}
+
+        if honeypot:
+            # Bot likely filled the hidden field (silently pretend success).
+            return redirect(f"{reverse('developments:enquire', kwargs={'slug': development.slug})}?sent=1")
 
         if not full_name:
             errors["full_name"] = "Please enter your name."

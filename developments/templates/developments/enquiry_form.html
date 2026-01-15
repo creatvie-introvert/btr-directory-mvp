@@ -31,6 +31,11 @@
                 <form method="POST" novalidate>
                     {% csrf_token %}
 
+                    <div class="hp-field" aria-hidden="true">
+                        <label for="id_website">Website</label>
+                        <input type="text" name="website" id="id_website" class="form-control" tabindex="-1" autocomplete="off">
+                    </div>
+
                     <div class="mb-3">
                         <label for="id_name" class="form-label"> Your name</label>
                         <input type="text" name="full_name" id="id_name" class="form-control" value="{{ form_data.full_name|default:'' }}" required>

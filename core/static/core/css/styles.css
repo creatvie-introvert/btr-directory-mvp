@@ -280,6 +280,15 @@ button[aria-expanded="true"] .filter-chevron {
     transform: rotate(180deg);
 }
 
+/* Honeypot anti-spam (hidden from users */
+.hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
 
 /* Tablet */
 @media (min-width: 768px) {
