@@ -69,6 +69,24 @@
                         {% endif %}
                     </div>
 
+                    <div class="mb-3">
+                        <label for="id_move_timeframe" class="form-label">Move date</label>
+                        <select name="move_timeframe" id="id_move_timeframe" class="form-select">
+                            <option value="">Prefer not to say</option>
+                            <option value="asap" {% if form_data.move_timeframe == "asap" %}selected{% endif %}>ASAP</option>
+                            <option value="1-3-months" {% if form_data.move_timeframe == "1-3-months" %}selected{% endif %}>1-3 months</option>
+                            <option value="3-6-months" {% if form_data.move_timeframe == "3-6-months" %}selected{% endif %}>3-6 months</option>
+                            <option value="6-plus-months" {% if form_data.move_timeframe == "6-plus-months" %}selected{% endif %}>6+ months</option>
+                            <option value="just-browsing" {% if form_data.move_timeframe == "just-browsing" %}selected{% endif %}>Just browsing</option>
+                        </select>
+
+                        {% if errors.move_timeframe %}
+                            <div class="text-danger small mt-1">
+                                {{ errors.message }}
+                            </div>
+                        {% endif %}
+                    </div>
+
                     <div class="d-flex gap-2">
                         <button type="submit" class="btn btn-primary btn-lg">
                             Send enquiry

@@ -70,6 +70,7 @@ def enquiry_create(request, slug):
         full_name = request.POST.get("full_name", "").strip()
         email = request.POST.get("email", "").strip()
         message = request.POST.get("message", "").strip()
+        move_timeframe = request.POST.get("move_timeframe", "").strip()
         honeypot = request.POST.get("website", "").strip()
 
         errors = {}
@@ -90,6 +91,10 @@ def enquiry_create(request, slug):
                 errors["email"] = "Please enter a valid email address."
         if not message:
             errors["message"] = "Please enter a message."
+        
+        valid_timeframes = {choice[0] for choice in Enquiry.MoveTimeframe.choices}
+        if move_timeframe and move_timeframe not in valid_timeframes:
+            errors["move_timeframe"] = "Please choose a valid move date"
 
         if errors:
             # Re-render the page with the user's input + errors
@@ -103,6 +108,7 @@ def enquiry_create(request, slug):
                         "full_name": full_name,
                         "email": email,
                         "message": message,
+                        "move_timeframe": move_timeframe,
                     },
                     "sent": False,
                 },
@@ -112,6 +118,7 @@ def enquiry_create(request, slug):
             full_name=full_name,
             email=email,
             message=message,
+            move_timeframe=move_timeframe,
         )
 
         return redirect(f"{reverse('developments:enquire', kwargs={'slug': development.slug})}?sent=1")

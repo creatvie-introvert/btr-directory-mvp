@@ -242,6 +242,15 @@ class Enquiry(models.Model):
         IN_PROGRESS = "in-progress", "In progress"
         CLOSED = "closed", "Closed"
 
+    
+    class MoveTimeframe(models.TextChoices):
+        ASAP = "asap", "ASAP"
+        ONE_TO_THREE = "1-3-months", "1-3 months"
+        THREE_TO_SIX = "3-6-months", "3-6 months"
+        SIX_PLUS = "6-plus-months", "6+ months"
+        JUST_BROWSING = "just-browsing", "Just browsing"
+
+
     development = models.ForeignKey(
         Development, on_delete=models.CASCADE, related_name="enquiries"
     )
@@ -258,12 +267,31 @@ class Enquiry(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
 
+    move_timeframe = models.CharField(
+        max_length=20,
+        choices=MoveTimeframe.choices,
+        blank=True,
+        help_text="When the renter is looking to move.",
+    )
+
+    forwarded_to_email = models.EmailField(
+        blank=True,
+        help_text="Email address the enquiry was forwarded to.",
+    )
+
+    forwarded_at = models.DateTimeField(
+        blank=True,
+        null=True,
+        help_text="When the enquiry was forwarded.",
+    )
+
     class Meta:
         ordering = ["-created_at"]
         indexes = [
             models.Index(fields=["development"]),
             models.Index(fields=["status"]),
             models.Index(fields=["created_at"]),
+            models.Index(fields=["move_timeframe"]),
         ]
 
     def __str__(self) -> str:

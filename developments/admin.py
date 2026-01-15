@@ -4,6 +4,7 @@ types.
 """
 
 from django.contrib import admin
+from django.utils import timezone
 
 from django_summernote.admin import SummernoteModelAdmin
 
@@ -12,7 +13,7 @@ from .models import (
     DevelopmentImage,
     Amenity,
     UnitType,
-    Enquiry
+    Enquiry,
 )
 
 
@@ -137,7 +138,7 @@ class DevelopmentImageAdmin(admin.ModelAdmin):
 class AmenityAdmin(admin.ModelAdmin):
     list_display = ("name", "is_active", "updated_at",)
     list_filter = ("is_active",)
-    search_fields = ("name", "development__name")
+    search_fields = ("name", "development__name",)
     readonly_fields = ("created_at", "updated_at",)
     list_per_page = 50
 
@@ -159,7 +160,7 @@ class UnitTypeAdmin(admin.ModelAdmin):
         "development__postcode",
     )
     ordering = ("development", "bedrooms",)
-    readonly_fields = ("created_at", "updated_at")
+    readonly_fields = ("created_at", "updated_at",)
     autocomplete_fields = ("development",)
 
 
@@ -168,12 +169,21 @@ class EnquiryAdmin(admin.ModelAdmin):
     list_display = (
         "full_name",
         "email",
-        "message",
         "status",
+        "move_timeframe",
         "created_at",
+        "forwarded_at",
+        "forwarded_to_email",
     )
-    list_filter = ("status", "development__city")
-    search_fields = ("full_name", "email", "message", "development__name")
-    readonly_fields = ("created_at",)
-    ordering = ("-created_at",)
+    list_filter = ("status", "move_timeframe", "development__city",)
+    search_fields = ("full_name", "email", "message", "development__name",)
+    readonly_fields = ("created_at", "forwarded_at",)
+    ordering = ("-created_at", "forwarded_at",)
     list_per_page = 50
+
+    def save_model(self, request, obj, form, change):
+        # Set forwarded_at, once the fowarded_to_email has been filled.
+        if obj.forwarded_to_email and obj.forwarded_at is None:
+            obj.forwarded_at = timezone.now()
+
+        super().save_model(request, obj, form, change)
