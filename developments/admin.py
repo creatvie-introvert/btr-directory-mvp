@@ -11,7 +11,8 @@ from .models import (
     Development,
     DevelopmentImage,
     Amenity,
-    UnitType
+    UnitType,
+    Enquiry
 )
 
 
@@ -160,3 +161,19 @@ class UnitTypeAdmin(admin.ModelAdmin):
     ordering = ("development", "bedrooms",)
     readonly_fields = ("created_at", "updated_at")
     autocomplete_fields = ("development",)
+
+
+@admin.register(Enquiry)
+class EnquiryAdmin(admin.ModelAdmin):
+    list_display = (
+        "full_name",
+        "email",
+        "message",
+        "status",
+        "created_at",
+    )
+    list_filter = ("status", "development__city")
+    search_fields = ("full_name", "email", "message", "development__name")
+    readonly_fields = ("created_at",)
+    ordering = ("-created_at",)
+    list_per_page = 50

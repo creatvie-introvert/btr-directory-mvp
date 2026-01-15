@@ -229,3 +229,42 @@ class UnitType(models.Model):
 
     def __str__(self) -> str:
         return f"{self.get_bedrooms_display()} - {self.development.name}"
+
+
+class Enquiry(models.Model):
+    """
+    A message from a user about a specific development.
+    Stored in the database so enquiries can be managed in the admin.
+    """
+
+    class Status(models.TextChoices):
+        NEW = "new", "New"
+        IN_PROGRESS = "in-progress", "In progress"
+        CLOSED = "closed", "Closed"
+
+    development = models.ForeignKey(
+        Development, on_delete=models.CASCADE, related_name="enquiries"
+    )
+
+    full_name = models.CharField(max_length=120)
+    email = models.EmailField()
+    message = models.TextField()
+
+    status = models.CharField(
+        max_length=20,
+        choices=Status.choices,
+        default=Status.NEW,
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        indexes = [
+            models.Index(fields=["development"]),
+            models.Index(fields=["status"]),
+            models.Index(fields=["created_at"]),
+        ]
+
+    def __str__(self) -> str:
+        return f"Enquiry from {self.full_name} about {self.development.name}"
