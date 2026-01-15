@@ -5,6 +5,7 @@ types.
 
 from django.contrib import admin
 from django.utils import timezone
+from django.utils.html import format_html
 
 from django_summernote.admin import SummernoteModelAdmin
 
@@ -168,12 +169,12 @@ class UnitTypeAdmin(admin.ModelAdmin):
 class EnquiryAdmin(admin.ModelAdmin):
     list_display = (
         "full_name",
-        "email",
+        "email_link",
         "status",
         "move_timeframe",
         "created_at",
+        "forward_link",
         "forwarded_at",
-        "forwarded_to_email",
     )
     list_filter = ("status", "move_timeframe", "development__city",)
     search_fields = ("full_name", "email", "message", "development__name",)
@@ -187,3 +188,17 @@ class EnquiryAdmin(admin.ModelAdmin):
             obj.forwarded_at = timezone.now()
 
         super().save_model(request, obj, form, change)
+    
+    def email_link(self, obj):
+        return format_html('<a href="mailto:{0}">{0}</a>', obj.email)
+    
+    email_link.short_description = "Email"
+    email_link.admin_order_field = "email"
+
+    def forward_link(self, obj):
+        if not obj.forwarded_to_email:
+            return "-"
+        return format_html('<a href="mailto:{0}">{0}</a>', obj.forwarded_to_email)
+    
+    forward_link.short_description = "Forwarded to"
+    forward_link.admin_order_field = "forwarded_to_email"
