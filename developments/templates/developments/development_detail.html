@@ -102,10 +102,10 @@
                 {% endif %}
 
                 <a 
-                  href="#enquiry-form" 
+                  href="{% url 'developments:enquire' development.slug %}" 
                   class="btn btn-primary btn-lg px-4 py-2 mt-4"
                 >
-                    “Submit an enquiry
+                    Submit an enquiry
                 </a>
 
                 <div class="mt-4 small text-muted">
