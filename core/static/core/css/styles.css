@@ -285,7 +285,8 @@ button[aria-expanded="true"] .filter-chevron {
 @media (min-width: 768px) {
     .body,
     .pill-grid,
-    .overview-body {
+    .overview-body,
+    .search-container {
         max-width: 54rem;
     }
 
@@ -298,7 +299,8 @@ button[aria-expanded="true"] .filter-chevron {
 @media (min-width: 992px) {
     .body,
     .pill-grid,
-    .overview-body {
+    .overview-body,
+    .search-container {
         max-width: 74rem;
     }
 

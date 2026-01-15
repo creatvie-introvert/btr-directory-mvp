@@ -1,4 +1,5 @@
 {% extends "core/base.html" %}
+{% load static %}
 
 {% block title %}Search{% endblock %}
 
@@ -6,7 +7,28 @@
 
 <section class="py-5" id="search-results">
     <div class="container">
-        <h1 class="mb-3">Search</h1>
+        <div class="search-container">
+            <h1 class="mb-3">Search</h1>
+
+            <form method="GET" action="{% url 'core:search' %}" class="d-grid gap-3 d-sm-flex mt-4 mb-4" role="search">
+                <input 
+                    type="text" 
+                    name="q" 
+                    id="searchBar" 
+                    class="form-control flex-sm-grow-1" 
+                    placeholder="Search by city, development, area, postcode..."
+                    value="{{ query }}"
+                >
+                <button type="submit" class="btn btn-primary btn-lg px-4 py-2">
+                    Search
+                </button>
+
+                <a href="{% url 'core:search' %}" class="btn btn-secondary btn-lg px-4 py-2">
+                    Clear
+                </a>
+            </form>
+        </div>
+
 
         {% if query %}
             <p class="text-muted">
