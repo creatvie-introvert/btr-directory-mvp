@@ -5,7 +5,7 @@
 
 {% block content %}
 
-<!-- Hero section (headline + City search MVP form) -->
+<!-- Hero section (headline + City search form) -->
 <section class="py-5 py-lg-8" id="hero-section">
     <div class="container">
         <div class="row g-4">
@@ -17,14 +17,7 @@
                     Browse purpose-built rental developments across UK cities.
                 </p>
                 <form method="GET" action="{% url 'core:search' %}" class="d-grid gap-3 d-sm-flex mt-4">
-                    <input 
-                      type="text" 
-                      name="q" 
-                      id="heroSearch" 
-                      class="form-control flex-sm-grow-1" 
-                      placeholder="London, Manchester..."
-                      value="{{ request.GET.q|default_if_none:'' }}"
-                    >
+                    <input type="text" name="q" id="heroSearch" class="form-control flex-sm-grow-1" placeholder="London, Manchester..." value="{{ request.GET.q|default_if_none:'' }}">
                     <button type="submit" class="btn btn-primary btn-lg px-4 py-2">
                         Search
                     </button>
@@ -34,32 +27,26 @@
     </div>
 </section>
 
-<!-- Featured cities (quick links to popular cities) -->
+<!-- Featured cities (decided in admin) -->
 <section class="py-5" id="featured-cities">
     <div class="container">
-        <!-- Section header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="mb-4">
                 Browse Cities
             </h2>
         </div>
 
-        <!-- Cards grid -->
+        <!-- Loop through cities list and render each as a card -->
         <div class="row g-4">
             {% for city in cities %}
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4">
-                    <a 
-                    href="{% url 'cities:detail' city.slug %}" class="text-decoration-none city-card-link"
-                    >   
+                    <a href="{% url 'cities:detail' city.slug %}" class="text-decoration-none city-card-link">   
                         <div class="card text-bg-dark border-0 overflow-hidden rounded-4 city-card h-100">
                             {% if city.image %}
-                                <img 
-                                  src="{{ city.image.url }}" 
-                                  class="card-img city-card-img"
-                                  alt="{{ city.image_alt|default:city.name }}"
-                                >
+                                <img src="{{ city.image.url }}" class="card-img city-card-img" alt="{{ city.image_alt|default:city.name }}">
                             {% endif %}
 
+                            <!-- City name overlay -->
                             <div class="card-img-overlay d-flex justify-content-center align-items-center">
                                 <h3 class="card-title mx-auto text-white px-4 py-2 rounded-pill bg-dark bg-opacity-50">
                                     {{ city.name }}
@@ -70,12 +57,10 @@
                 </div>
             {% endfor %}
 
+            <!-- Link to fulll city list -->
             <div class="col-12 mt-4">
                 <div class="d-grid d-sm-flex justify-content-sm-center">
-                    <a 
-                      href="{% url 'cities:list' %}" 
-                      class="btn btn-primary btn-lg px-4"
-                    >
+                    <a href="{% url 'cities:list' %}" class="btn btn-primary btn-lg px-4">
                         View all cities
                     </a>
                 </div>
@@ -84,22 +69,20 @@
     </div>
 </section>
 
-<!-- BTR intro (short BTR explanation + learn more link) -->
+<!-- BTR intro (short BTR intro + CTA) -->
 <section class="py-5" id="btr-intro">
     <div class="container">
-        <!-- Section header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="mb-4">
                 What is Built-to-Rent?
             </h2>
         </div>
-
         <div class="row g-4">
             <div class="col-12 mt-4">
                 <p class="body">
-                    Build-to-Rent refers to homes designed specifically for long-term renting, managed by a single operator.
+                    Built-to-Rent homes are designed for renters — not just adapted for them. Think long-term comfort, not short-term let.
                 </p>
-
+                <!-- TODO: add real link -->
                 <a href="#" class="text-decoration-none">
                     Learn more
                 </a>
@@ -108,7 +91,7 @@
     </div>
 </section>
 
-<!-- Disclaimer section (guidance note + link to full disclaimer) -->
+<!-- Legal disclaimer -->
 <section class="py-3" id="disclaimer-note">
     <div class="container">
         <div class="row">
@@ -116,6 +99,7 @@
                 Information on this site is provided for general guidance only.
             </p>
 
+            <!-- TODO: update with real link -->
             <a href="#" class="text-decoration-none">
                 Read disclaimer
             </a>

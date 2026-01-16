@@ -29,6 +29,7 @@
 
             <div class="card rounded-4 form-card bg-body-tertiary border-0 shadow-sm">
                 <div class="card-body p-4 p-md-5">
+                    <!-- TODO: add placeholder text to form fields -->
                     <form method="POST" novalidate>
                         {% csrf_token %}
 
@@ -99,28 +100,13 @@
 
             <div class="row">
                 <p class="mb-4 mt-4 text-muted small">
-                    Information on this site is provided for general guidance only.
+                    Your details will only be used to respond to your enquiry.
                 </p>
 
                 <a href="#" class="text-decoration-none">
-                    Read disclaimer
+                    Read privacy notice
                 </a>
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- Disclaimer section (guidance note + link to full disclaimer) -->
-<section class="py-3" id="disclaimer-note">
-    <div class="container">
-        <div class="row">
-            <p class="mb-4 text-muted">
-                Information on this site is provided for general guidance only.
-            </p>
-
-            <a href="#" class="text-decoration-none">
-                Read disclaimer
-            </a>
         </div>
     </div>
 </section>

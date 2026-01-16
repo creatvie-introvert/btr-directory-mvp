@@ -1,7 +1,7 @@
 """
 Database models for cities.
 
-A City is used to group developments and support city-based browsing.
+A City is used to group developments and support browsing by city.
 """
 
 from django.db import models

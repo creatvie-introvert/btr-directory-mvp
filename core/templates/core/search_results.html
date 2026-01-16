@@ -10,19 +10,12 @@
         <div class="search-container">
             <h1 class="mb-3">Search</h1>
 
+            <!-- Search form + buttons -->
             <form method="GET" action="{% url 'core:search' %}" class="d-grid gap-3 d-sm-flex mt-4 mb-4" role="search">
-                <input 
-                    type="text" 
-                    name="q" 
-                    id="searchBar" 
-                    class="form-control flex-sm-grow-1" 
-                    placeholder="Search by city, development, area, postcode..."
-                    value="{{ query }}"
-                >
+                <input type="text" name="q" id="searchBar" class="form-control flex-sm-grow-1" placeholder="Search by city, development, area, postcode..." value="{{ query }}" >
                 <button type="submit" class="btn btn-primary btn-lg px-4 py-2">
                     Search
                 </button>
-
                 <a href="{% url 'core:search' %}" class="btn btn-secondary btn-lg px-4 py-2">
                     Clear
                 </a>
@@ -34,15 +27,12 @@
             <p class="text-muted">
                 You searched for: <strong>{{ query }}</strong>
             </p>
-
             {% if cities %}
                 <h2 class="h4 mb-3">Cities</h2>
                 <ul class="list-unstyled mb-4">
                     {% for city in cities %}
                         <li class="mb-2">
-                            <a 
-                              href="{% url 'cities:detail' city.slug %}" class="text-decoration-none"
-                            >
+                            <a href="{% url 'cities:detail' city.slug %}" class="text-decoration-none">
                                 {{ city.name }}
                             </a>
                         </li>
@@ -50,6 +40,8 @@
                 </ul>
             {% endif %}
 
+            <!-- Development results -->
+            <!-- TODO: consider pagiation for larger search results -->
             <h2 class="h4 mb-3">Developments</h2>
 
             {% if developments %}
@@ -68,6 +60,7 @@
                 </p>
             {% endif %}
         {% else %}
+            <!-- Default message when nothing is searched -->
             <p class="text-muted mt-3 mb-0">
                 Enter a search term to see results.
             </p>

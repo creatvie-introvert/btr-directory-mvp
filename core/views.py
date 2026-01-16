@@ -34,6 +34,7 @@ def search(request):
     cities = City.objects.none()
 
     if query:
+        # TODO: consider pagiation for larger search results
         developments = (
             Development.objects.filter(is_active=True)
             .select_related("city")
