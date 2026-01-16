@@ -5,6 +5,7 @@ Adds bedroom-range summary data to development cards using UnitType records.
 
 from django.db.models import Min, Max, Q
 from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator
 
 from cities.models import City
 
@@ -55,7 +56,7 @@ def city_detail(request, slug):
 
     if max_rent is not None:
         unit_filters &= Q(unit_types__rent_from_pcm__lte=max_rent)
-    
+
     filters_active = any(v is not None for v in [min_beds, max_beds, min_rent, max_rent])
 
     # Only apply unit-type filtering if at least 1 filter selected by the user
@@ -81,8 +82,16 @@ def city_detail(request, slug):
 
     developments = developments.annotate(**annotations).order_by("name")
 
+    page_number = request.GET.get("page")
+    paginator = Paginator(developments, 9)
+    page_obj = paginator.get_page(page_number)
+
     return render(
         request,
         "cities/city_detail.html",
-        {"city": city, "developments": developments},
+        {
+            "city": city,
+            "page_obj": page_obj,
+            "developments": page_obj,
+        }
     )

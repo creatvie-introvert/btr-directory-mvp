@@ -134,14 +134,46 @@
             </div>
         </div>
 
-        {% if developments %}
+        {% if page_obj.object_list %}
             <div class="row g-4">
-                {% for dev in developments %}
+                {% for dev in page_obj %}
                     <div class="col-12 col-sm-6 col-lg-4">
                         {% include "developments/partials/development_card.html" with dev=dev %}
                     </div>
                 {% endfor %}
             </div>
+
+            {% if page_obj.paginator.num_pages > 1 %}
+                <nav class="mt-4" aria-label="Developments pagination">
+                    <ul class="pagination justify-content-center mb-0">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">Previous</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <span class="page-link">Previous</span>
+                            </li>
+                        {% endif %}
+
+                        <li class="page-item disabled">
+                            <span class="page-link">
+                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                            </span>
+                        </li>
+
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a href="?page={{ page_obj.next_page_number }}" class="page-link">Next</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <span class="page-link">Next</span>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
         {% else %}
             <div class="p-4 p-md-5 rounded-4 border bg-light">
                 <h2 class="h5 mb-2">
