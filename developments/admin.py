@@ -188,10 +188,10 @@ class EnquiryAdmin(admin.ModelAdmin):
             obj.forwarded_at = timezone.now()
 
         super().save_model(request, obj, form, change)
-    
+
     def email_link(self, obj):
         return format_html('<a href="mailto:{0}">{0}</a>', obj.email)
-    
+
     email_link.short_description = "Email"
     email_link.admin_order_field = "email"
 
@@ -199,6 +199,6 @@ class EnquiryAdmin(admin.ModelAdmin):
         if not obj.forwarded_to_email:
             return "-"
         return format_html('<a href="mailto:{0}">{0}</a>', obj.forwarded_to_email)
-    
+
     forward_link.short_description = "Forwarded to"
     forward_link.admin_order_field = "forwarded_to_email"

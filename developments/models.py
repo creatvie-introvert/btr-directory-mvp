@@ -52,7 +52,11 @@ class Development(models.Model):
     address_line = models.CharField(max_length=225, blank=True)
     postcode = models.CharField(max_length=20, blank=True)
 
-    summary = models.TextField(blank=True)
+    summary = models.CharField(
+        max_length=160,
+        blank=True,
+        help_text="Max 160 characters."
+    )
     description = models.TextField(blank=True)
 
     rent_from_pcm = models.PositiveIntegerField(blank=True, null=True)
@@ -242,14 +246,12 @@ class Enquiry(models.Model):
         IN_PROGRESS = "in-progress", "In progress"
         CLOSED = "closed", "Closed"
 
-    
     class MoveTimeframe(models.TextChoices):
         ASAP = "asap", "ASAP"
         ONE_TO_THREE = "1-3-months", "1-3 months"
         THREE_TO_SIX = "3-6-months", "3-6 months"
         SIX_PLUS = "6-plus-months", "6+ months"
         JUST_BROWSING = "just-browsing", "Just browsing"
-
 
     development = models.ForeignKey(
         Development, on_delete=models.CASCADE, related_name="enquiries"
