@@ -76,7 +76,7 @@ def enquiry_create(request, slug):
         errors = {}
 
         if honeypot:
-            # Bot likely filled the hidden field (silently pretend success).
+            # Bot likely filled the hidden field (silently fake success).
             return redirect(f"{reverse('developments:enquire', kwargs={'slug': development.slug})}?sent=1")
 
         if not full_name:
