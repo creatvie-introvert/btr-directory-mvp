@@ -37,6 +37,8 @@
                             <img id="main-development-image" src="{{ main_image.url }}" class="img-fluid rounded-4 w-100 h-100 object-fit-cover" alt="{{ main_image_alt }}">
                         {% else %}
                             <img src="{% static 'core/images/placeholders/development-placeholder.webp' %}" alt="Modern apartment building exterior" class="img-fluid rounded-4 w-100 h-100 object-fit-cover">
+
+                            <div class="img-overlay-bg rounded-4" aria-hidden="true"></div>
                         {% endif %}
                     </div>
                 </div>

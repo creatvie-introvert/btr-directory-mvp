@@ -289,6 +289,11 @@ button[aria-expanded="true"] .filter-chevron {
     overflow: hidden;
 }
 
+.img-overlay-bg {
+    position: absolute;
+    background: linear-gradient( to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+}
+
 
 /* Tablet */
 @media (min-width: 768px) {
