@@ -8,6 +8,10 @@
                 <img src="{{ dev.cover_image.url}}" class="w-100 h-100 object-fit-cover dev-card-img" alt="{{ dev.cover_image_alt|default:dev.name }}">
             {% else %}
                 <img src="{% static 'core/images/placeholders/development-placeholder.webp' %}" alt="Modern apartment building exterior" class="w-100 h-100 object-fit-cover dev-card-img">
+
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <h5 class="card-title text-light">Image coming soon</h5>
+                </div>
             {% endif %}
         </div>
     
