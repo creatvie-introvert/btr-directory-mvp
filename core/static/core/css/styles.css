@@ -298,6 +298,13 @@ button[aria-expanded="true"] .filter-chevron {
     background: linear-gradient( to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 }
 
+#btr-highlights i,
+#how-its-different i,
+#whos-it-for i,
+#why-use-us i {
+    color: var(--btr-brand);
+}
+
 
 /* Tablet */
 @media (min-width: 768px) {
