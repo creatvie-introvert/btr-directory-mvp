@@ -5,7 +5,7 @@ This module contains the homepage view.
 """
 
 from django.shortcuts import render
-from django.db.models import Min, Max, Q
+from django.db.models import Q
 
 from cities.models import City
 from developments.models import Development
@@ -57,3 +57,10 @@ def search(request):
             "cities": cities,
         }
     )
+
+
+def what_is_btr(request):
+    """
+    Shows the What is BTR? page
+    """
+    return render(request, "core/what_is_btr.html")
