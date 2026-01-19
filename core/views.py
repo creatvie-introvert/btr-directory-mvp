@@ -64,3 +64,10 @@ def what_is_btr(request):
     Shows the What is BTR? page
     """
     return render(request, "core/what_is_btr.html")
+
+
+def about(request):
+    """
+    Shows about page
+    """
+    return render(request, "core/about.html")
