@@ -298,7 +298,8 @@ button[aria-expanded="true"] .filter-chevron {
 #how-its-different i,
 #whos-it-for i,
 #why-use-us i,
-#how-it-works i {
+#how-it-works i,
+#accessibility-statement i {
     color: var(--btr-brand);
 }
 
