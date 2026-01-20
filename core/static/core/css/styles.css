@@ -301,7 +301,8 @@ button[aria-expanded="true"] .filter-chevron {
 #btr-highlights i,
 #how-its-different i,
 #whos-it-for i,
-#why-use-us i {
+#why-use-us i,
+#how-it-works i {
     color: var(--btr-brand);
 }
 
