@@ -1,1 +1,214 @@
-<h1>privacy policy</h1>
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Privacy Policy &mdash; BTR Directory{% endblock %}
+
+{% block content %}
+
+<section class="py-5" id="page-header">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                <h1 class="mb-3">Privacy Policy</h1>
+                <div class="divider"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-3" id="privacy-policy">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4 p-lg-5">
+                        <div class="mb-5">
+                            <h2 class="mb-3">Introduction</h2>
+                            <p class="body">
+                                BTR Directory respects your privacy and is committed to protecting your personal data. This Privacy Policy explains how we collect, use, store, and protect your information when you use our website.
+                            </p>
+                            <p class="body">
+                                BTR Directory is an independent informational platform focused on Build-to-Rent developments across the UK.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">What information we collect</h2>
+                            <p class="body">
+                                We may collect the following information when you use the site:
+                            </p>
+                            <ul class="list-unstyled mb-0">
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Personal details you voluntarily provide when submitting an enquiry (such as your name, email address, and message content)
+                                    </span>
+                                </li>
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Basic technical information, such as IP address, browser type, and device information, collected through standard server logs
+                                    </span>
+                                </li>
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Usage data, such as pages visited and interactions with the site, to help us understand how the platform is used
+                                    </span>
+                                </li>
+                            </ul>
+                            <p class="body">
+                                We do not collect sensitive personal data unless you choose to include it in an enquiry.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">How we use your information</h2>
+                            <p class="body">
+                                We use personal information only for the purpose ofg operating and improving the platform, including:
+                            </p>
+                            <ul class="list-unstyled mb-0">
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Forwarding enquiries to the relevant development requests
+                                    </span>
+                                </li>
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Responding to messages or accessibility requests
+                                    </span>
+                                </li>
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Improving site functionalility and usability
+                                    </span>
+                                </li>
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Monitoring site performance and security
+                                    </span>
+                                </li>
+                            </ul>
+                            <p class="body">
+                                We so not use your data for marketing purposes and do not sell or rent personal information to third parties.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">Enquiries and third parties</h2>
+                            <p class="body">
+                                When you submit an enquiry through BTR Directory, your message is forwarded to the relevant development or operator using the contact details available to us.
+                            </p>
+                            <p class="body">
+                                Once forwarded, the handling of your information is subject to the privacy policies of that operator. BTR Diretory is not responsible for how third parties store your data after contact os made.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">Cookies and tracking</h2>
+                            <p class="body">
+                                BTR Directory may use essential cookies to ensure the website functions correctly.
+                            </p>
+                            <p class="body">
+                                We may use limited analytics tools to understand how visitors use the site. These tools collect anonymised or aggregated data and do not identify individual users.
+                            </p>
+                            <p class="body">
+                                You can control cookies through your browser settings.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">Data storage and security</h2>
+                            <p class="body">
+                                We take reasonable steps to protect personal information from unauthorised access, loss, or misuse.
+                            </p>
+                            <p class="body">
+                                Personal data is stored only for as long as necessary to fulfil its purpose and is not retained indefinitely.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">Your rights</h2>
+                            <p class="body">
+                                Under UK data protection laws, you have the right to:
+                            </p>
+                            <ul class="list-unstyled mb-0">
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Request access to the personal data we hold about you
+                                    </span>
+                                </li>
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Request correction or deletion of your personal data
+                                    </span>
+                                </li>
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Object to or restrict certain types of processing
+                                    </span>
+                                </li>
+                            </ul>
+                            <!-- TODO: add correct link -->
+                            <p class="body">
+                                To exercise these rights, please contact us via <a href="" class="text-decoration-none">email</a>.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">External links</h2>
+                            <p class="body">
+                                This website ccontains links to external websites operated by third parties. BTR Directory has no control over these sites and is not responsible for their privacy practices or content.
+                            </p>
+                            <p class="body">
+                                Users are encouraged to review the privacy policies of any external websites they visit.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">Changes to this policy</h2>
+                            <p class="body">
+                                This Privacy Policy may be updated from time to time to reflect changes to the platform or legal requirements.
+                            </p>
+                            <p class="body">
+                                Any updates will be published on this page, and users are encouraged to review it periodically.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">Contact</h2>
+                            <p class="body">
+                                If you have questions about this Privacy Policy or how your data is handled, please contact us via email.
+                            </p>
+                        </div>
+
+                        <div class="mb-0">
+                            <p class="small text-muted text-end">
+                                Last updated: 20.01.2026
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5" id="cta-links">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6 d-flex flex-column gap-2">
+                <a href="{% url 'core:terms_of_use' %}" class="text-decoration-none">Terms of use</a>
+                <a href="{% url 'core:disclaimer' %}" class="text-decoration-none">Disclaimer</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

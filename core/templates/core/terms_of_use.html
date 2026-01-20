@@ -1,1 +1,227 @@
-<h1>terms of use</h1>
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Terms of Use &mdash; BTR Directory{% endblock %}
+
+{% block content %}
+
+<section class="py-5" id="page-header">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                <h1 class="mb-3">Terms of Use</h1>
+                <div class="divider"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-3" id="disclaimer">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4 p-lg-5">
+                        <div class="mb-5">
+                            <h2 class="mb-3">Introduction</h2>
+                            <p class="body">
+                                These Terms of Use govern your access to and use of the BTR Directory website.
+                            </p>
+                            <p class="body">
+                                By using this site, you agree to these terms. If you do not agree, you should not use the website.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">About BTR Directory</h2>
+                            <p class="body">
+                                BTR Directory is an independent informational platform designed to help users discover and understand Built-to-Rent (BTR) developments across the UK.
+                            </p>
+                            <p class="body">
+                                We are not a landlord, letting agent, property manager, or broker, and we <em>do not</em> offer property or tenancy services.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">Use of the website</h2>
+                            <p class="body">
+                                You may use BTR Directory for lawful, personal, and informational purposes only.
+                            </p>
+                            <p class="body">
+                                You agree not to:
+                            </p>
+                            <ul class="list-unstyled mb-0">
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Use the site in any way that is unlawful or harmful
+                                    </span>
+                                </li>
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Attempt to gain unauthorised access to the site or its systems
+                                    </span>
+                                </li>
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Copy, scrape, or reuse content for commercial purposes without permission
+                                    </span>
+                                </li>
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Interfere with the normal operation or security of the website
+                                    </span>
+                                </li>
+                            </ul>
+                            <p class="body">
+                                We reserve the right to restrict or suspend access if misuse is detected.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">
+                                Development listings and content
+                            </h2>
+                            <p class="body">
+                                All development listings and related information are provided for general informational purposes only.
+                            </p>
+                            <p class="body">
+                                While we aim to keep information accurate and up to date, we do not guarantee:
+                            </p>
+                            <ul class="list-unstyled mb-0">
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Availablity of homes
+                                    </span>
+                                </li>
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">Pricing accuracy</span>
+                                </li>
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Amenities or policies remaining unchanged
+                                    </span>
+                                </li>
+                            </ul>
+                            <p class="body">
+                                Users should always verify details with the development operator before making decisions.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">Enquiries</h2>
+                            <p class="body">
+                                When you submit an enquiry through BTR Directory, your message is forwarded using contact details available to us.
+                            </p>
+                            <p class="body">
+                                We do not manage responses, negotiations, or tenacny arragements. All communication and decisions take place directly between the user and the relevant operator.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">Intellectual property</h2>
+                            <p class="body">
+                                All original content, branding and site structure on BTR Directory is owned by or licensed to us unless otherwise stated.
+                            </p>
+                            <p class="body">
+                                You may view and use content for personal, non-commercial purposes. You may not reproduce, distribute, or modify content without permission.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">External links</h2>
+                            <p class="body">
+                                BTR Directory contains liniks to third-party websites operated by external organisations.
+                            </p>
+                            <p class="body">
+                                We do not control these websites and are not responsible for their content, availability, or practices. Accessing third-party sites is done at your own risk.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">Limitation of liability</h2>
+                            <p class="body">
+                                To the fullest permitted by law, BTR Directory shall not be liable for any loss or damage arising from:
+                            </p>
+                            <ul class="list-unstyled mb-0">
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Use of or reliance on information provided on the site
+                                    </span>
+                                </li>
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Errors or omissions in listings
+                                    </span>
+                                </li>
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Interactions or agreements with third-party operators
+                                    </span>
+                                </li>
+                                <li class="d-flex gap-2 mb-2 align-items-start">
+                                    <i class="fa-solid fa-check mt-1"></i>
+                                    <span class="body">
+                                        Technical issues or site downtime
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">Changes to these terms</h2>
+                            <p class="body">
+                                We may update these Terms of Use from time to time.
+                            </p>
+                            <p class="body">
+                                Any changes will be published on this page, and continued use of the website constitutes acceptance of the updated terms.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">Governing law</h2>
+                            <p class="body">
+                                These Terms of Use are governed by the laws of England and Wales.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">Contact</h2>
+                            <!-- TODO: add mailto link -->
+                            <p class="body">
+                                If you have questions about these Terms of Use, please contact s via <a href="" class="text-decoration-none">email</a>.
+                            </p>
+                        </div>
+
+                        <div class="mb-0">
+                            <p class="small text-muted text-end">
+                                Last updated: 20.01.2026
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5" id="cta-links">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6 d-flex flex-column gap-2">
+                <a href="{% url 'core:privacy_policy' %}" class="text-decoration-none">Privacy policy</a>
+                <a href="{% url 'core:disclaimer' %}" class="text-decoration-none">Disclaimer</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

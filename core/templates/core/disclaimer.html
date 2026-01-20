@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block title %}BTR Directory{% endblock %}
+{% block title %}Disclaimer &mdash; BTR Directory{% endblock %}
 
 {% block content %}
 
@@ -90,6 +90,12 @@
                                 This disclaimer may be updated from time to time to reflect changes to the platform or legal requirements. Users are encouraged to review it periodically.
                             </p>
                         </div>
+
+                        <div class="mb-0">
+                            <p class="small text-muted text-end">
+                                Last updated: 20.01.2026
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -101,9 +107,8 @@
     <div class="container">
         <div class="row g-4">
             <div class="col-12 col-md-8 col-lg-8 col-xl-6 d-flex flex-column gap-2">
-                <!-- TODO: add real link address -->
-                <a href="" class="text-decoration-none">Privacy Policy</a>
-                <a href="" class="text-decoration-none">Terms of use</a>
+                <a href="{% url 'core:privacy_policy' %}" class="text-decoration-none">Privacy Policy</a>
+                <a href="{% url 'core:terms_of_use' %}" class="text-decoration-none">Terms of use</a>
             </div>
         </div>
     </div>
