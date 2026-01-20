@@ -77,3 +77,13 @@ def disclaimer(request):
 def accessibility_statement(request):
     """Shows the Accessibilty Statement"""
     return render(request, "core/accessibility_statement.html")
+
+
+def privacy_policy(request):
+    """Shows the Privacy Policy page"""
+    return render(request, "core/privacy_policy.html")
+
+
+def terms_of_use(request):
+    """Shows the Term of Use page"""
+    return render(request, "core/terms_of_use.html")

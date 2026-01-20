@@ -18,4 +18,6 @@ urlpatterns = [
         views.accessibility_statement,
         name="accessibility_statement",
     ),
+    path("privacy-policy/", views.privacy_policy, name="privacy_policy"),
+    path("terms-of-use/", views.terms_of_use, name="terms_of_use"),
 ]
