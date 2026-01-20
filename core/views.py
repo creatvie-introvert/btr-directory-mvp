@@ -1,7 +1,7 @@
 """
 Views for the core app.
 
-This module contains the homepage view.
+This module contains the homepage view and static page views.
 """
 
 from django.shortcuts import render
@@ -60,14 +60,15 @@ def search(request):
 
 
 def what_is_btr(request):
-    """
-    Shows the What is BTR? page
-    """
+    """Shows the What is BTR? page"""
     return render(request, "core/what_is_btr.html")
 
 
 def about(request):
-    """
-    Shows about page
-    """
+    """Shows the About page"""
     return render(request, "core/about.html")
+
+
+def disclaimer(request):
+    """Shows the Disclaimer page"""
+    return render(request, "core/disclaimer.html")
