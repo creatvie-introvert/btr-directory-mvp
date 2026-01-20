@@ -72,3 +72,8 @@ def about(request):
 def disclaimer(request):
     """Shows the Disclaimer page"""
     return render(request, "core/disclaimer.html")
+
+
+def accessibility_statement(request):
+    """Shows the Accessibilty Statement"""
+    return render(request, "core/accessibility_statement.html")

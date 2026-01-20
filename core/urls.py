@@ -10,7 +10,12 @@ app_name = "core"
 urlpatterns = [
     path("", views.home, name="home"),
     path("search/", views.search, name="search"),
-    path("what_is_btr/", views.what_is_btr, name="what_is_btr"),
+    path("what-is-btr/", views.what_is_btr, name="what_is_btr"),
     path("about/", views.about, name="about"),
     path("disclaimer/", views.disclaimer, name="disclaimer"),
+    path(
+        "accessibility-statement/",
+        views.accessibility_statement,
+        name="accessibility_statement",
+    ),
 ]
