@@ -1,1 +1,99 @@
-<h1>Disclaimer</h1>
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}BTR Directory{% endblock %}
+
+{% block content %}
+
+<section class="py-5" id="page-header">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                <h1 class="mb-3">Disclaimer</h1>
+                <div class="divider"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-3" id="disclaimer">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4 p-lg-5">
+                        <div class="mb-5">
+                            <h2 class="mb-3">General information</h2>
+                            <p class="body">
+                                BTR Directory is an independent informational platform designed to help users discover and understand Build-to-Rent (BTR) developments across the UK.
+                            </p>
+                            <p class="body">
+                                The information provided on this website is for general guidance and informational purposes only. While we aim to keep all content accurate and up to date, we make no guarantees regarding the completeness, reliability, or accuracy of any information presented.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">Development listings</h2>
+                            <p class="body">
+                                All development details, including pricing, availability, amenities, tenancy terms, and policies, are sourced from publicly available operator websites and marketing materials.
+                            </p>
+                            <p class="body">
+                                Details may change over time, and BTR Directory cannot guarantee that all listings reflect the most current information. Users should always verify details directly with the development operator before making decisions or entering into agreements.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">No professional advice</h2>
+                            <p class="body">
+                                Content on BTR Directory does not constitute legal, financial, or property advice.
+                            </p>
+                            <p class="body">
+                                BTR Directory does not act as a landlord, letting agent, property manager, or broker. Any decisions made based on information found on this site are done at the user's own discretion and risk.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3"></h2>
+                            <p class="body"></p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">External links</h2>
+                            <p class="body">
+                                This website contains links to external websites operated by third parties. These links are provided for convenience and informational purposes only.
+                            </p>
+                            <p class="body">
+                                BTR Directory has no control over the content, availability, or practices of external sites and accepts no responsibility for them.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">Enquiries and communications</h2>
+                            <p class="body">
+                                When users submit enquiries through BTR Directory, messages are forwarded using contact details available to us. BTR Directory does not manage responses, negotiations, or tenancy arrangements.
+                            </p>
+                            <p class="body">
+                                All further communication and decisions are handled directly between the user and the relevant development operator.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">Limitation of liability</h2>
+                            <p class="body">
+                                To the fullest extent permitted by law, BTR Directory shall not be held liable for any loss or damage arising from the use of this website, reliance on its content, or interactions with third-party operators.
+                            </p>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">Updates to this disclaimer</h2>
+                            <p class="body">
+                                This disclaimer may be updated from time to time to reflect changes to the platform or legal requirements. Users are encouraged to review it periodically.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

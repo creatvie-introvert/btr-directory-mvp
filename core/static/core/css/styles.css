@@ -302,6 +302,10 @@ button[aria-expanded="true"] .filter-chevron {
     color: var(--btr-brand);
 }
 
+.divider {
+    border: 1px solid var(--btr-border);
+}
+
 
 /* Tablet */
 @media (min-width: 768px) {
