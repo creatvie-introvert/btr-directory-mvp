@@ -91,7 +91,7 @@ def enquiry_create(request, slug):
                 errors["email"] = "Please enter a valid email address."
         if not message:
             errors["message"] = "Please enter a message."
-        
+
         valid_timeframes = {choice[0] for choice in Enquiry.MoveTimeframe.choices}
         if move_timeframe and move_timeframe not in valid_timeframes:
             errors["move_timeframe"] = "Please choose a valid move date"
