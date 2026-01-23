@@ -87,3 +87,7 @@ def privacy_policy(request):
 def terms_of_use(request):
     """Shows the Term of Use page"""
     return render(request, "core/terms_of_use.html")
+
+
+def handler404(request, exception):
+    return render(request, "core/404.html", status=404)
