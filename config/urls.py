@@ -22,6 +22,8 @@ from django.conf.urls.static import static
 from core import views as core_views
 
 handler404 = core_views.handler404
+handler500 = "core.views.handler500"
+handler403 = "core.views.handler403"
 
 urlpatterns = [
     path("admin/", admin.site.urls),
