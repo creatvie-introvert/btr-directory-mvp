@@ -310,6 +310,12 @@ button[aria-expanded="true"] .filter-chevron {
 
 
 /* Tablet */
+@media (min-width: 576px) {
+    .w-sm-auto {
+        width: auto !important;
+    }
+}
+
 @media (min-width: 768px) {
     .body,
     .pill-grid,
