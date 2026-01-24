@@ -1,1 +1,106 @@
-<h1>list of current cities</h1>
+{% extends "dashboard/base.html" %}
+
+{% block title %}Dashboard &mdash; BTR Directory{% endblock %}
+
+{% block dashboard_title %}
+<div class="d-flex gap-2 align-items-center">
+    <a href="{% url 'dashboard:index' %}" class="d-flex align-items-center text-decoration-none">
+        <i class="fa-solid fa-chevron-left me-2"></i>
+        Dashboard
+    </a>
+    <span class="text-muted mx-2">/</span>
+    <span>Cities</span>
+</div>
+{% endblock %}
+
+{% block dashboard_content %}
+
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 mb-4">
+                <div>
+                    <p class="text-muted small mb-2">Manage</p>
+                    <h2 class="h3 mb-3">Cities</h2>
+                    <p class="text-muted mb-0">
+                        Add, edit, and deactivate cities shown on the public site
+                    </p>
+                </div>
+
+                <div class="d-flex flex-column flex-sm-row gap-2 col-12 col-sm-auto">
+                    <!-- TODO: replace href with dashboard add city link -->
+                    <a href="#" class="btn btn-primary btn-lg">
+                        <i class="fa-solid fa-plus me-2"></i>
+                        Add City
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-3" id="cities-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body">
+                    <div class="list-group list-group-flush">
+                        {% for city in cities %}
+                        <div class="list-group-item p-3 p-lg-4 city-row">
+                            <div class="d-flex align-items-center justify-content-between gap-3">
+                                <!-- TODO: add dashboard link to edit city -->
+                                <a href="#" class="text-decoration-none flex-grow-1">
+                                    <h3 class="h4">{{ city.name }}</h3>
+                                    <p class="text-muted small">{{ city.slug }}</p>
+
+                                    <div class="d-flex gap-2 mt-2">
+                                        {% if city.is_active %}
+                                            <span class="badge text-bg-success">
+                                                Active
+                                            </span>
+                                        {% else %}
+                                            <span class="badge text-bg-secondary">
+                                                inactive
+                                            </span>
+                                        {% endif %}
+
+                                        {% if city.show_on_homepage %}
+                                            <span class="badge text-bg-primary">
+                                                Homepage
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                </a>
+
+                                <!-- Row actions -->
+                                <div class="d-flex gap-4">
+                                    <a href="#" class="btn btn-primary">
+                                        Edit
+                                    </a>
+                                    <!-- TODO: replace link with city activate/deactivate -->
+                                    {% if city.is_active %}
+                                        <a href="#">
+                                            <i class="fa-solid fa-toggle-off me-1" aria-label="Deactivate city"></i>
+                                        </a>
+                                    {% else %}
+                                        <a href="#">
+                                            <i class="fa-solid fa-toggle-on me-1" aria-label="Activate city"></i>
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        {% empty %}
+                            <div class="list-group-item p-4">
+                                <p class="mb-0 text-muted">No cities found.</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

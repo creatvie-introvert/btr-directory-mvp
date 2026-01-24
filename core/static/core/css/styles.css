@@ -308,6 +308,11 @@ button[aria-expanded="true"] .filter-chevron {
     border: 1px solid var(--btr-border);
 }
 
+.city-row:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+    cursor: pointer;
+}
+
 
 /* Tablet */
 @media (min-width: 576px) {
