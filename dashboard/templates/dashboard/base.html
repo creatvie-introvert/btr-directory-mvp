@@ -31,6 +31,7 @@
             <h1 class="h6 mb-0">
                 {% block dashboard_title %}Dashboard{% endblock %}
             </h1>
+            {% if request.user.is_authenticated %}
             <div class="text-muted small">
                 Logged in as <strong>{{ request.user.get_username }}</strong>
 
@@ -46,6 +47,7 @@
                     <i class="fa-solid fa-arrow-right-from-bracket" title="Log out"></i>
                 </button>
             </form>
+            {% endif %}
         </div>
     </header>
 
