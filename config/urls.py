@@ -27,6 +27,7 @@ handler403 = "core.views.handler403"
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("accounts/", include("django.contrib.auth.urls")),
     path("summernote/", include("django_summernote.urls")),
     path("", include("core.urls")),
     path("cities/", include("cities.urls")),
