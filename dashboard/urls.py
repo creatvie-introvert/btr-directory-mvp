@@ -16,4 +16,6 @@ urlpatterns = [
         views.city_toggle_active,
         name="city_toggle_active",
     ),
+    path("cities/add/", views.create_city, name="cities_add"),
+
 ]

@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db.models import Q
 
 from cities.models import City
+from .forms import CityForm
 
 
 def is_staff_or_superuser(user):
@@ -72,3 +73,24 @@ def city_toggle_active(request, city_id):
         return redirect(f"{redirect_url}?{query_string}")
 
     return redirect(redirect_url)
+
+
+@login_required
+@user_passes_test(is_staff_or_superuser)
+def create_city(request):
+    if request.method == "POST":
+        city_form = CityForm(request.POST, request.FILES)
+
+        if city_form.is_valid():
+            city_form.save()
+            return redirect("dashboard:cities_list")
+    else:
+        city_form = CityForm()
+
+    return render(
+        request,
+        "dashboard/cities/create.html",
+        {
+            "city_form": city_form,
+        }
+    )
