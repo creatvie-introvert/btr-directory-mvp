@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.db.models import Q
 
 from cities.models import City
 
@@ -15,9 +16,19 @@ def dashboard_index(request):
 
 
 def city_list(request):
+    q = request.GET.get("q", "").strip()
+
     cities = City.objects.all().order_by("name")
+
+    if q:
+        cities = cities.filter(
+            Q(name__icontains=q) | Q(slug__icontains=q)
+        )
     return render(
         request,
         "dashboard/cities/list.html",
-        {"cities": cities},
+        {
+            "cities": cities,
+            "q": q,
+        },
     )

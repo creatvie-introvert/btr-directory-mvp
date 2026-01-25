@@ -45,6 +45,14 @@
             <div class="col-12">
             <div class="card border-0 shadow-sm rounded-4">
                 <div class="card-body">
+                    <form method="GET" class="mb-3 search-form">
+                        <div class="col-12 col-md-6">
+                            <label for="city-q" class="form-label small text-muted">
+                                Search cities
+                            </label>
+                            <input type="search" id="city-q" name="q" class="form-control" placeholder="Search by city name or slug" value="{{ q }}">
+                        </div>
+                    </form>
                     <div class="list-group list-group-flush">
                         {% for city in cities %}
                         <div class="list-group-item p-3 p-lg-4 city-row">
