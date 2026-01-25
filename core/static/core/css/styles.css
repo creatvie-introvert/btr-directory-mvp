@@ -313,6 +313,10 @@ button[aria-expanded="true"] .filter-chevron {
     cursor: pointer;
 }
 
+.filter-clear {
+    color: var(--btr-text-muted) !important;
+}
+
 
 /* Tablet */
 @media (min-width: 576px) {
