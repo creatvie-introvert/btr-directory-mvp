@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+    submitSearchOnClear(".search-form", "#city-q");
+    autoSubmitOnSelectChange();
+
     function submitSearchOnClear(formSelector, inputSelector) {
         const form = document.querySelector(formSelector);
         const input = document.querySelector(inputSelector);
@@ -12,16 +15,17 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-    submitSearchOnClear(".search-form", "#city-q")
 
-    const filterSelect = document.querySelectorAll(".filter-select");
+    function autoSubmitOnSelectChange(selector = ".filter-select") {
+        const filterSelect = document.querySelectorAll(selector);
 
-    filterSelect.forEach((select) => {
-        select.addEventListener("change", () => {
-            const form = select.closest("form");
-            if (form) {
-                form.submit();
-            }
-        })
-    })
-})
+        filterSelect.forEach((select) => {
+            select.addEventListener("change", () => {
+                const form = select.closest("form");
+                if (form) {
+                    form.submit();
+                }
+            });
+        });
+    }
+});
