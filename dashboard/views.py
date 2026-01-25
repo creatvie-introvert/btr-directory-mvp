@@ -94,3 +94,27 @@ def create_city(request):
             "city_form": city_form,
         }
     )
+
+
+@login_required
+@user_passes_test(is_staff_or_superuser)
+def edit_city(request, city_id):
+    city = get_object_or_404(City, id=city_id)
+
+    if request.method == "POST":
+        city_form = CityForm(request.POST, request.FILES, instance=city)
+
+        if city_form.is_valid():
+            city_form.save()
+            return redirect("dashboard:cities_list")
+    else:
+        city_form = CityForm(instance=city)
+
+    return render(
+        request,
+        "dashboard/cities/edit.html",
+        {
+            "city_form": city_form,
+            "city": city,
+        },
+    )

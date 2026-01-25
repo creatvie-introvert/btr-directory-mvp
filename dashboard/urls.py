@@ -17,5 +17,9 @@ urlpatterns = [
         name="city_toggle_active",
     ),
     path("cities/add/", views.create_city, name="cities_add"),
-
+    path(
+        "cities/<int:city_id>/edit",
+        views.edit_city,
+        name="city_edit",
+    ),
 ]
