@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db.models import Q
 
@@ -15,6 +16,8 @@ def dashboard_index(request):
     return render(request, "dashboard/index.html")
 
 
+@login_required
+@user_passes_test(is_staff_or_superuser)
 def city_list(request):
     q = request.GET.get("q", "").strip()
     status = request.GET.get("status", "")
@@ -47,3 +50,25 @@ def city_list(request):
             "homepage": homepage,
         },
     )
+
+
+@login_required
+@user_passes_test(is_staff_or_superuser)
+def city_toggle_active(request, city_id):
+    if request.method != "POST":
+        return redirect("dashboard:cities_list")
+
+    city = get_object_or_404(City, id=city_id)
+
+    # Toggle active state
+    city.is_active = not city.is_active
+    city.save()
+
+    # Preserve filters/search
+    query_string = request.META.get("QUERY_STRING", "")
+    redirect_url = reverse("dashboard:cities_list")
+
+    if query_string:
+        return redirect(f"{redirect_url}?{query_string}")
+
+    return redirect(redirect_url)

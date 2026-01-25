@@ -134,15 +134,19 @@
                                             Edit
                                         </a>
                                         <!-- TODO: replace link with city activate/deactivate -->
-                                        {% if city.is_active %}
-                                        <a href="#">
-                                            <i class="fa-solid fa-toggle-off me-1" aria-label="Deactivate city"></i>
-                                        </a>
-                                        {% else %}
-                                        <a href="#">
-                                            <i class="fa-solid fa-toggle-on me-1" aria-label="Activate city"></i>
-                                        </a>
-                                        {% endif %}
+                                        <form method="POST" action="{% url 'dashboard:city_toggle_active' city.id %}">
+                                            {% csrf_token %}
+
+                                            {% if city.is_active %}
+                                                <button type="submit" class="btn btn-link p-0" aria-label="Deactivate city">
+                                                    <i class="fa-solid fa-toggle-off"></i>
+                                                </button>
+                                            {% else %}
+                                                <button type="submit" class="btn btn-link p-0" aria-label="Activate city">
+                                                    <i class="fa-solid fa-toggle-on"></i>
+                                                </button>
+                                            {% endif %}
+                                        </form>
                                     </div>
                                 </div>
                             </div>
