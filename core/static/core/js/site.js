@@ -13,4 +13,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
     submitSearchOnClear(".search-form", "#city-q")
+
+    const filterSelect = document.querySelectorAll(".filter-select");
+
+    filterSelect.forEach((select) => {
+        select.addEventListener("change", () => {
+            const form = select.closest("form");
+            if (form) {
+                form.submit();
+            }
+        })
+    })
 })

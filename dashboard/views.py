@@ -17,6 +17,8 @@ def dashboard_index(request):
 
 def city_list(request):
     q = request.GET.get("q", "").strip()
+    status = request.GET.get("status", "")
+    homepage = request.GET.get("homepage", "")
 
     cities = City.objects.all().order_by("name")
 
@@ -24,11 +26,24 @@ def city_list(request):
         cities = cities.filter(
             Q(name__icontains=q) | Q(slug__icontains=q)
         )
+
+    if status == 'active':
+        cities = cities.filter(is_active=True)
+    elif status == 'inactive':
+        cities = cities.filter(is_active=False)
+
+    if homepage == 'yes':
+        cities = cities.filter(show_on_homepage=True)
+    elif homepage == 'no':
+        cities = cities.filter(show_on_homepage=False)
+
     return render(
         request,
         "dashboard/cities/list.html",
         {
             "cities": cities,
             "q": q,
+            "status": status,
+            "homepage": homepage,
         },
     )

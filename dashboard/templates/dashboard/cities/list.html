@@ -43,70 +43,104 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-            <div class="card border-0 shadow-sm rounded-4">
-                <div class="card-body">
-                    <form method="GET" class="mb-3 search-form">
-                        <div class="col-12 col-md-6">
-                            <label for="city-q" class="form-label small text-muted">
-                                Search cities
-                            </label>
-                            <input type="search" id="city-q" name="q" class="form-control" placeholder="Search by city name or slug" value="{{ q }}">
-                        </div>
-                    </form>
-                    <div class="list-group list-group-flush">
-                        {% for city in cities %}
-                        <div class="list-group-item p-3 p-lg-4 city-row">
-                            <div class="d-flex align-items-center justify-content-between gap-3">
-                                <!-- TODO: add dashboard link to edit city -->
-                                <a href="#" class="text-decoration-none flex-grow-1">
-                                    <h3 class="h4">{{ city.name }}</h3>
-                                    <p class="text-muted small">{{ city.slug }}</p>
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body">
+                        <form method="GET"
+                            class="mb-3 search-form d-flex flex-column flex-sm-row align-items-center justify-content-between gap-3">
+                            <div class="col-12 col-md-6">
+                                <label for="city-q" class="form-label small text-muted">
+                                    Search cities
+                                </label>
+                                <input type="search" id="city-q" name="q" class="form-control"
+                                    placeholder="Search by city name or slug" value="{{ q }}">
+                            </div>
+                            <div class="col-12 col-sm-2 d-flex flex-column flex-sm-row align-items-center justify-content-end gap-3">
+                                <div class="col-12">
+                                    <label for="city-status" class="form-label small text-muted">Status</label>
+                                    <select name="status" id="city-status" class="form-select filter-select">
+                                        <option value="" {% if not status %}selected{% endif %}>
+                                            All
+                                        </option>
+                                        <option value="active" {% if status == 'active' %}selected{% endif %}>
+                                            Active
+                                        </option>
+                                        <option value="inactive" {% if status == 'inactive' %}selected{% endif %}>
+                                            Inactive
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="city-homepage" class="form-label small text-muted">
+                                        Homepage
+                                    </label>
+                                    <select name="homepage" id="city-homepage" class="form-select filter-select">
+                                        <option value="" {% if not homepage %}selected{% endif %}>
+                                            All
+                                        </option>
+                                        <option value="yes" {% if homepage == 'yes' %}selected{% endif %}>
+                                            Yes
+                                        </option>
+                                        <option value="no" {% if homepage == 'no' %}selected{% endif %}>
+                                            No
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="list-group list-group-flush">
+                            {% for city in cities %}
+                            <div class="list-group-item p-3 p-lg-4 city-row">
+                                <div class="d-flex align-items-center justify-content-between gap-3">
+                                    <!-- TODO: add dashboard link to edit city -->
+                                    <a href="#" class="text-decoration-none flex-grow-1">
+                                        <h3 class="h4">{{ city.name }}</h3>
+                                        <p class="text-muted small">{{ city.slug }}</p>
 
-                                    <div class="d-flex gap-2 mt-2">
-                                        {% if city.is_active %}
+                                        <div class="d-flex gap-2 mt-2">
+                                            {% if city.is_active %}
                                             <span class="badge text-bg-success">
                                                 Active
                                             </span>
-                                        {% else %}
+                                            {% else %}
                                             <span class="badge text-bg-secondary">
                                                 inactive
                                             </span>
-                                        {% endif %}
+                                            {% endif %}
 
-                                        {% if city.show_on_homepage %}
+                                            {% if city.show_on_homepage %}
                                             <span class="badge text-bg-primary">
                                                 Homepage
                                             </span>
-                                        {% endif %}
-                                    </div>
-                                </a>
-
-                                <!-- Row actions -->
-                                <div class="d-flex gap-4">
-                                    <a href="#" class="btn btn-primary">
-                                        Edit
+                                            {% endif %}
+                                        </div>
                                     </a>
-                                    <!-- TODO: replace link with city activate/deactivate -->
-                                    {% if city.is_active %}
+
+                                    <!-- Row actions -->
+                                    <div class="d-flex gap-4">
+                                        <a href="#" class="btn btn-primary">
+                                            Edit
+                                        </a>
+                                        <!-- TODO: replace link with city activate/deactivate -->
+                                        {% if city.is_active %}
                                         <a href="#">
                                             <i class="fa-solid fa-toggle-off me-1" aria-label="Deactivate city"></i>
                                         </a>
-                                    {% else %}
+                                        {% else %}
                                         <a href="#">
                                             <i class="fa-solid fa-toggle-on me-1" aria-label="Activate city"></i>
                                         </a>
-                                    {% endif %}
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        {% empty %}
+                            {% empty %}
                             <div class="list-group-item p-4">
                                 <p class="mb-0 text-muted">No cities found.</p>
                             </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>
