@@ -129,3 +129,16 @@ def city_detail(request, pk):
         "dashboard/cities/detail.html",
         {"city": city}
     )
+
+@login_required
+@user_passes_test(is_staff_or_superuser)
+def dashboard_index(request):
+    active_cities = City.objects.filter(is_active=True).count()
+
+    return render(
+        request,
+        "dashboard/index.html",
+        {
+            "active_cities": active_cities,
+        },
+    )
