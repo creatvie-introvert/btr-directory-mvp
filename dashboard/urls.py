@@ -22,4 +22,9 @@ urlpatterns = [
         views.edit_city,
         name="city_edit",
     ),
+    path(
+        "cities/<int:pk>",
+        views.city_detail,
+        name="city_detail",
+    ),
 ]

@@ -118,3 +118,14 @@ def edit_city(request, city_id):
             "city": city,
         },
     )
+
+
+@login_required
+@user_passes_test(is_staff_or_superuser)
+def city_detail(request, pk):
+    city = get_object_or_404(City, pk=pk)
+    return render(
+        request,
+        "dashboard/cities/detail.html",
+        {"city": city}
+    )
