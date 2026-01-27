@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.html import strip_tags
 
 from cities.models import City
 from developments.models import Development
@@ -33,3 +34,6 @@ class DevelopmentForm(forms.ModelForm):
             "cover_image_alt",
             "is_active",
         )
+
+    def clean_description(self):
+        return strip_tags(self.cleaned_data["description"])

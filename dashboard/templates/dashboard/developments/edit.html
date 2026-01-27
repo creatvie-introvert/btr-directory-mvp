@@ -1,0 +1,43 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Edit development &mdash; Dashboard{% endblock %}
+
+{% block dashboard_title %}
+
+<div class="d-flex gap-2 align-items-center text-muted">
+    <i class="fa-solid fa-file-pen me-2"></i>
+    Edit development
+</div>
+{% endblock %}
+
+{% block dashboard_content %}
+
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4 p-lg-5">
+                        <form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                            {% csrf_token %}
+                            {{ development_form|crispy }}
+
+                            <div class="d-flex flex-column flex-sm-row gap-2 mt-3">
+                                <a href="{% url 'dashboard:developments_list' %}" class="btn btn-secondary">
+                                    Cancel
+                                </a>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa-solid fa-floppy-disk me-2"></i>
+                                    Save changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

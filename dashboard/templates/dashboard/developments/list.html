@@ -105,7 +105,7 @@
                                         <a href="#" class="btn btn-primary">
                                             View
                                         </a>
-                                        <a href="#" class="btn btn-primary">
+                                        <a href="{% url 'dashboard:development_edit' development.id %}" class="btn btn-primary">
                                             Edit
                                         </a>
                                         <form method="POST" action="{% url 'dashboard:development_toggle_active' development.id %}">

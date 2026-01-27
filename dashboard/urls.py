@@ -34,6 +34,11 @@ urlpatterns = [
         name="city_edit",
     ),
     path(
+        "developments/<int:pk>/edit",
+        views.edit_development,
+        name="development_edit",
+    ),
+    path(
         "cities/<int:pk>",
         views.city_detail,
         name="city_detail",

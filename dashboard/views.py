@@ -204,3 +204,31 @@ def create_development(request):
             "development_form": development_form,
         }
     )
+
+
+@login_required
+@user_passes_test(is_staff_or_superuser)
+def edit_development(request, pk):
+    development = get_object_or_404(Development, pk=pk)
+
+    if request.method == "POST":
+        development_form = DevelopmentForm(
+            request.POST,
+            request.FILES,
+            instance=development,
+        )
+
+        if development_form.is_valid():
+            development_form.save()
+            return redirect("dashboard:developments_list")
+    else:
+        development_form = DevelopmentForm(instance=development)
+
+    return render(
+        request,
+        "dashboard/developments/edit.html",
+        {
+            "development_form": development_form,
+            "development": development,
+        },
+    )
