@@ -232,3 +232,14 @@ def edit_development(request, pk):
             "development": development,
         },
     )
+
+
+@login_required
+@user_passes_test(is_staff_or_superuser)
+def development_detail(request, pk):
+    development = get_object_or_404(Development, pk=pk)
+    return render(
+        request,
+        "dashboard/developments/detail.html",
+        {"development": development}
+    )

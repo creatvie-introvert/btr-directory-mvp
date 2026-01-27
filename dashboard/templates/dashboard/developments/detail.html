@@ -2,17 +2,17 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-{% block title %}{{ city.name }} &mdash; Dashboard{% endblock %}
+{% block title %}{{ development.name }} &mdash; Dashboard{% endblock %}
 
 {% block dashboard_title %}
 
 <div class="d-flex gap-2 align-items-center">
     <a href="{% url 'dashboard:cities_list' %}" class="d-flex align-items-center text-decoration-none">
         <i class="fa-solid fa-chevron-left me-2"></i>
-        Citites
+        Developments
     </a>
     <span class="text-muted mx-2">/</span>
-    <span>{{ city.name }}</span>
+    <span>{{ development.name }}</span>
 </div>
 {% endblock %}
 
@@ -20,10 +20,10 @@
 
 <section class="py-5">
     <div class="container">
-        <p class="text-muted small mb-2">City details</p>
-        <h2 class="h3 mb-1">{{ city.name }}</h2>
+        <p class="text-muted small mb-2">Development details</p>
+        <h2 class="h3 mb-1">{{ development.name }}</h2>
         <p class="text-muted mb-0">
-            Read-only overview of this city listing
+            Read-only overview of this development listing
         </p>
     </div>
 </section>
@@ -34,42 +34,36 @@
             <div class="card-body p-4 p-lg-5">
                 <div class="d-flex align-items-center gap-3">
                     <p class="text-muted small">Slug:</p>
-                    <p class="fw-semibold">{{ city.slug }}</p>
+                    <p class="fw-semibold">{{ development.slug }}</p>
                 </div>
                 <div class="d-flex gap-2 mt-3">
-                    {% if city.is_active %}
+                    {% if development.is_active %}
                         <span class="badge text-bg-success">Active</span>
                     {% else %}
                         <span class="badge text-bg-secondary">Inactive</span>
                     {% endif %}
-
-                    {% if city.show_on_homepage %}
-                        <span class="badge text-bg-primary">
-                            Homepage
-                        </span>
-                    {% endif %}
                 </div>
 
-                {% if city.description %}
+                {% if development.description %}
                     <div>
                         <div class="divider mt-2"></div>
                         <p class="text-muted small mb-1">Description</p>
-                        <p class="small">{{ city.description }}</p>
+                        <p class="small">{{ development.description }}</p>
                     </div>
                 {% endif %}
 
                 <div class="divider mt-2"></div>
                 
-                {% if city.image %}
+                {% if development.cover_image %}
                     <div class="col-12 col-md-6">
                         <p class="text-muted small mb-1">Image</p>
-                        <img src="{{ city.image.url }}" alt="{{ city.image_alt }}" class="img-fluid rounded">
+                        <img src="{{ development.cover_image.url }}" alt="{{ development.cover_image_alt }}" class="img-fluid rounded">
                     </div>
                 {% endif %}
                 
                 <div class="divider mt-2"></div>
                 <div class="d-flex flex-column flex-sm-row gap-2 mt-3">
-                    <a href="{% url 'dashboard:city_edit' city.id %}" class="btn btn-primary">
+                    <a href="{% url 'dashboard:development_edit' development.id %}" class="btn btn-primary">
                         Edit city
                     </a>
                 </div>

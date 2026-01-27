@@ -80,7 +80,7 @@
                             <div class="list-group-item p-3 p-lg-4 city-row">
                                 <div class="d-flex align-items-center justify-content-between gap-3">
                                     <!-- TODO: add view development route -->
-                                    <a href="#" class="text-decoration-none flex-grow-1">
+                                    <a href="{% url 'dashboard:development_detail' development.id %}" class="text-decoration-none flex-grow-1">
                                         <h3 class="h4">{{ development.name }}</h3>
                                         <p class="text-muted small">
                                             {{ development.city.name }}, {{ development.postcode }}
@@ -102,7 +102,7 @@
                                     <!-- Row actions -->
                                      <!-- TODO: add view and edit link -->
                                     <div class="d-flex gap-4">
-                                        <a href="#" class="btn btn-primary">
+                                        <a href="{% url 'dashboard:development_detail' development.id %}" class="btn btn-primary">
                                             View
                                         </a>
                                         <a href="{% url 'dashboard:development_edit' development.id %}" class="btn btn-primary">

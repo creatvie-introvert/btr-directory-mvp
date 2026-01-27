@@ -39,8 +39,13 @@ urlpatterns = [
         name="development_edit",
     ),
     path(
-        "cities/<int:pk>",
+        "cities/<int:pk>/",
         views.city_detail,
         name="city_detail",
+    ),
+    path(
+        "developments/<int:pk>/",
+        views.development_detail,
+        name="development_detail",
     ),
 ]
