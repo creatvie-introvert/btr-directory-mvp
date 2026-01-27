@@ -148,12 +148,22 @@ def dashboard_index(request):
 @login_required
 @user_passes_test(is_staff_or_superuser)
 def development_list(request):
+    q = request.GET.get("q", "").strip()
+
     developments = Development.objects.select_related("city").order_by("name")
+
+    if q:
+        developments = developments.filter(
+            Q(name__icontains=q) | 
+            Q(city__name__icontains=q) |
+            Q(postcode__icontains=q)
+        )
 
     return render(
         request,
         "dashboard/developments/list.html",
         {
             "developments": developments,
+            "q": q,
         },
     )

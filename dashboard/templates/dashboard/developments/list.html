@@ -49,6 +49,32 @@
                 <div class="card border-0 shadow-sm rounded-4">
                     <div class="card-body">
                         <!-- TODO: add search and filter -->
+                        <form method="GET"
+                            class="mb-3 search-form d-flex flex-column flex-sm-row align-items-center justify-content-between gap-3">
+                            <div class="col-12 col-md-6">
+                                <label for="dev-q" class="form-label small text-muted">
+                                    Search developments
+                                </label>
+                                <input type="search" id="dev-q" name="q" class="form-control"
+                                    placeholder="Search by development name, city, or postcode" value="{{ q }}">
+                            </div>
+                            <div class="col-12 col-sm-2 d-flex flex-column flex-sm-row align-items-center justify-content-end gap-3">
+                                <div class="col-12">
+                                    <label for="development-status" class="form-label small text-muted">Status</label>
+                                    <select name="status" id="development-status" class="form-select filter-select">
+                                        <option value="" {% if not status %}selected{% endif %}>
+                                            All
+                                        </option>
+                                        <option value="active" {% if status == 'active' %}selected{% endif %}>
+                                            Active
+                                        </option>
+                                        <option value="inactive" {% if status == 'inactive' %}selected{% endif %}>
+                                            Inactive
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
 
                         <div class="list-group list-group-flush">
                             {% for development in developments %}
