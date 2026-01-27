@@ -28,5 +28,4 @@ urlpatterns = [
         views.city_detail,
         name="city_detail",
     ),
-    
 ]

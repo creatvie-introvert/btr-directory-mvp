@@ -131,33 +131,26 @@ def city_detail(request, pk):
         {"city": city}
     )
 
-@login_required
-@user_passes_test(is_staff_or_superuser)
-def dashboard_index(request):
-    active_cities = City.objects.filter(is_active=True).count()
-
-    return render(
-        request,
-        "dashboard/index.html",
-        {
-            "active_cities": active_cities,
-        },
-    )
-
 
 @login_required
 @user_passes_test(is_staff_or_superuser)
 def development_list(request):
     q = request.GET.get("q", "").strip()
+    status = request.GET.get("status", "")
 
     developments = Development.objects.select_related("city").order_by("name")
 
     if q:
         developments = developments.filter(
-            Q(name__icontains=q) | 
+            Q(name__icontains=q) |
             Q(city__name__icontains=q) |
             Q(postcode__icontains=q)
         )
+    
+    if status == 'active':
+        developments = developments.filter(is_active=True)
+    elif status == 'inactive':
+        developments = developments.filter(is_active=False)
 
     return render(
         request,
@@ -165,5 +158,6 @@ def development_list(request):
         {
             "developments": developments,
             "q": q,
+            "status": status,
         },
     )
