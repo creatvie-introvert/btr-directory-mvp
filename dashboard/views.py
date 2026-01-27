@@ -5,7 +5,7 @@ from django.db.models import Q
 
 from cities.models import City
 from developments.models import Development
-from .forms import CityForm
+from .forms import CityForm, DevelopmentForm
 
 
 def is_staff_or_superuser(user):
@@ -175,13 +175,32 @@ def development_toggle_active(request, pk):
     development.is_active = not development.is_active
     development.save()
 
-    return redirect("dashboard:developments_list")
-
     # Preserve filters/search
     query_string = request.META.get("QUERY_STRING", "")
-    redirect_url = reverse("dashboard:development_list")
+    redirect_url = reverse("dashboard:developments_list")
 
     if query_string:
         return redirect(f"{redirect_url}?{query_string}")
 
     return redirect(redirect_url)
+
+
+@login_required
+@user_passes_test(is_staff_or_superuser)
+def create_development(request):
+    if request.method == "POST":
+        development_form = DevelopmentForm(request.POST)
+
+        if development_form.is_valid():
+            development_form.save()
+            return redirect("dashboard:developments_list")
+    else:
+        development_form = DevelopmentForm()
+
+    return render(
+        request,
+        "dashboard/developments/create.html",
+        {
+            "development_form": development_form,
+        }
+    )

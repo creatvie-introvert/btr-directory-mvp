@@ -30,7 +30,7 @@
 
                 <div class="d-flex flex-column flex-sm-row gap-2 col-12 col-sm-auto">
                     <!-- TODO: add link for add development form -->
-                    <a href="#" class="btn btn-primary btn-lg">
+                    <a href="{% url 'dashboard:development_add' %}" class="btn btn-primary btn-lg">
                         <i class="fa-solid fa-plus me-2"></i>
                         Add development
                     </a>
@@ -48,7 +48,6 @@
 
                 <div class="card border-0 shadow-sm rounded-4">
                     <div class="card-body">
-                        <!-- TODO: add search and filter -->
                         <form method="GET"
                             class="mb-3 search-form d-flex flex-column flex-sm-row align-items-center justify-content-between gap-3">
                             <div class="col-12 col-md-6">
@@ -80,7 +79,7 @@
                             {% for development in developments %}
                             <div class="list-group-item p-3 p-lg-4 city-row">
                                 <div class="d-flex align-items-center justify-content-between gap-3">
-                                    <!-- TODO: add development route -->
+                                    <!-- TODO: add view development route -->
                                     <a href="#" class="text-decoration-none flex-grow-1">
                                         <h3 class="h4">{{ development.name }}</h3>
                                         <p class="text-muted small">
@@ -142,7 +141,7 @@
     <div class="container">
         <div class="row justify-content-end">
             <div class="col-12 col-sm-auto">
-                <a href="" class="btn btn-primary btn-lg">
+                <a href="{% url 'dashboard:development_add' %}" class="btn btn-primary btn-lg">
                     <i class="fa-solid fa-plus me-2"></i>
                     Add development
                 </a>
