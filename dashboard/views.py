@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db.models import Q
 
 from cities.models import City
+from developments.models import Development
 from .forms import CityForm
 
 
@@ -140,5 +141,19 @@ def dashboard_index(request):
         "dashboard/index.html",
         {
             "active_cities": active_cities,
+        },
+    )
+
+
+@login_required
+@user_passes_test(is_staff_or_superuser)
+def development_list(request):
+    developments = Development.objects.select_related("city").order_by("name")
+
+    return render(
+        request,
+        "dashboard/developments/list.html",
+        {
+            "developments": developments,
         },
     )

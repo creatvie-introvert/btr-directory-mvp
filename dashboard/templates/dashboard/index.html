@@ -52,7 +52,6 @@ Dashboard
                 <div class="card border-0 shadow-sm rounded-4">
                     <div class="card-body p-4">
                         <p class="text-muted small mb-2">Cities</p>
-                        <!-- TODO: remove placeholder dash, replace with live counts from database -->
                         <h3 class="mb-1">{{ active_cities }}</h3>
                         <p class="text-muted small mb-0">Active cities</p>
                     </div>
@@ -137,7 +136,7 @@ Dashboard
 
                         <!-- TODO: replace links with dashboard developments list and create views -->
                         <div class="d-flex flex-column flex-sm-row gap-2">
-                            <a href="" class="btn btn-primary btn-lg">
+                            <a href="{% url 'dashboard:developments_list' %}" class="btn btn-primary btn-lg">
                                 <i class="fa-solid fa-building me-2"></i>
                                 View developments
                             </a>
