@@ -109,6 +109,19 @@
                                         <a href="#" class="btn btn-primary">
                                             Edit
                                         </a>
+                                        <form method="POST" action="{% url 'dashboard:development_toggle_active' development.id %}">
+                                            {% csrf_token %}
+
+                                            {% if development.is_active %}
+                                                <button type="submit" class="btn btn-link p-0" aria-label="Deactivate city">
+                                                    <i class="fa-solid fa-toggle-off"></i>
+                                                </button>
+                                            {% else %}
+                                                <button type="submit" class="btn btn-link p-0" aria-label="Activate city">
+                                                    <i class="fa-solid fa-toggle-on"></i>
+                                                </button>
+                                            {% endif %}
+                                        </form>
                                     </div>
                                 </div>
                             </div>

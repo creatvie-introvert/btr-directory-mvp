@@ -13,9 +13,14 @@ urlpatterns = [
     path("cities/", views.city_list, name="cities_list"),
     path("developments/", views.development_list, name="developments_list"),
     path(
-        "cities/<int:city_id>/toggle-active",
+        "cities/<int:city_id>/toggle-active/",
         views.city_toggle_active,
         name="city_toggle_active",
+    ),
+    path(
+        "developments/<int:pk>/toggle-active/",
+        views.development_toggle_active,
+        name="development_toggle_active",
     ),
     path("cities/add/", views.create_city, name="cities_add"),
     path(

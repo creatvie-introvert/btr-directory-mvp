@@ -146,7 +146,7 @@ def development_list(request):
             Q(city__name__icontains=q) |
             Q(postcode__icontains=q)
         )
-    
+
     if status == 'active':
         developments = developments.filter(is_active=True)
     elif status == 'inactive':
@@ -161,3 +161,27 @@ def development_list(request):
             "status": status,
         },
     )
+
+
+@login_required
+@user_passes_test(is_staff_or_superuser)
+def development_toggle_active(request, pk):
+    if request.method != "POST":
+        return redirect("dashboard:developments_list")
+
+    development = get_object_or_404(Development, pk=pk)
+
+    # Toggle active state
+    development.is_active = not development.is_active
+    development.save()
+
+    return redirect("dashboard:developments_list")
+
+    # Preserve filters/search
+    query_string = request.META.get("QUERY_STRING", "")
+    redirect_url = reverse("dashboard:development_list")
+
+    if query_string:
+        return redirect(f"{redirect_url}?{query_string}")
+
+    return redirect(redirect_url)
