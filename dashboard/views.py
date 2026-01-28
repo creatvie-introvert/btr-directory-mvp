@@ -15,7 +15,21 @@ def is_staff_or_superuser(user):
 @login_required
 @user_passes_test(is_staff_or_superuser)
 def dashboard_index(request):
-    return render(request, "dashboard/index.html")
+    active_cities = City.objects.filter(is_active=True).count()
+    active_developments = (
+        Development.objects
+        .filter(is_active=True)
+        .count()
+    )
+
+    return render(
+        request,
+        "dashboard/index.html",
+        {
+            "active_cities": active_cities,
+            "active_developments": active_developments,
+        },
+    )
 
 
 @login_required
