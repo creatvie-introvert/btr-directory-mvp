@@ -21,6 +21,7 @@ def dashboard_index(request):
         .filter(is_active=True)
         .count()
     )
+    total_enquiries = Enquiry.objects.count()
 
     recent_enquiries = (
         Enquiry.objects
@@ -35,6 +36,7 @@ def dashboard_index(request):
             "active_cities": active_cities,
             "active_developments": active_developments,
             "enquiries": recent_enquiries,
+            "total_enquiries": total_enquiries,
         },
     )
 
