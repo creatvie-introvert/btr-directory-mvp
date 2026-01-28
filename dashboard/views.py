@@ -280,3 +280,17 @@ def enquiries_list(request):
             "enquiries": enquiries,
         }
     )
+
+
+@login_required
+@user_passes_test(is_staff_or_superuser)
+def enquiry_detail(request, pk):
+    enquiry = get_object_or_404(Enquiry, pk=pk)
+
+    return render(
+        request,
+        "dashboard/enquiries/detail.html",
+        {
+            "enquiry": enquiry,
+        }
+    )

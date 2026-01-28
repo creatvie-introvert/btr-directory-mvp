@@ -40,7 +40,7 @@
                     {% for enquiry in enquiries %}
                         <div class="list-group-item p-3 p-lg-4">
                             <div class="d-flex flex-column flex-sm-row justify-content-between gap-3">
-                                <div class="flex-grow-1">
+                                <a href="{% url 'dashboard:enquiry_detail' enquiry.id %}" class="flex-grow-1">
                                     <p class="fw-semibold mb-1">
                                         {{ enquiry.full_name }}
                                         <span class="text-muted small ms-2">
@@ -55,7 +55,7 @@
                                     <p class="text-muted small mb-1">
                                         Submitted: {{ enquiry.created_at|date:"j M Y, H:i" }}
                                     </p>
-                                </div>
+                                </a>
 
                                 <div class="d-flex align-items-center gap-3">
                                     {%if enquiry.status == "new" %}

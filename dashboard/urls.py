@@ -53,4 +53,9 @@ urlpatterns = [
         views.enquiries_list,
         name="enquiries_list",
     ),
+    path(
+        "enquiries/<int:pk>",
+        views.enquiry_detail,
+        name="enquiry_detail",
+    ),
 ]

@@ -1,0 +1,67 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Enquiry &mdash; Dashboard{% endblock %}
+
+{% block dashboard_title %}
+
+<div class="d-flex gap-2 align-items-center">
+    <a href="{% url 'dashboard:enquiries_list' %}" class="d-flex align-items-center text-decoration-none">
+        <i class="fa-solid fa-chevron-left me-2"></i>
+        Enquiries
+    </a>
+    <span class="text-muted mx-2">/</span>
+    <span>{{ enquiry.full_name }}</span>
+</div>
+{% endblock %}
+
+{% block dashboard_content %}
+
+<section class="py-5">
+    <div class="container">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body p-4 p-lg-5">
+                <p class="text-muted small mb-1">From</p>
+                <h3 class="h4 mb-2">{{ enquiry.full_name }}</h3>
+
+                <p class="mb-1">
+                    <a href="mailto:{{ enquiry.email }}" class="small">
+                        {{ enquiry.email }}
+                    </a>
+                </p>
+
+                <p class="text-muted small">
+                    Submitted: {{ enquiry.created_at|date:"j M Y, H:i" }}
+                </p>
+
+                <div class="mb-3">
+                    <p class="text-muted small mb-1">Development</p>
+                    <a href="{% url 'dashboard:development_detail' enquiry.development.id %}" class="text-decoration-none">
+                        {{ enquiry.development.name }}
+                    </a>
+                </div>
+
+                <div class="mb-3">
+                    <p class="text-muted small mb-1">Status</p>
+                    <span class="badge text-bg-secondary">
+                        {{ enquiry.get_status_display }}
+                    </span>
+                </div>
+
+                {% if enquiry.move_timeframe %}
+                    <div class="mb-3">
+                        <p class="text-muted small mb-1">Move timeframe</p>
+                        <p>{{ enquiry.get_move_timeframe_display }}</p>
+                    </div>
+                {% endif %}
+
+                <div class="divider my-4"></div>
+
+                <p class="text-muted small mb-1">Message</p>
+                <p>{{ enquiry.message|linebreaks }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
