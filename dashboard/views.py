@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db.models import Q
 
 from cities.models import City
-from developments.models import Development
+from developments.models import Development, Enquiry
 from .forms import CityForm, DevelopmentForm
 
 
@@ -256,4 +256,18 @@ def development_detail(request, pk):
         request,
         "dashboard/developments/detail.html",
         {"development": development}
+    )
+
+
+@login_required
+@user_passes_test(is_staff_or_superuser)
+def enquiries_list(request):
+    enquiries = Enquiry.objects.select_related("development")
+
+    return render(
+        request,
+        "dashboard/enquiries/list.html",
+        {
+            "enquiries": enquiries,
+        }
     )

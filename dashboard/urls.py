@@ -48,4 +48,9 @@ urlpatterns = [
         views.development_detail,
         name="development_detail",
     ),
+    path(
+        "enquiries/",
+        views.enquiries_list,
+        name="enquiries_list",
+    ),
 ]
