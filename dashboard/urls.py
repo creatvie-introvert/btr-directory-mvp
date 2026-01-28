@@ -54,8 +54,13 @@ urlpatterns = [
         name="enquiries_list",
     ),
     path(
-        "enquiries/<int:pk>",
+        "enquiries/<int:pk>/",
         views.enquiry_detail,
         name="enquiry_detail",
     ),
+    path(
+        "enquiries/<int:pk>/update_status/",
+        views.enquiry_update_status,
+        name="enquiry_update_status",
+    )
 ]

@@ -294,3 +294,23 @@ def enquiry_detail(request, pk):
             "enquiry": enquiry,
         }
     )
+
+
+@login_required
+@user_passes_test(is_staff_or_superuser)
+def enquiry_update_status(request, pk):
+    if request.method != "POST":
+        return redirect("dashboard:enquiry_detail", pk=pk)
+
+    enquiry = get_object_or_404(Enquiry, pk=pk)
+
+    new_status = request.POST.get("status")
+
+    # Validate against allowed choices
+    valid_status = [choice[0] for choice in Enquiry.Status.choices]
+
+    if new_status in valid_status:
+        enquiry.status = new_status
+        enquiry.save()
+
+    return redirect("dashboard:enquiry_detail", pk=pk)
