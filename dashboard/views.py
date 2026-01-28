@@ -22,12 +22,19 @@ def dashboard_index(request):
         .count()
     )
 
+    recent_enquiries = (
+        Enquiry.objects
+        .select_related("development")
+        .order_by("-created_at")[:3]
+    )
+
     return render(
         request,
         "dashboard/index.html",
         {
             "active_cities": active_cities,
             "active_developments": active_developments,
+            "enquiries": recent_enquiries,
         },
     )
 
