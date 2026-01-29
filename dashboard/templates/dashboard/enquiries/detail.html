@@ -98,7 +98,7 @@
                     {% endif %}
                 </div>
 
-                <div class="mb-4">
+                <div class="my-4">
                     <p class="text-muted small mb-1">Status</p>
                     <form action="{% url 'dashboard:enquiry_update_status' enquiry.id %}" method="POST" class="d-flex flex-column flex-sm-row gap-2 align-items-center">
                         {% csrf_token %}
@@ -114,6 +114,20 @@
                             Update status
                         </button>
                     </form>
+
+                    {% if enquiry.status != "closed" %}
+                        <form action="{% url 'dashboard:enquiry_close' enquiry.id %}" method="POST" class="mt-4">
+                            {% csrf_token %}
+
+                            <button type="submit" class="btn btn-secondary">
+                                <i class="fa-solid fa-check me-2"></i>
+                                Close enquiry
+                            </button>
+                            <p class="text-muted small mt-1 mb-0">
+                                Marks this enquiry as closed.
+                            </p>
+                        </form>
+                    {% endif %}
                 </div>
             </div>
         </div>

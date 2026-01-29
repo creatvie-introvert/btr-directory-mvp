@@ -356,3 +356,18 @@ def enquiry_update_status(request, pk):
     response = HttpResponse(status=302)
     response["Location"] = mailto_url
     return response
+
+
+@login_required
+@user_passes_test(is_staff_or_superuser)
+def enquiry_close(request, pk):
+    if request.method != "POST":
+        return redirect("dashboard:enquiry_detail", pk=pk)
+    
+    enquiry = get_object_or_404(Enquiry, pk=pk)
+
+    if enquiry.status != Enquiry.Status.CLOSED:
+        enquiry.status = Enquiry.Status.CLOSED
+        enquiry.save(update_fields=["status"])
+    
+    return redirect("dashboard:enquiry_detail", pk=pk)
