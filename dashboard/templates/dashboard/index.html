@@ -163,7 +163,7 @@ Dashboard
                             <ul class="list-group list-group-flush mt-3">
                                 {% for enquiry in enquiries %}
                                     <li class="list-group-item px-0">
-                                        <div class="d-flex justify-content-between align-items-start gap-3">
+                                        <a href="{% url 'dashboard:enquiry_detail' enquiry.id %}" class="d-flex justify-content-between align-items-start gap-3">
                                             <div>
                                                 <p class="fw-semibold mb-0">
                                                     {{ enquiry.full_name }}
@@ -179,7 +179,7 @@ Dashboard
                                             <span class="badge {% if enquiry.status == 'new' %}text-bg-primary {% elif enquiry.status == 'in-progress' %}text-bg-warning {% else %}text-bg-secondary{% endif %}">
                                                 {{ enquiry.get_status_display }}
                                             </span>
-                                        </div>
+                                        </a>
                                     </li>
                                 {% endfor %}
                             </ul>
