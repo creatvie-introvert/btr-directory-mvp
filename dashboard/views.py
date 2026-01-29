@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db.models import Q
 from django.utils import timezone
+from django.http import HttpResponse
 
 from cities.models import City
 from developments.models import Development, Enquiry
@@ -333,7 +334,8 @@ def enquiry_update_status(request, pk):
 
     msg_body = [
         f"Development: {enquiry.development.name}",
-        f"From: {enquiry.full_name} - Contact email: {enquiry.email}",
+        f"From: {enquiry.full_name}",
+        f"Contact email: {enquiry.email}",
         (
             f"Move timeframe: "
             f"{enquiry.get_move_timeframe_display() or 'Not specified'}"
@@ -351,4 +353,6 @@ def enquiry_update_status(request, pk):
         f"&body={quote(body)}"
     )
 
-    return redirect(mailto_url)
+    response = HttpResponse(status=302)
+    response["Location"] = mailto_url
+    return response
