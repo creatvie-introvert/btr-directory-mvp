@@ -1,7 +1,9 @@
+from urllib.parse import quote
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db.models import Q
+from django.utils import timezone
 
 from cities.models import City
 from developments.models import Development, Enquiry
@@ -304,13 +306,49 @@ def enquiry_update_status(request, pk):
 
     enquiry = get_object_or_404(Enquiry, pk=pk)
 
-    new_status = request.POST.get("status")
+    operator_email = (enquiry.development.operator_contact_email or "").strip()
 
-    # Validate against allowed choices
-    valid_status = [choice[0] for choice in Enquiry.Status.choices]
+    # Build mailto logic
+    mailto_address = operator_email
 
-    if new_status in valid_status:
-        enquiry.status = new_status
-        enquiry.save()
+    # If operator_email exists, log forwarding + update status
+    if operator_email:
+        enquiry.forwarded_to_email = operator_email
+        enquiry.forwarded_at = timezone.now()
 
-    return redirect("dashboard:enquiry_detail", pk=pk)
+        # If current status is NEW, update to IN-PROGRESS
+        if enquiry.status == Enquiry.Status.NEW:
+            enquiry.status = Enquiry.Status.IN_PROGRESS
+
+        enquiry.save(
+            update_fields=[
+                "forwarded_to_email",
+                "forwarded_at",
+                "status",
+            ]
+        )
+
+    # Build mailto content
+    subject = f"New rental enquiry: {enquiry.development.name}"
+
+    msg_body = [
+        f"Development: {enquiry.development.name}",
+        f"From: {enquiry.full_name} - Contact email: {enquiry.email}",
+        (
+            f"Move timeframe: "
+            f"{enquiry.get_move_timeframe_display() or 'Not specified'}"
+        ),
+        f"Submitted: {enquiry.created_at:%d %b %Y, %H:%M}",
+        "",
+        "Message:",
+        enquiry.message,
+    ]
+    body = "\n".join(msg_body)
+
+    mailto_url = (
+        f"mailto:{mailto_address}"
+        f"?subject={quote(subject)}"
+        f"&body={quote(body)}"
+    )
+
+    return redirect(mailto_url)
