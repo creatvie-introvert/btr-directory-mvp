@@ -323,17 +323,15 @@ The MVP focuses on delivering a clear, renter-first discovery experience while s
 - **Custom enquiries dashboard**
     - Staff can view all enquiries in a centralised dashboard
     - Each enquiry is linked to the relevant development
-
-- **Enquiry management (CRUD)**
-    - Staff can:
-        - View enquiry details
-        - Update enquiry status
-        - Delete enquiries when appropriate
+    - Staff can update enquiry status
+    - Staff can close enquiries when appropriate
     
 - **Enquiry forwarding workflow**
     - Each development stores an operator contact email
     - Staff can forward enquiries using pre-filled email action (mailto workflow)
     - This enables fast manual routing without requiring automated email infrastructure
+    - Forwarding actions are logged with timestamp
+    - A visual "Forwarded" badge is shown in the staff dashbard for audit clarity
 
 - **Admin-only content management**
     - Authenticated admin users manage:
@@ -354,25 +352,28 @@ The MVP focuses on delivering a clear, renter-first discovery experience while s
 The screenshots below show the implemented MVP features after development. They demonstrate the core renter journey and the internal staff workflow as delivered in the final application.
 
 ### Home — Hero search
-![Home page showing the hero search bar used to search by city or postcode]()
+![Home page showing the hero search bar used to search by city or postcode](docs/images/home-hero-responsive.png)
 
 ### Cities index
-![Cities index page showing available Build-to-Rent locations]()
+![Cities index page showing available Build-to-Rent locations](docs/images/cities-index-responsive.png)
 
 ### City development listing
-![List of Build-to-Rent developments within a selected city]()
+![List of Build-to-Rent developments within a selected city](docs/images/city-developments-list-responsive.png)
 
 ### Development detail
-![Development detail page showing images, amenities, and key information]()
+![Development detail page showing images, amenities, tenancy information, and enquiry call-to-action](docs/images/development-detail-responsive.png)
 
 ### Enquiry form
-![Enquiry form allowing renter to submit interest in a development]()
+![Enquiry form allowing renters to submit interest in a specific development](docs/images/enquiry-form-responsive.png)
 
 ### Enquiry confirmation
-![Confirmation mesage displayed after a successful enquiry submission]()
+![Confirmation mesage displayed after a successful enquiry submission](docs/images/enquiry-confirmation-responsive.png)
 
 ### Staff enquiries dashboard
-![Custom staff dashboard displaying enquiries with management actions]()
+![Custom staff dashboard showing enquiries list and management overview](docs/images/staff-enquiries-dashboard-responsive.png)
+
+### Enquiry management (detail view)
+![Enquiry detail view showing status updates, forwarding, and close actions]()
 
 ---
 
@@ -630,7 +631,7 @@ Activate the virtual environment:
 
 **macOS/Linux**
 ```bash
-source venv/bin/aactivate
+source venv/bin/activate
 ```
 
 **Windows**
