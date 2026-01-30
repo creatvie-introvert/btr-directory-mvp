@@ -373,7 +373,7 @@ The screenshots below show the implemented MVP features after development. They 
 ![Custom staff dashboard showing enquiries list and management overview](docs/images/staff-enquiries-dashboard-responsive.png)
 
 ### Enquiry management (detail view)
-![Enquiry detail view showing status updates, forwarding, and close actions]()
+![Enquiry detail view showing status updates, forwarding, and close actions](docs/images/enquiry-detail-management-responsive.png)
 
 ---
 
@@ -444,7 +444,7 @@ The following features were intentionally excluded from the MVP to maintain focu
 
 The application uses a relational database to store and manage structured data related to Build-to-Rent developments and user enquiries. The data model was designed to support the core renter journey while remaining simple, scalable, and aligned with MVP scope.
 
-Each modelmodel uses Django's default auto-generated primary key (`id`) unless otherwise specified. Relationships between entities are implemtned using foreign keys to enforce referential integrity across the data model.
+Each model uses Django's default auto-generated primary key (`id`) unless otherwise specified. Relationships between entities are implemented using foreign keys to enforce referential integrity across the data model.
 
 ### Overview
 
@@ -466,8 +466,10 @@ During development, the data model was expanded beyond the initial MVP ERD to su
         - `rent_from_pcm` (integer)
         - `deposit_from` (integer, optional)
         - `pricing_note` (short text, optional)
-- **Bedroom types**
-    - Added a `BedroomType` model linked to `Development` to represent unit mixes (e.g. Studio, 1-bed, 2-bed, etc.) and per-bedroom pricing ranges
+- **Unit types**
+    - Added a `UnitType` model linked to `Development` 
+    - Represents bedroom-level pricing and availablity (e.g. Studio, 1-bed, 2-bed, etc.)
+    - Enforces a unique bedroom type per development
 
     These changes are documented in the updated ERD (`dbdiagram.io` script) and should be treated as the current source of truth for the MVP database structure.
 
@@ -479,7 +481,7 @@ During development, the data model was expanded beyond the initial MVP ERD to su
 - A **Development** can have **many Enquiries**
 - A **Enquiry** belongs to **one Development**
 
-This structure allows users to browse developments by city and submit enquiries for individual developments, while eabling staff  to manage enquiries centrally.
+This structure allows users to browse developments by city and submit enquiries for individual developments, while enabling staff  to manage enquiries centrally.
 
 ### City model
 
@@ -489,6 +491,9 @@ Stores information about each city used as a primaru discovery entry point.
 - City name
 - Slug (used for clean URLs)
 - Optional description or introduction text
+- City image and alt text (used for visual discovery and accessibility)
+- Active status flag (controls public visibility)
+- Homepage feature flag(used to highlight key cities on the homepage)
 - Timestamps (created / updated)
 
 ### Development model
@@ -496,36 +501,58 @@ Stores information about each city used as a primaru discovery entry point.
 Stores detailed information about each Build-to-Rent development.
 
 **Key fields include:**
-- Development name
+- Development name and slug
 - Associated city (foreign key)
-- Description
-- Ammenities and key features
-- Tenancy-related information
-- Operator contact email (used for enquiry forwarding)
-- One-to-many relationship with development images (stored externally via Cloudinary)
+- Area name, address line, and postcode
+- Short summary and full description
+- Pricing information (rent and deposit from)
+- Tenancy options and typical tenancy length
+- Property type and furnishing options
+- Pet policy and bills inclusion
+- Number of homes within the development
+- Operator name and contact email (used for enquiry forwarding)
+- Amenities (many-to-many relationship)
+- Unit types and bedroom-level pricing
+- Development images (stored via Cloudinary)
+- Active status flag
 - Timestamps (created / updated)
 
-Each development belongs to a single city and can recieve multiple enquiries.
+Each development belongs to a single city and can receive multiple enquiries.
+
+### Amenity model
+
+Represents reusable amenities that can be linked to multiple developments.
+
+**Key fields include:**
+- Amenity name
+- Optional icon reference
+- Active status flag
+- Timestamps (created / updated)
+
+Amenities are linked to developments using a many-to-many relationship, allowing consistent reuse and filtering across listings.
 
 ### Enquiry model
 
 Stores renter enquiries submitted through the platform.
 
 **Key fields: include:**
-- Renter name
-- Renter email address
-- Optional message
+- Renter name and email address
+- Optional enquiry message
 - Associated development (foreign key)
-- Enquiry status (e.g. new, contacted, closed)
+- Enquiry status (e.g. new, in progress, closed)
+- Move timeframe (optional)
+- Forwarding metadata (email forwarded to and timestamp)
 - Timestamp of submission
 
-Enquiries  are managed through a custom staff dashboard and can be forwarded to the relevant opertator using a pre-filled email action.
+Enquiries  are managed through a custom staff dashboard and can be forwarded to the relevant operator using a pre-filled email action.
 
 ### Data integrity and validation
 
-Foreign key relationships enforce data integrity between cities, developments, and enquiries
-- Required fields are validated at the model and form level
-- Deletion rules ensure that orphaned records are avoided (e.g. enquiries linked to developments)
+- Foreign key relationships enforce data integrity between cities, developments, and enquiries
+- Unique constraints prevent duplicate unit types per development
+- Indexes are applied to frequently queried fields (status, created date, relationships)
+- Required fields are validated at both model and form level
+- Cascade deletion rules prevent orphaned records
 
 ### Future data model extensions
 
