@@ -22,8 +22,10 @@ The MVP is intentionally scoped to validate the core renter journey while establ
 
 ## Responsive Design Preview
 
-![Am I Responsive screenshot]()
-> Screenshot generated using the **Am I Responsive** tool to demonstrate the project across mobile, tablet, laptop, and desktop screens.
+![Responsive homepage showing mobile, tablet, and desktop layouts](docs/images/homepage-responsive.png)
+
+> Composite screenshot showing the homepage hero and key sections across **mobile, tablet, and desktop** breakpoints.
+> Screens were captured using browser developer tools and combined into a single composite image to demonstrate responsive behaviour across breakpoints.
 
 ---
 
@@ -75,7 +77,7 @@ The MVP is intentionally scoped to validate the core renter journey while establ
 
 ## User Stories
 
-User stories were defined to clearly capture the needs of each user type interacting with the platform. These stories informed feature scope, information architecture, and tresting decisions throughout the project.
+User stories were defined to clearly capture the needs of each user type interacting with the platform. These stories informed feature scope, information architecture, and testing decisions throughout the project.
 
 ### Primary user stories (Renters)
 
@@ -105,9 +107,9 @@ The following goals define the purpose of the website and guided key design, fea
 
 - Provide a renter-focused directory of BTR developments by city
 - Support a complete **browse → view → enquiries** user journey
-- Maintain a centralised content management with single admin user
+- Maintain a centralised content management using Django's admin authentication
 - Establish trust through transparency and accessibility-focused content
-- Demonstrate Django relational database implmentation
+- Demonstrate Django relational database implementation
 
 ---
 
@@ -223,7 +225,7 @@ The design system establishes visual consistency, accessibility, and scalability
 
 ### Typography
 
-The project uses Inter as the primary typeface due to its high legibility, modern apperance, and suitability for UI-heavy applications.
+The project uses Inter as the primary typeface due to its high legibility, modern appearance, and suitability for UI-heavy applications.
 
 The typographic scale was designed to support clear hierarchy and responsive readability across all breakpoints.
 
@@ -252,7 +254,7 @@ The palette supports a calm, professional tone while maintaining sufficient cont
 - Soft light backgrounds to improve content scannability
 - High-contrast text colours to meet WCAG accessibility guidelines
 
-Colours are used consistently to indicate hierarchy, actions, and states, while avoiding unnescessary visual noise. Custom colours are applied sparingly on top of Bootstrap defaults.
+Colours are used consistently to indicate hierarchy, actions, and states, while avoiding unnecessary visual noise. Custom colours are applied sparingly on top of Bootstrap defaults.
 
 ### Imagery
 
@@ -331,14 +333,14 @@ The MVP focuses on delivering a clear, renter-first discovery experience while s
     - Staff can forward enquiries using pre-filled email action (mailto workflow)
     - This enables fast manual routing without requiring automated email infrastructure
     - Forwarding actions are logged with timestamp
-    - A visual "Forwarded" badge is shown in the staff dashbard for audit clarity
+    - A visual "Forwarded" badge is shown in the staff dashboard for audit clarity
 
 - **Admin-only content management**
     - Authenticated admin users manage:
         - Cities
         - Developments
         - Development metadata and imagery
-    - Content is maintained centrally to ensure consitency and data integrity
+    - Content is maintained centrally to ensure consistency and data integrity
 
 ### Error handling and edge cases
 - **Custom 404 page**
@@ -384,7 +386,7 @@ The following features were intentionally excluded from the MVP to maintain focu
 ### Enhanced search and discovery
 
 - **Postcode radius search**
-    - Allow users ti search for developments within a spacified distance of a postcode
+    - Allow users to search for developments within a specified distance of a postcode
     - Requires geocoding and latitude/longitude data for developments
 
 - **Map-based browsing**
@@ -400,7 +402,7 @@ The following features were intentionally excluded from the MVP to maintain focu
 - **Renter accounts**
     - Save favourite developments
     - Track submitted enquiries
-    - Recieve updates on new develpoments in selected cities
+    - Receive updates on new developments in selected cities
 
 - **Saved searches**
     - Allow users to store and revisit common search criteria
@@ -440,6 +442,16 @@ The following features were intentionally excluded from the MVP to maintain focu
 
 ---
 
+## Known MVP limitations
+
+- Enquiry forwarding uses a mailto workflow rather than server-side delivery
+- No renter or operator authentication is implemented
+- Search functionality is limited to city and postcode resolution
+- Admin and dashboard access is restricted to authenticated staff and superusers using Django's built-in authentication system.
+- No role-based permission levels are implemented beyond Django's default auth
+
+---
+
 ## Data Model
 
 The application uses a relational database to store and manage structured data related to Build-to-Rent developments and user enquiries. The data model was designed to support the core renter journey while remaining simple, scalable, and aligned with MVP scope.
@@ -447,6 +459,8 @@ The application uses a relational database to store and manage structured data r
 Each model uses Django's default auto-generated primary key (`id`) unless otherwise specified. Relationships between entities are implemented using foreign keys to enforce referential integrity across the data model.
 
 ### Overview
+
+**ERD:** [View database diagram](https://dbdiagram.io/d/BTR-Directory-—-MVP-ERD-69430c0ee4bb1dd3a97ac8de)
 
 The MVP data model consists of three primary entities:
 
@@ -468,7 +482,7 @@ During development, the data model was expanded beyond the initial MVP ERD to su
         - `pricing_note` (short text, optional)
 - **Unit types**
     - Added a `UnitType` model linked to `Development` 
-    - Represents bedroom-level pricing and availablity (e.g. Studio, 1-bed, 2-bed, etc.)
+    - Represents bedroom-level pricing and availability (e.g. Studio, 1-bed, 2-bed, etc.)
     - Enforces a unique bedroom type per development
 
     These changes are documented in the updated ERD (`dbdiagram.io` script) and should be treated as the current source of truth for the MVP database structure.
@@ -485,7 +499,7 @@ This structure allows users to browse developments by city and submit enquiries 
 
 ### City model
 
-Stores information about each city used as a primaru discovery entry point.
+Stores information about each city used as a primary discovery entry point.
 
 **Key fields include:**
 - City name
@@ -574,7 +588,7 @@ This project adopts a well-documented full-stack architecture to ensure clarity,
 Used to structure all templates and page content.
 
 - **CSS**  
-Used for lyout refinement, spacing, and light visual customisation on top of Bootstrap styling.
+Used for layout refinement, spacing, and light visual customisation on top of Bootstrap styling.
 
 - **JavaScript**  
 Used for minor interactive behaviour and progressive enhancement where required.
@@ -599,7 +613,7 @@ The database stores structured data for cities, developments, and enquiries, wit
 ### Media storage
 
 - **Cloudinary**  
-Used to store and serve images for developents and city pages. This avoids reliance on Heroku's ephemeral filesystem and supports responsive image delivery.
+Used to store and serve images for developments and city pages. This avoids reliance on Heroku's ephemeral filesystem and supports responsive image delivery.
 
 ### Deployment & hosting
 
@@ -610,7 +624,7 @@ Heroku Postgres is used for the production database, and environment variables a
 ### Version control
 
 - **Git**  
-Used for local version controll throughout development.
+Used for local version control throughout development.
 
 - **GitHub**  
 Used to host the project repository and manage commits and documentation.
@@ -722,7 +736,7 @@ This account is used to:
 ### Run the development server
 
 ```bash
-python manage,py runserver
+python manage.py runserver
 ```
 
 The site will be available at:
@@ -823,9 +837,20 @@ Confirm admin access via /admin
 
 ---
 
+## Security considerations
+
+- Django CSRF protection enabled on all forms
+- Admin and staff routes protected by authentication
+- No sensitive credentials stored in version control
+- Environment variables used for all secrets
+
+---
+
 ## Testing
 
-Manual testing was carried out throughout development to ensure the application functions correctly, meets user needs, and remains accessible and responsive across devices.
+Testing focused on validating user stories, form validation, staff workflows, and responsive behaviour across breakpoints.
+
+Manual testing was conducted using Chrome DevTools responsive modes and real browser resizing to validate layout behaviour across breakpoints.
 
 Detailed testing documentation, including user story testing, form validation, responsiveness checks, accessibility checks, and bug fixes, can be found in the separate testing file:
 [View full testing documentation](TESTING.md)
@@ -876,7 +901,7 @@ https://www.djangoproject.com/
 - **Bootstrap** — Used for responsive grid layout and UI components   
 https://getbootstrap.com/
 
-- **PostgreSQL** – Relational database used in both developmennt and production   
+- **PostgreSQL** – Relational database used in both development and production   
 https://www.postgresql.org/
 
 - **Cloudinary** – Used for external image storage and delivery
@@ -898,7 +923,7 @@ https://www.airtable.com/
 ### Images and media
 
 - City and hero images used in wireframes and UI design were sourced from royalty-free stock or AI-generated imagery during the design phase
-- Production images for developments are intended to be provided by operators or sourced with appropiate permissions
+- Production images for developments are intended to be provided by operators or sourced with appropriate permissions
 - All images are served via Cloudinary
 
 Where third-party images are used in the final implementation, the original source and creator will be credited accordingly.
