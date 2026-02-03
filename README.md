@@ -857,6 +857,30 @@ Detailed testing documentation, including user story testing, form validation, r
 
 ---
 
+## Performance, Accessibility & SEO
+
+This project was evaluated using **Google Lighthouse** on both mobile and desktop.
+
+### Lighthouse scores
+
+| Category | Mobile | Desktop |
+|----------|--------|---------|
+| Performance | 73 | 83 |
+| Accessibility | 96 | 96 |
+| Best Practice | 100 | 100 |
+| SEO | 100 | 100 |
+
+### Notes
+
+- Performance is primarily affected by high-resolution imagery via Cloudinary and a large hero image.
+- Images are intentionally prioritised to preserve visual clarity and user experience.
+- Accessibility and SEO stadards are fully met across all audited pages.
+- No blocking issues were identified that would prevent deployment or assessment submisssion.
+
+Lighthouse audits confirm the application is production-ready and meets modern web quality  standards.
+
+---
+
 ## Version Control
 
 This project uses **Git** for version control and is hosted on **GitHub**.

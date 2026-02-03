@@ -148,6 +148,48 @@ All relational data behaved as expected during testing, Foreign key constraints,
 
 ---
 
+## Lighthouse
+
+Full Lighthouse reports have been generated and stored for reference:
+
+- **Mobile report:** [Mobile Lighthouse report](lighthouse/lighthouse-report-mobile.pdf)
+- **Mobile report:** [Desktop Lighthouse report](lighthouse/lighthouse-report-desktop.pdf)
+
+Lighthouse audits were conducted on both **mobile** and **desktop** views using Chrome DevTools to assess performance, accessibility, best practice, and SEO.
+
+### Mobile results
+
+- **Performance:** 73
+- **Accessibility:** 96
+- **Best Practice:** 100
+- **SEO:** 100
+
+Key observations:
+- Largest Contentful Paint is primarily influenced by large hero and coty card images.
+- Total Blocking Time and Cumulative Layout Shift both score optimally.
+- Accessibility and SEO targets are fully met.
+
+### Desktop results
+
+- **Performance:** 83
+- **Accessibility:** 96
+- **Best Practice:** 100
+- **SEO:** 100
+
+Key observations:
+- Desktop performance is stronger due to increased viewport and faster image rendering.
+- Image delivery remains the primary performance constraint.
+- No blocking issues were identified.
+
+### Summary
+
+All Lighthouse audits meet or exceed recommended thresholds for accessibikity, best practices, and SEO.
+Performance scores are within range for an image-rich directory application and were consciously balanced against visual quality.
+
+No blocking issues were identified.
+
+---
+
 
 ## Known MVP Limitations
 
