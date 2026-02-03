@@ -69,12 +69,12 @@ The sections below act as a **testing template**, and were completed incremental
 
 | Test case | Expected result | Pass/Fail | Notes |
 |-----------|-----------------|-----------|-------|
-| Enquiry form loads | Form visible | [] |  |
-| Required field validation | Errorsa shown on empty submit | [] |  |
-| Invalid email rejected | Validation error displayed | [] |  |
-| Valid submission | Enquiry saved successfully | [] |  |
-| Redirect on success | User redirected to confirmation | [] |  |
-| Responsive layout | Layout adapts across breakpoints | [] |  |
+| Enquiry form loads | Form visible | [x] |Page loads without console errors |
+| Required field validation | Errors are shown on empty submit | [x] | Inline validation errors displpayed clearly |
+| Invalid email rejected | Validation error displayed | [x] | Django email validation triggered on submit |
+| Valid submission | Enquiry saved successfully | [x] | Enquiry appears in staff dashboard with status "New" |
+| Redirect on success | User redirected to confirmation | [x] | Confirmation message displayed |
+| Responsive layout | Layout adapts across breakpoints | [x] |  |
 
 ---
 
@@ -85,7 +85,7 @@ The sections below act as a **testing template**, and were completed incremental
 | Confirmation page loads | Success message visible | [] |  |
 | Clear confirmation message | User informed of submission | [] |  |
 | No sensitive data shown | Safe output | [] |  |
-| Responsive layout | Layout adapts across breakpoints | [] |  |
+| Responsive layout | Layout adapts across breakpoints | [] | Verified at mobile (390px), tablet(768px), and desktop (1440px). |
 
 ---
 
@@ -96,10 +96,10 @@ The sections below act as a **testing template**, and were completed incremental
 
 | Test case | Expected result | Pass/Fail | Notes |
 |-----------|-----------------|-----------|-------|
-| Dashboard protected | Unauthenticated users blocked | [] |  |
-| Login page loads | Login form visible | [] |  |
-| Valid login | Access granted | [] |  |
-| Invalid login | Error message shown | [] |  |
+| Dashboard protected | Unauthenticated users blocked | [x] | Redirected to login page. |
+| Login page loads | Login form visible | [x] | Django suthentication from rendered. |
+| Valid login | Access granted | [x] | Authenticated user redirected to dashboard. |
+| Invalid login | Error message shown | [x] | Form-level error displayed without page crashhing. |
 
 ---
 
@@ -107,12 +107,14 @@ The sections below act as a **testing template**, and were completed incremental
 
 | Test case | Expected result | Pass/Fail | Notes |
 |-----------|-----------------|-----------|-------|
-| Enquiry detail loads | Full enquiry visible | [] |  |
-| Status update | Status persists correctly | [] |  |
-| Forward action | Mail client opens with pre-filled content | [] |  |
-| Forward metadata saved | Timestamp and email stored | [] |  |
-| Close enquiry | Status updated to closed | [] |  |
-| Delete enquiry | Enquiry removed | [] |  |
+| Enquiry detail loads | Full enquiry visible | [x] | All submitted fields displayed corrreclty. |
+| Status update | Status persists correctly | [x] | Status change saved to database and reflected in UI. |
+| Forward action | Mail client opens with pre-filled content | [x] | Mailto link opens with subject and body populated. |
+| Forward metadata saved | Timestamp and email stored | [x] | forwarded_at and forwarded_to_email saved on send. |
+| Close enquiry | Status updated to closed | [x] | Closed status shown with updated badge. |
+| Delete enquiry | Enquiry removed | [x] | Enquiry no longer visible in the dashboard list. |
+
+Enquiry management testing confirmed that staff users can track, forward, update, and close enquiries using the custom dashboard workflow.
 
 ---
 
@@ -120,12 +122,14 @@ The sections below act as a **testing template**, and were completed incremental
 
 | Page | Mobile | Tablet | Desktop | Notes |
 |------|--------|--------|---------|-------|
-| Home | [] | [] | [] | |
-| Cities index | [] | [] | [] | |
-| City listings | [] | [] | [] | |
-| Development detail | [] | [] | [] | |
-| Enquiry form | [] | [] | [] | |
-| Dashboard | [] | [] | [] | |
+| Home | [x] | [x] | [x] | Hero, search, and cards stack correctly |
+| Cities index | [x] | [x] | [x] | City cards flow cleanly with no overflow |
+| City listings | [x] | [x] | [x] | Grid adapts across breakpoints |
+| Development detail | [x] | [x] | [x] |Images, amenities, and CTA remain usable |
+| Enquiry form | [x] | [x] | [x] | Form fields are readable and accessible on all screens |
+| Dashboard | [x] | [x] | [x] | Tables and actions remain usable at smaller screens |
+
+All key pages were tested across mobile, tablet, and desktop breakpoints using browser dev tools and actual devices. No layout breakage, overflow, or usability issues were observed.
 
 ---
 
@@ -134,11 +138,13 @@ The sections below act as a **testing template**, and were completed incremental
 
 | Check | Pass/Fail | Notes |
 |-------|-----------|-------|
-| Enquiries linked to development | [] | |
-| Duplicate unit types prevented | [] | |
-| Required fields enforced | [] | |
-| Cascade behaviour correct | [] | |
-| Indexes operate correctly | [] | |
+| Enquiries linked to development | [x] | Enquires correctly reference their associated development via foreign key. |
+| Duplicate unit types prevented | [x] | Unique constraint enforces one unit type per development. |
+| Required fields enforced | [x] | Model and form validation prevent incomplete submissions. |
+| Cascade behaviour correct | [x] | Related enquiries are deleted when a development is removed. |
+| Indexes operate correctly | [x] | Indexed fields supprort efficient querying in listings and dashboard. |
+
+All relational data behaved as expected during testing, Foreign key constraints, unique constraints, and indexed fields ensure data integrity and consistent behaviour across development, enquiry submission, and staff management workflows.
 
 ---
 
@@ -158,6 +164,6 @@ The sections below act as a **testing template**, and were completed incremental
 ## Testing Status
 
 - **Manual testing started:** [x]
-- **Manual testing completed:** []
-- **Blocking issues identified:** []
-- **Ready for sutomated testing:** []
+- **Manual testing completed:** [x]
+- **Blocking issues identified:** none
+- **Ready for automated testing:** [x]

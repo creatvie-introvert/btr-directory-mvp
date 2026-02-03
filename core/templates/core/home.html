@@ -6,7 +6,11 @@
 {% block content %}
 
 <!-- Hero section (headline + City search form) -->
-<section class="py-5 py-lg-8" id="hero-section">
+<section class="py-5 py-lg-8 position-relative overflow-hidden" id="hero-section">
+    <img src="{% static 'core/images/hero/hero-btr-directory.webp' %}" alt="Modern apartment block" class="hero-bg" loading="eager" fetchpriority="high" decoding="async">
+
+    <div class="hero-overlay" aria-hidden="true"></div>
+
     <div class="container">
         <div class="row g-4">
             <div class="col-12 col-md-8 col-lg-8 col-xl-6 px-4">
