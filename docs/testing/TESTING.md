@@ -15,15 +15,15 @@ The sections below act as a **testing template**, and were completed incremental
 | Test case | Expected result | Pass/Fail | Notes |
 |-----------|-----------------|-----------|-------|
 | Homepage loads without errors | Page renders correctly | [x] |  |
-| Hero heading and text visible | Content displayed correctly | [] |  |
-| Hero search input usabe | Input accepts text | [] |  |
-| Search by city name | Redirects to correct city page | [] |  |
-| Search by postcode | Redirects to correct city page | [] |  |
-| Invalid search input | Graceful fallback or empty state | [] |  |
-| Browse cities section visible | Section displays correctly | [] |  |
-| Navigation links work | Correct pages load | [] |  |
-| Footer links work | Correct pages load | [] |  |
-| Responsive layout | Layout adapts across breakpoints | [] |  |
+| Hero heading and text visible | Content displayed correctly | [x] |  |
+| Hero search input usabe | Input accepts text | [x] |  |
+| Search by city name | Displays search results filtered by city | [x] | Search results filtered on the search returns   |
+| Search by postcode | Displays search results filtered by postcode | [x] | Postcode and postcode-area searches resolve to the search results page showing matching developments. |
+| Invalid search input | Graceful fallback or empty state | [x] | Search page loads with user-friendly no-results message. |
+| Browse cities section visible | Section displays correctly | [x] |  |
+| Navigation links work | Correct pages load | [x] |  |
+| Footer links work | Correct pages load | [x] |  |
+| Responsive layout | Layout adapts across breakpoints | [x] | Verified across mobile (390px), tablet (768px), and desktop (1440px) using browser dev tools. |
 
 ---
 
