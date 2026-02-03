@@ -14,7 +14,7 @@ The sections below act as a **testing template**, and were completed incremental
 
 | Test case | Expected result | Pass/Fail | Notes |
 |-----------|-----------------|-----------|-------|
-| Homepage loads without errors | Page renders correctly | [] |  |
+| Homepage loads without errors | Page renders correctly | [x] |  |
 | Hero heading and text visible | Content displayed correctly | [] |  |
 | Hero search input usabe | Input accepts text | [] |  |
 | Search by city name | Redirects to correct city page | [] |  |
