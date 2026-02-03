@@ -31,11 +31,11 @@ The sections below act as a **testing template**, and were completed incremental
 
 | Test case | Expected result | Pass/Fail | Notes |
 |-----------|-----------------|-----------|-------|
-| Cities index loads | Page renders correctly | [] |  |
-|Active cities displayed | All expected cities visible | [] |  |
-| City card shows name and image | Correct content shown | [] |  |
-| City card is clickable | Opens correct city listing | [] |  |
-| Responsive layout | Layout adapts across breakpoints | [] |  |
+| Cities index loads | Page renders correctly | [x] |  |
+|Active cities displayed | All expected cities visible | [x] | Only cities marked as active in the admin are displayed. |
+| City card shows name and image | Correct content shown | [x] |  |
+| City card is clickable | Opens correct city listing | [x] |  |
+| Responsive layout | Layout adapts across breakpoints | [x] | Verified at mobile (390px), tablet(768px), and desktop (1440px). |
 
 ---
 
@@ -43,11 +43,11 @@ The sections below act as a **testing template**, and were completed incremental
 
 | Test case | Expected result | Pass/Fail | Notes |
 |-----------|-----------------|-----------|-------|
-| City development list loads | Correct city title shown | [] |  |
-| Developments filtered by city | Only relevant developments shown | [] |  |
-| Development card content | Name, image,  summary visible | [] |  |
-| Empty state handling | Clear messaging if no developments | [] |  |
-| Responsive layout | Layout adapts across breakpoints | [] |  |
+| City development list loads | Correct city title shown | [x] |  |
+| Developments filtered by city | Only relevant developments shown | [x] | Filtered based on city slug in URL. |
+| Development card content | Name, image,  summary visible | [x] |  |
+| Empty state handling | Clear messaging if no developments | [x] | User-friendly message displayed when no developments exist for a city. |
+| Responsive layout | Layout adapts across breakpoints | [x] | Verified at mobile (390px), tablet(768px), and desktop (1440px). |
 
 ---
 
@@ -55,13 +55,13 @@ The sections below act as a **testing template**, and were completed incremental
 
 | Test case | Expected result | Pass/Fail | Notes |
 |-----------|-----------------|-----------|-------|
-| Detail page loads | No errors | [] |  |
-| Development data shown | Correct content displayed | [] |  |
-| Amenities visible | Amenities listed correctly | [] |  |
-| Images load | Images served from Cloudinary | [] |  |
-| Image alt text | Present and meaningful | [] |  |
-| Enquiry CTA visible | Clear call-to-action shown | [] |  |
-| Responsive layout | Layout adapts across breakpoints | [] |  |
+| Detail page loads | No errors | [x] | Content matches database values for selected development. |
+| Development data shown | Correct content displayed | [x] |  |
+| Amenities visible | Amenities listed correctly | [x] | Amenities rendered from many-to-many relationship. |
+| Images load | Images served from Cloudinary | [x] | Images successfully loaded from Cloudinary URLs. |
+| Image alt text | Present and meaningful | [x] | Alt text present and descriptive for all images. |
+| Enquiry CTA visible | Clear call-to-action shown | [x] |  |
+| Responsive layout | Layout adapts across breakpoints | [x] | Verified at mobile (390px), tablet(768px), and desktop (1440px). |
 
 ---
 
