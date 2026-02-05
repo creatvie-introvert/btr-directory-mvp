@@ -17,7 +17,7 @@
                 <li class="nav-item">
                     <a 
                       class="nav-link {% if request.resolver_match.view_name == 'core:home' %}active{% endif %}"
-                      { % if request.resolver_match.view_name == 'core:home' % }aria-current="page"{ % endif % } 
+                      {% if request.resolver_match.view_name == 'core:home' %}aria-current="page"{% endif %} 
                       href="{% url 'core:home' %}"
                     >
                         Home
