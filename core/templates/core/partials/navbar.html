@@ -20,21 +20,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a 
-                      class="nav-link {% if request.resolver_match.view_name == 'cities:list' %}active{% endif %}" 
-                      {% if request.resolver_match.view_name == 'core:list' %}aria-current="page"{% endif %} 
-                      href="{% url 'cities:list' %}"
-                    >
+                    <a href="{% url 'cities:list' %}" class="nav-link {% if request.resolver_match.view_name == 'cities:list' %}active{% endif %}" {% if request.resolver_match.view_name == 'core:list' %}aria-current="page"{% endif %}>
                         Cities
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'core:what_is_btr' %}">
+                    <a href="{% url 'core:what_is_btr' %}" class="nav-link">
                         What is BTR
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'core:about' %}">
+                    <a href="{% url 'core:about' %}" class="nav-link">
                         About
                     </a>
                 </li>
@@ -42,15 +38,10 @@
 
             <!-- Search form with get request -->
             <form method="GET" action="{% url 'core:search' %}" class="d-flex" role="search">
-                <input 
-                  type="text" 
-                  name="q" 
-                  id="navSearch"
-                  class="form-control me-2" 
-                  placeholder="Search" 
-                  aria-label="Search"
-                >
-                <button class="btn btn-primary btn-lg" type="submit">Search</button>
+                <input type="text" name="q" id="navSearch" class="form-control me-2" placeholder="Search" aria-label="Search">
+                <button class="btn btn-primary btn-lg" type="submit">
+                    Search
+                </button>
             </form>
         </div>
     </div>
