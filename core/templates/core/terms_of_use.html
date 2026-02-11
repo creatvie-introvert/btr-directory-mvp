@@ -213,10 +213,13 @@
     </div>
 </section>
 
-<section class="py-5" id="cta-links">
+<section class="py-5" id="cta-links" aria-labelledby="links-header">
     <div class="container">
         <div class="row g-4">
             <div class="col-12 col-md-8 col-lg-8 col-xl-6 d-flex flex-column gap-2">
+                <h2 id="links-header" class="visually-hidden">
+                    Legal links
+                </h2>
                 <a href="{% url 'core:privacy_policy' %}" class="text-decoration-none">Privacy policy</a>
                 <a href="{% url 'core:disclaimer' %}" class="text-decoration-none">Disclaimer</a>
             </div>
