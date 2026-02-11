@@ -15,18 +15,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a 
-                      class="nav-link {% if request.resolver_match.view_name == 'core:home' %}active{% endif %}"
-                      {% if request.resolver_match.view_name == 'core:home' %}aria-current="page"{% endif %} 
-                      href="{% url 'core:home' %}"
-                    >
+                    <a href="{% url 'core:home' %}" class="nav-link {% if request.resolver_match.view_name == 'core:home' %}active{% endif %}" {% if request.resolver_match.view_name == 'core:home' %} aria-current="page"{% endif %}>
                         Home
                     </a>
                 </li>
                 <li class="nav-item">
                     <a 
                       class="nav-link {% if request.resolver_match.view_name == 'cities:list' %}active{% endif %}" 
-                      { % if request.resolver_match.view_name == 'core:list'% }aria-current="page"{ % endif % } 
+                      {% if request.resolver_match.view_name == 'core:list' %}aria-current="page"{% endif %} 
                       href="{% url 'cities:list' %}"
                     >
                         Cities
