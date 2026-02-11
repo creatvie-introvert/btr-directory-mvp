@@ -188,6 +188,46 @@ Performance scores are within range for an image-rich directory application and 
 
 No blocking issues were identified.
 
+
+---
+
+## HTML & CSS Validation
+
+Validation was carried out using **W3C Markup Validator** and **W3C CCS Validator** to ensure templates and styles follow standards and avoid structural issues.
+
+### HTML validation
+
+Key templates were validated by copying the rendered HTML.
+
+| Page | Result | Notes |
+|------|--------|-------|
+| Homepage | Pass | Minor template attribute ordering fixes applied |
+| Cities index | Pass | Heading hierarchy adjusted to maintain logical structure |
+| Development detail | Pass | Added hidden section headers, and corrected closing tag structure |
+| Enquiry form | Pass | No validation issues found |
+| Dashboard pages | Pass | No validation issues found |
+
+### HTML fixes applied during validation
+
+The following changes were made during validation to resolve markup errors and improve accessibility:
+
+- Reordered `<a>` tag attributes so `href` appears first
+- Added hidden headings to sectioons that triggered "section lacks heading" warnings
+- Updated heading hierarchy in card titles from h3 → h2
+- Removed invalid `aria-label` usage on a `<div>` and replaced with semantic structure where appropiate
+- Fixed invalid markup inside `<button>` elements
+
+### CSS validation
+
+Custom CSS was validated using the W3C CSS Validator. No critical issues found.
+
+
+---
+
+## JavaScript checks (Console)
+
+JavaScript was reviewed using Chrome DevTools Console during manual testing. No console error were found during core renter journey or staff workflow.
+
 ---
 
 ## Screenshots (Documentation Evidence)
