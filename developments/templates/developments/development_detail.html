@@ -307,79 +307,79 @@
 
 <!-- Tenancy details (only shown when tenancy options are provided) -->
 {% if development.tenancy_options or development.tenancy_length or development.minimum_term_months or development.furnishing or development.pet_policy or development.bills_included %}
-    <section class="py-5" id="tenancy">
-        <div class="container">
-            <!-- Section header -->
-            <div class="mb-4">
-                <h2 class="mb-4">
-                    Tenancy options
-                </h2>
-            </div>
+<section class="py-5" id="tenancy">
+    <div class="container">
+        <!-- Section header -->
+        <div class="mb-4">
+            <h2 class="mb-4">
+                Tenancy options
+            </h2>
+        </div>
 
-            <div class="row g-4">
-                <div class="col-12 col-md-8 col-lg-6">
-                    <div class="card shadow-sm border-0 rounded-4 p-2">
-                        <ul class="list-group list-group-flush small">
-                            {% if development.tenancy_length %}
-                                <li class="d-flex justify-content-between align-items-center list-group-item py-3">
-                                    <span class="small text-muted">
-                                        Tenancy length: 
-                                    </span>
-                                    <span class="small text-muted">
-                                        {{ development.tenancy_length }} months
-                                    </span>
-                                </li>
-                            {% endif %}
-
-                            {% if development.minimum_term_months %}
-                                <li class="d-flex justify-content-between align-items-center list-group-item py-3">
-                                    <span class="small text-muted">
-                                        Minimum term: 
-                                    </span>
-                                    <span class="small text-muted">
-                                        {{ development.minimum_term_months }} months
-                                    </span>
-                                </li>
-                            {% endif %}
-
-                            {% if development.furnishing %}
-                                <li class="d-flex justify-content-between align-items-center list-group-item py-3">
-                                    <span class="small text-muted">
-                                        Furnishing: 
-                                    </span>
-                                    <span class="small text-muted">
-                                        {{ development.get_furnishing_display }}
-                                    </span>
-                                </li>
-                            {% endif %}
-
-                            {% if development.pet_policy %}
+        <div class="row g-4">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card shadow-sm border-0 rounded-4 p-2">
+                    <ul class="list-group list-group-flush small">
+                        {% if development.tenancy_length %}
                             <li class="d-flex justify-content-between align-items-center list-group-item py-3">
                                 <span class="small text-muted">
-                                    Pet policy: 
+                                    Tenancy length: 
                                 </span>
                                 <span class="small text-muted">
-                                    {{ development.get_pet_policy_display }}
+                                    {{ development.tenancy_length }} months
                                 </span>
                             </li>
-                            {% endif %}
+                        {% endif %}
 
-                            {% if development.bills_included %}
-                                <li class="d-flex justify-content-between align-items-center list-group-item py-3">
-                                    <span class="small text-muted">
-                                        Bills included: 
-                                    </span>
-                                    <span class="small text-muted">
-                                        {{ development.get_bills_included_display }}
-                                    </span>
-                                </li>
-                            {% endif %}
-                        </ul>
-                    </div>
+                        {% if development.minimum_term_months %}
+                            <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                                <span class="small text-muted">
+                                    Minimum term: 
+                                </span>
+                                <span class="small text-muted">
+                                    {{ development.minimum_term_months }} months
+                                </span>
+                            </li>
+                        {% endif %}
+
+                        {% if development.furnishing %}
+                            <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                                <span class="small text-muted">
+                                    Furnishing: 
+                                </span>
+                                <span class="small text-muted">
+                                    {{ development.get_furnishing_display }}
+                                </span>
+                            </li>
+                        {% endif %}
+
+                        {% if development.pet_policy %}
+                        <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                            <span class="small text-muted">
+                                Pet policy: 
+                            </span>
+                            <span class="small text-muted">
+                                {{ development.get_pet_policy_display }}
+                            </span>
+                        </li>
+                        {% endif %}
+
+                        {% if development.bills_included %}
+                            <li class="d-flex justify-content-between align-items-center list-group-item py-3">
+                                <span class="small text-muted">
+                                    Bills included: 
+                                </span>
+                                <span class="small text-muted">
+                                    {{ development.get_bills_included_display }}
+                                </span>
+                            </li>
+                        {% endif %}
+                    </ul>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 {% endif %}
 
 <!-- Postcode + Google Maps link (fallback if postcode not provided) -->
