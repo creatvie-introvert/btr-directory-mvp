@@ -68,4 +68,9 @@ urlpatterns = [
         views.enquiry_close,
         name="enquiry_close",
     ),
+    path(
+        "enquiries/<int:pk>/delete/",
+        views.enquiry_delete,
+        name="enquiry_delete",
+    ),
 ]

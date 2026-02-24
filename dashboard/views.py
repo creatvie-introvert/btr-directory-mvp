@@ -363,11 +363,33 @@ def enquiry_update_status(request, pk):
 def enquiry_close(request, pk):
     if request.method != "POST":
         return redirect("dashboard:enquiry_detail", pk=pk)
-    
+ 
     enquiry = get_object_or_404(Enquiry, pk=pk)
 
     if enquiry.status != Enquiry.Status.CLOSED:
         enquiry.status = Enquiry.Status.CLOSED
         enquiry.save(update_fields=["status"])
-    
+
     return redirect("dashboard:enquiry_detail", pk=pk)
+
+
+@login_required
+@user_passes_test(is_staff_or_superuser)
+def enquiry_delete(request, pk):
+    """
+    Confirm (GET) + Delete (POST) an enquiry.
+    """
+
+    enquiry = get_object_or_404(Enquiry, pk=pk)
+
+    if request.method == "POST":
+        enquiry.delete()
+        return redirect("dashboard:enquiries_list")
+    
+    return render(
+        request,
+        "dashboard/enquiries/confirm_delete.html",
+        {
+            "enquiry": enquiry,
+        },
+    )
