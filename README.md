@@ -459,17 +459,19 @@ The application uses a relational database to store and manage structured data r
 
 Each model uses Django's default auto-generated primary key (`id`) unless otherwise specified. Relationships between entities are implemented using foreign keys to enforce referential integrity across the data model.
 
-### Overview
+### Entity Relationship Diagram (ERD)
 
-**ERD:** [View database diagram](https://dbdiagram.io/d/BTR-Directory-—-MVP-ERD-69430c0ee4bb1dd3a97ac8de)
+The database structure was designed to support city-based browsing, development listings, and enquiry management using a relational model.
 
-The MVP data model consists of three primary entities:
+**ERD Diagram**
 
-- **City**
-- **Development**
-- **Enquiry**
+![BTR Directory ERD](docs/erd/erd-btr-directory-mvp.png)
 
-These entities are related in a one-to-many structure to support city-based browsing and enquiry management.
+The ERD shows the relatioships between City, Development, Amenity, UnitType, and Enquiry models, including one-to-many and many-to-manay relationships used throuighout the application.
+
+**Interactive Versions (Reference only)**
+
+[View ERD on dbdiagram.io](https://dbdiagram.io/d/BTR-Directory-—-MVP-ERD-69430c0ee4bb1dd3a97ac8de)
 
 ### Data model updates
 
