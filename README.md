@@ -1,6 +1,6 @@
 # BTR Directory — MVP
 
-**Live Site:** _Add Heroku URL once deployed_
+**Live Site:** [BTR Directory](https://btr-directory-dc12b60dacd4.herokuapp.com/)
 
 **Repository:** [View on GitHub](https://github.com/creatvie-introvert/btr-directory-mvp)
 
@@ -17,8 +17,9 @@
 
 ## Project Overview
 
-**BTR Directory — MVP** is a renter-first Build-to-Rent discovery platform designed to help users browse BTR developments by city, view key development details, and submit enquiries.
-The MVP is intentionally scoped to validate the core renter journey while establishing a realistic operational workflow. Enquiries are managed through a **custom staff dashboard** and forwarded to the relevant operator using a **pre-filled email action (mailto workflow)**. Development listings are managed centrally by an authenticated admin user.
+**BTR Directory — MVP** is a renter-focused Build-to-Rent discovery platform that enables users to easily browse BTR developments by city, compare essential details, and submit enquiries with minimal friction.
+
+The MVP is intentionally scoped to validate the core renter journey and establish a efficient operational workflow. Enquiries are managed through a **custom staff dashboard** and forwarded to the relevant operator using a **pre-filled email** workfloe. Development listings are centrally managed by authenticated admin users.
 
 ## Responsive Design Preview
 
@@ -58,20 +59,20 @@ The MVP is intentionally scoped to validate the core renter journey while establ
 
 ### Primary user goals (Renters)
 
-**Who they are:** People actively searching for a long-term rental home in a Build-to-Rent development and using the site to discover, compare, and enquire.
+**Who they are:** Renters searching for a long-term home in a Build-to-Rent development, using the platform to browse, compare, and enquire.
 
-- Discover Build-to-Rent developments in a specific city
-- Compare developments using clear, scannable information
-- View essential details such as amenities, tenancy information, and images
-- Submit an enquiry with minimal friction
-- Trust the platform through transparent legal and accessibility information
+- Discover Build-to-Rent developments in a chosen city
+- Compare developments quickly using clear, scannable information
+- View essential details including amenities, tenancy information, and images
+- Submit an enquiry through a short, low-friction form
+- Build trust through transparent legal information and accessibility-focused content
 
 ### Secondary user goals (Operators / Developers — indirect for MVP)
 
-**Who they are:** BTR operators or developers who receive renter enquiries about specific developments and want leads delivered in a clear, usable format.
+**Who they are:** BTR operators or developers receiving renter enquiries and needing leads delivered in a clear, usable format.
 
-- Receive structured enquiries containing relevant renter intent
-- Reduce follow-up friction by receiving complete enquiry details in one message
+- Recieve structured enquiries that reduce back-and-forth and clrify renter intent early
+- Receive complete enquiry details in one message to minimise follow-up
 
 ---
 
@@ -86,18 +87,17 @@ User stories were defined to clearly capture the needs of each user type interac
 - As a user, I want to browse cities so that I can quickly narrow my search by location
 - As a user, I want to view a list of developments within a city so that I can compare available options
 - As a user, I want to view detailed information about a development so that I can decide if it meets my needs
-- As a user, I want view images of a development so that I can better understand the space and environment
+- As a user, I want to view images of a development so that I can better understand the space and environment
 - As a user, I want to submit an enquiry so that I can request more information or express interest
-- As a user, I want to access clear legal and trust information so that I understand the purpose and limitations of the site
 
 ### Secondary user stories (Staff / Admin workflow)
 
 **User type:** Staff users managing enquiries and content on the platform
 
 - As a user, I want to view all enquiries in one place so that I can manage incoming leads efficiently
-- As a user, I want update the status of an enquiry so that I can track and follow progress
+- As a user, I want to update the status of an enquiry so that I can track and follow progress
 - As a user, I want to forward enquiries to the relevant operator so that leads are delivered quickly and accurately
-- As a user, I want to delete enquiries when appropiate so that data can be managed responsibly
+- As a user, I want to delete enquiries when appropriate so that data can be managed responsibly
 
 ---
 
@@ -190,32 +190,33 @@ Enquiries List → Enquiry Detail → Status Update / Delete / Email operator (m
 
 ## Wireframes
 
-Low-fidelity wireframes were created for **all MVP screens** across **three breakpoints**:
+Low-fidelity wireframe were created for **all MVP screens** across three breakpoints to guide layout, structure, and user flow.
+
+### Breakpoints
 
 - **Mobile:** 390px
 - **Tablet:** 768px
 - **Desktop:** 1440px
 
-**Wireframes directory:** `wireframes/`
+### Exported Wireframes
 
-**Design file:** [View wireframes in Figma](https://www.figma.com/design/DEOSptgxu5fwmNIyOT0tZS/BTR-Directory-%E2%80%94-Low-Fidelity-Wireframes--MVP-?node-id=3-229&p=f&t=wxqrYHQOPzDyOhdu-0)
+To ensire accessibility without requiring a Figma account, all wireframes have been exported and included on the repository:
 
-### Screens included (14 total)
+- Mobile wireframes (390px)
+![Mobile wireframes](docs/wireframes/mobile-wireframes-390px.png)
 
-- Home
-- Cities Index
-- City Developments Listing
-- Development Detail
-- Enquiry Form
-- What is Build-To-Rent
-- About
-- Disclaimer
-- Accessibility
-- Privacy Policy
-- Terms of Use
-- 404 Page
-- Admin — Development List
-- Admin — Add/Edit Development
+- Tablet wireframe (768px)
+![Tablet wireframes](docs/wireframes/tablet-wireframes-768px.png)
+
+- Desktop wireframes (1440px)
+![Desktop wireframes](docs/wireframes/desktop-wireframes-1440px.png)
+
+### Figma design file (Reference only)
+
+The original design file is available here:
+[View wireframes in Figma](https://www.figma.com/design/DEOSptgxu5fwmNIyOT0tZS/BTR-Directory-%E2%80%94-Low-Fidelity-Wireframes--MVP-?node-id=3-229&p=f&t=wxqrYHQOPzDyOhdu-0)
+
+> Note: A Figma account may be required to view the file. Exported images are provided above for accessibility.
 
 ---
 
@@ -472,7 +473,7 @@ These entities are related in a one-to-many structure to support city-based brow
 
 ### Data model updates
 
-During development, the data model was expanded beyond the initial MVP ERD to support renter expectation and improve listing completedness.
+During development, the data model was expanded beyond the initial MVP ERD to support renter expectations and improve listing completeness.
 
 **Additions:**
 - **Pricing**
@@ -874,8 +875,8 @@ This project was evaluated using **Google Lighthouse** on both mobile and deskto
 
 - Performance is primarily affected by high-resolution imagery via Cloudinary and a large hero image.
 - Images are intentionally prioritised to preserve visual clarity and user experience.
-- Accessibility and SEO stadards are fully met across all audited pages.
-- No blocking issues were identified that would prevent deployment or assessment submisssion.
+- Accessibility and SEO standards are fully met across all audited pages.
+- No blocking issues were identified that would prevent deployment or assessment submission.
 
 Lighthouse audits confirm the application is production-ready and meets modern web quality  standards.
 
