@@ -992,10 +992,6 @@ This approach ensures that the documentation remains reliable for future develop
 
 ## License
 
-This project is licensed under the **MIT License**.
-
-You are free to use, modify, and distribute this project, including for commercial purposes, provided that the original copyright and license notice are included.
-
-See the [LICENSE](LICENSE) file for full details.
-
----
+This project is provided for educational purposes as part of a Code Institue assessment.
+All rights reserved.
+The code may not be copied, distributed, modified, or reused without explicit permission from the author.
