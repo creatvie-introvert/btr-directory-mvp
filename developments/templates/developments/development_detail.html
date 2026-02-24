@@ -53,12 +53,12 @@
                           data-alt="{{ development.cover_image_alt|default:development.name }}"
                           aria-label="View cover image"
                         >
-                            <span class="ratio ratio-1x1 rounded-4 overflow-hidden gallery-thumb-frame">
+                            <div class="ratio ratio-1x1 rounded-4 overflow-hidden gallery-thumb-frame">
                                 <img src="{{ development.cover_image.url }}"
                                     class="w-100 h-100 object-fit-cover rounded-3 img-thumbnail"
                                     alt="Thumbnail: {{ development.cover_image_alt|default:development.name }}"
                                     loading="lazy">
-                            </span>
+                            </div>
                         </button>
                     {% endif %}
 
@@ -70,13 +70,13 @@
                           data-alt="{{ img.alt_text|default:development.name }}"
                           aria-label="View image {{ forloop.counter }}"
                         >
-                            <span class="ratio ratio-1x1 rounded-4 overflow-hidden gallery-thumb-frame">
+                            <div class="ratio ratio-1x1 rounded-4 overflow-hidden gallery-thumb-frame">
                                 <img 
                                   src="{{ img.image.url }}" 
                                   class="w-100 h-100 img-thumbnail"
                                   alt="Thumbnail {{img.alt_text|default:development.name }}"
                                 >
-                            </span>
+                            </div>
                         </button>
                     {% endfor %}
                 </div>
