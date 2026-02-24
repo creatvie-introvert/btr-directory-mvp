@@ -1,8 +1,13 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+{% load static  %}
+
+<nav class="navbar navbar-expand-lg bg-white border-bottom">
     <div class="container-fluid">
         <!-- Branding link back to homepage -->
         <a class="navbar-brand" href="{% url 'core:home' %}">
-            <span class="text-brand">BTR</span> | Directory
+            <img 
+                src="{% static 'core/images/logo.webp' %}" 
+                alt="BTR Directory"
+                class="navbar-logo me-2">
         </a>
 
         <!-- Bootstrap nav menu toggle for mobile  -->

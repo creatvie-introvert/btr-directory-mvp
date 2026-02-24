@@ -129,6 +129,24 @@ a:hover {
     color: var(--btr-brand-hover);
 }
 
+.navbar-logo {
+    height: 3.2rem;
+    max-width: 12rem;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    transition: opacity 160ms ease;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand:hover .navbar-logo {
+    opacity: 0.85;
+}
+
 /* Footer */
 footer {
     background-color: var(--btr-brand-tint);
@@ -140,6 +158,13 @@ footer a {
 
 footer a:hover {
     color: var(--btr-brand-hover) !important;
+}
+
+.footer-logo {
+    height: 4rem;
+    width: auto;
+    object-fit: contain;
+    display: block;
 }
 
 /* Hero */
