@@ -97,7 +97,7 @@ User stories were defined to clearly capture the needs of each user type interac
 - As a user, I want to view all enquiries in one place so that I can manage incoming leads efficiently
 - As a user, I want to update the status of an enquiry so that I can track and follow progress
 - As a user, I want to forward enquiries to the relevant operator so that leads are delivered quickly and accurately
-- As a user, I want to delete enquiries when appropriate so that data can be managed responsibly
+- As a user, I want to delete enquiries via a confirmation step so that data can be managed responsibly
 
 ---
 
@@ -153,7 +153,7 @@ This project follows a user-centred design approach guided by the **Five Planes 
 - City development listings
 - Development detail pages (with multiple images)
 - Enquiry form
-- Custom staff enquiries dashboard (CRUD)
+- Custom staff enquiries dashboard (full CRUD including delete with confirmation)
 - Admin-only content management (developments and cities)
 - Trust and legal pages
 - 404 error page
@@ -323,11 +323,18 @@ The MVP focuses on delivering a clear, renter-first discovery experience while s
 
 ### Staff / Admin features (MVP)
 
+- **Full CRUD functionality (Enquiries)**
+    - Create: Enquiries are cresated via the public enquiry form
+    - Read: Staff can view all enquiries and individual enquiry details
+    - Update: Staff can update enquiry status
+    - Delete: Staff can permanently delete enquiries via a confirmation screen
+
 - **Custom enquiries dashboard**
     - Staff can view all enquiries in a centralised dashboard
     - Each enquiry is linked to the relevant development
     - Staff can update enquiry status
     - Staff can close enquiries when appropriate
+    - Staff can permanently delete enquiries via a confirmation screen
     
 - **Enquiry forwarding workflow**
     - Each development stores an operator contact email
@@ -377,6 +384,9 @@ The screenshots below show the implemented MVP features after development. They 
 
 ### Enquiry management (detail view)
 ![Enquiry detail view showing status updates, forwarding, and close actions](docs/images/enquiry-detail-management-responsive.png)
+
+### Enquiry delete confirmation
+![Confirmation page shown before permanently deleting an enquiry](docs/images/enquiry-delete-confirmation.png)
 
 ---
 
@@ -450,6 +460,8 @@ The following features were intentionally excluded from the MVP to maintain focu
 - Search functionality is limited to city and postcode resolution
 - Admin and dashboard access is restricted to authenticated staff and superusers using Django's built-in authentication system.
 - No role-based permission levels are implemented beyond Django's default auth
+- Enquiries use permanent deletion rather than soft-delete to meet assessment requirments.
+- In a production system, a soft-delete approach would be preferred for audit and recovery purposes.
 
 ---
 
@@ -570,6 +582,8 @@ Enquiries  are managed through a custom staff dashboard and can be forwarded to 
 - Indexes are applied to frequently queried fields (status, created date, relationships)
 - Required fields are validated at both model and form level
 - Cascade deletion rules prevent orphaned records
+- Enquiries can be permanently deleted by staff users via a confirmation step
+- Deletion removes the record from the database and cannot be undone
 
 ### Future data model extensions
 
@@ -756,6 +770,28 @@ http://127.0.0.1:8000/admin
 ```
 Admin access is restricted to authenticated users and is used solely for content and enquiry management.
 
+### Staff dashboard access (Assessment requirement)
+
+A dedicated staff dashboard is included to manage enquiries.
+
+Access URL:
+```code
+http://127.0.0.1:8000/dashboard/
+```
+
+**Test credentials (read-only access)**
+Username: teststaff
+Password: Testpassword123
+
+**Permissions:**
+- View enquiries
+- View enquiry details
+- Update enquiry status
+- Forward enquiries (mailto workflow)
+- Delete enquiries
+
+> Note: This account has restricted permissions and cannot modify core data such as developments or cities.
+
 ### Setup rationale
 
 - PostgreSQL is used in both development and production to ensure consistency across environments
@@ -846,6 +882,10 @@ Confirm admin access via /admin
 - Admin and staff routes protected by authentication
 - No sensitive credentials stored in version control
 - Environment variables used for all secrets
+- Role-based access control:
+    - Public users can only submit enquiries
+    - Staff users can manage enquiries via the dashboard
+    - Superusers can manage all data via Django admin
 
 ---
 

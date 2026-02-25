@@ -153,11 +153,16 @@ footer {
 }
 
 footer a {
-    color: var(--btr-text-muted) !important;
+    color: var(--btr-text-primary) !important;
 }
 
-footer a:hover {
-    color: var(--btr-brand-hover) !important;
+footer a:hover,
+footer a:focus {
+    text-decoration: underline;
+}
+
+footer .text-muted {
+    color: var(--btr-text-secondary);
 }
 
 .footer-logo {

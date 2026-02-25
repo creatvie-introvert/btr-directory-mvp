@@ -1,150 +1,143 @@
 # Testing &mdash; BTR Directory MVP
 
 This document outlines the **manual testing process** carried out for the BTR Directory MVP.
-Testing was conducted to validate user stories, core functionality, staff workflows, responsiveness, and accessibility prior to final submission.
 
-The sections below act as a **testing template**, and were completed incrementally as testing is performed.
+Testing was conducted to validate: 
+- User stories
+- Core functionality
+- Staff workflows
+- Data integrity
+- Responsiveness
+- Accessibility
+
+Testing was performed incrementally throughout development and finalise prior to submission.
 
 ---
 
+## User Story Testing
 
-## Public User (Renter) Journey Testing
+### Primary User (Renter)
+
+| User Story | Test | Result | Evidence |
+|------------|------|--------|----------|
+| Browse cities | Navigate to cities index | Pass | [View evidence &mdash; Cities Index](docs/testing/screenshots/cities-index-desktop.jpeg) |
+| View developments in a city | Select city → view listings | Pass | [View evidence &mdash; City Listings](docs/testing/screenshots/city-developments-list-desktop.jpeg) |
+| View development details | Open development page | Pass | [View evidence &mdash; Development Detail ](docs/testing/screenshots/development-detail-top-desktop.jpeg) |
+| View images | Check images load correctly | Pass | Cloudinary images displayed |
+| Submit enquiry | Complete and submit form | Pass | Enquiry appears in dashboard |
+| Recieve confirmation | Redirect to confirmation page | Pass | Confirmation screenshot |
+
+### Staff User (Dashboard)
+
+| User Story | Test | Result | Evidence |
+|------------|------|--------|----------|
+| View enquiires | Access dashboard list | Pass |  Dashboard screenshot |
+| Update status | Change status via dropdown | Pass | Status updates in UI |
+| Forward enquiry | Click forward button | Pass | Mail client opens |
+| Close enquiry | Click close button | Pass | Status changes to closed |
+| Delete enquiry | Use delete confirmation flow | Pass | Enquiry removed from DB |
+
+---
+
+## Feature Testing
 
 ### Homepage
 
-| Test case | Expected result | Pass/Fail | Notes |
-|-----------|-----------------|-----------|-------|
-| Homepage loads without errors | Page renders correctly | [x] |  |
-| Hero heading and text visible | Content displayed correctly | [x] |  |
-| Hero search input usable | Input accepts text | [x] |  |
-| Search by city name | Displays search results filtered by city | [x] | Search results filtered on the search returns   |
-| Search by postcode | Displays search results filtered by postcode | [x] | Postcode and postcode-area searches resolve to the search results page showing matching developments. |
-| Invalid search input | Graceful fallback or empty state | [x] | Search page loads with user-friendly no-results message. |
-| Browse cities section visible | Section displays correctly | [x] |  |
-| Navigation links work | Correct pages load | [x] |  |
-| Footer links work | Correct pages load | [x] |  |
-| Responsive layout | Layout adapts across breakpoints | [x] | Verified across mobile (390px), tablet (768px), and desktop (1440px) using browser dev tools. |
+| Test case | Expected result | Pass | Notes |
+|-----------|-----------------|------|-------|
+| Page loads | No errors      | [x]  |       |
+| Search by city | Filtered results | [x] |  |
+| Search by postcode | Results shown | [x] | |
+| Invalid search | Empty state message | [x] | |
+| Navigation links | Correct routing | [x] | |
+
+### Cities Index
+
+| Test case | Expected result | Pass | Notes |
+|-----------|-----------------|------|-------|
+| Active cities displayed | Only active records shown | [x] | |
+| Cards clickable | Opens correct page | [x] | |
+
+### Development Detail
+
+| Test case | Expected result | Pass | Notes |
+|-----------|-----------------|------|-------|
+| Data accuracy | Matches database | [x] | |
+| Amenities | Render correctly | [x] | |
+| Images | Load via Cloudinary | [x] | |
+| Alt text | Present | [x] | |
+
+### Enquiry Form
+
+| Test case | Expected result | Pass | Notes |
+|-----------|-----------------|------|-------|
+| Required fields | Validation errors | [x] | |
+| Invalid email | Rejected | [x] | |
+| Valid submission | Saved to DB | [x] | |
+| Redirect | Confirmation page | [x] | |
+
+### Dashboard (CRUD)
+
+| Test case | Expected result | Pass | Notes |
+|-----------|-----------------|------|-------|
+| View enquiries | List displayed | [x] | |
+| Update status | Persisted | [x] | |
+| Forward | Mailto triggered | [x] | |
+| Close | Status updated | [x] | |
+| Delete | Removed after confirmation | [x] | |
 
 ---
 
-### Cities index page
+Accessibility Testing
 
-| Test case | Expected result | Pass/Fail | Notes |
-|-----------|-----------------|-----------|-------|
-| Cities index loads | Page renders correctly | [x] |  |
-|Active cities displayed | All expected cities visible | [x] | Only cities marked as active in the admin are displayed. |
-| City card shows name and image | Correct content shown | [x] |  |
-| City card is clickable | Opens correct city listing | [x] |  |
-| Responsive layout | Layout adapts across breakpoints | [x] | Verified at mobile (390px), tablet(768px), and desktop (1440px). |
+Accessibility was tested using:
+- Chrome Lighthouse
+- Keyboard navigation
+- Manual semantic review
 
----
+### Accessibility checks
 
-### City development listing page
+| Check | Result | Notes |
+|-------|--------|-------|
+|Semantic HTML |  |  |
+| Heading hierachy | Pass | Logical order maintained |
+| Alt text | Pass | All images include descriptive alt text |
+| Form labels | | |
+| Keyboard navigation | Pass | Forms and button accessible via tab |
+| Colour contrast | | |
+|ARIA usage | Pass | Used only where necessary |
 
-| Test case | Expected result | Pass/Fail | Notes |
-|-----------|-----------------|-----------|-------|
-| City development list loads | Correct city title shown | [x] |  |
-| Developments filtered by city | Only relevant developments shown | [x] | Filtered based on city slug in URL. |
-| Development card content | Name, image,  summary visible | [x] |  |
-| Empty state handling | Clear messaging if no developments | [x] | User-friendly message displayed when no developments exist for a city. |
-| Responsive layout | Layout adapts across breakpoints | [x] | Verified at mobile (390px), tablet(768px), and desktop (1440px). |
+### Lighthouse Accessibility Score
 
----
-
-### Development detail page
-
-| Test case | Expected result | Pass/Fail | Notes |
-|-----------|-----------------|-----------|-------|
-| Detail page loads | No errors | [x] | Content matches database values for selected development. |
-| Development data shown | Correct content displayed | [x] |  |
-| Amenities visible | Amenities listed correctly | [x] | Amenities rendered from many-to-many relationship. |
-| Images load | Images served from Cloudinary | [x] | Images successfully loaded from Cloudinary URLs. |
-| Image alt text | Present and meaningful | [x] | Alt text present and descriptive for all images. |
-| Enquiry CTA visible | Clear call-to-action shown | [x] |  |
-| Responsive layout | Layout adapts across breakpoints | [x] | Verified at mobile (390px), tablet(768px), and desktop (1440px). |
+- **Mobile:**
+- **Desktop:**
 
 ---
 
-### Enquiry form
+## Responsive Testing
 
-| Test case | Expected result | Pass/Fail | Notes |
-|-----------|-----------------|-----------|-------|
-| Enquiry form loads | Form visible | [x] |Page loads without console errors |
-| Required field validation | Errors are shown on empty submit | [x] | Inline validation errors displpayed clearly |
-| Invalid email rejected | Validation error displayed | [x] | Django email validation triggered on submit |
-| Valid submission | Enquiry saved successfully | [x] | Enquiry appears in staff dashboard with status "New" |
-| Redirect on success | User redirected to confirmation | [x] | Confirmation message displayed |
-| Responsive layout | Layout adapts across breakpoints | [x] |  |
+| Page | Mobile | Tablet | Desktop | Result |
+|------|--------|--------|---------|--------|
+| Home | [x] | [x] | [x] | Pass |
+| Cities | [x] | [x] | [x] | Pass |
+| Listings | [x] | [x] | [x] | Pass |
+|Detail | [x] | [x] | [x] | Pass |
+|Form | [x] | [x] | [x] | Pass |
+|Dashboard | [x] | [x] | [x] | Pass |
 
----
-
-### Enquiry confirmation page
-
-| Test case | Expected result | Pass/Fail | Notes |
-|-----------|-----------------|-----------|-------|
-| Confirmation page loads | Success message visible | [x] |  |
-| Clear confirmation message | User informed of submission | [x] |  |
-| No sensitive data shown | Safe output | [x] |  |
-| Responsive layout | Layout adapts across breakpoints | [x] | Verified at mobile (390px), tablet(768px), and desktop (1440px). |
+All layouts tested using DevTools and real devices.
 
 ---
-
-
-## Staff / Admin Workflow Testing
-
-### Authentication
-
-| Test case | Expected result | Pass/Fail | Notes |
-|-----------|-----------------|-----------|-------|
-| Dashboard protected | Unauthenticated users blocked | [x] | Redirected to login page. |
-| Login page loads | Login form visible | [x] | Django authentication from rendered. |
-| Valid login | Access granted | [x] | Authenticated user redirected to dashboard. |
-| Invalid login | Error message shown | [x] | Form-level error displayed without page crashing. |
-
----
-
-### Enquiry management
-
-| Test case | Expected result | Pass/Fail | Notes |
-|-----------|-----------------|-----------|-------|
-| Enquiry detail loads | Full enquiry visible | [x] | All submitted fields displayed corrreclty. |
-| Status update | Status persists correctly | [x] | Status change saved to database and reflected in UI. |
-| Forward action | Mail client opens with pre-filled content | [x] | Mailto link opens with subject and body populated. |
-| Forward metadata saved | Timestamp and email stored | [x] | forwarded_at and forwarded_to_email saved on send. |
-| Close enquiry | Status updated to closed | [x] | Closed status shown with updated badge. |
-| Delete enquiry | Enquiry removed | [x] | Enquiry no longer visible in the dashboard list. |
-
-Enquiry management testing confirmed that staff users can track, forward, update, and close enquiries using the custom dashboard workflow.
-
----
-
-### Responsive Testing
-
-| Page | Mobile | Tablet | Desktop | Notes |
-|------|--------|--------|---------|-------|
-| Home | [x] | [x] | [x] | Hero, search, and cards stack correctly |
-| Cities index | [x] | [x] | [x] | City cards flow cleanly with no overflow |
-| City listings | [x] | [x] | [x] | Grid adapts across breakpoints |
-| Development detail | [x] | [x] | [x] |Images, amenities, and CTA remain usable |
-| Enquiry form | [x] | [x] | [x] | Form fields are readable and accessible on all screens |
-| Dashboard | [x] | [x] | [x] | Tables and actions remain usable at smaller screens |
-
-All key pages were tested across mobile, tablet, and desktop breakpoints using browser dev tools and actual devices. No layout breakage, overflow, or usability issues were observed.
-
----
-
 
 ## Data Integrity & Validation
 
-| Check | Pass/Fail | Notes |
-|-------|-----------|-------|
-| Enquiries linked to development | [x] | Enquires correctly reference their associated development via foreign key. |
-| Duplicate unit types prevented | [x] | Unique constraint enforces one unit type per development. |
-| Required fields enforced | [x] | Model and form validation prevent incomplete submissions. |
-| Cascade behaviour correct | [x] | Related enquiries are deleted when a development is removed. |
-| Indexes operate correctly | [x] | Indexed fields support efficient querying in listings and dashboard. |
-
-All relational data behaved as expected during testing, Foreign key constraints, unique constraints, and indexed fields ensure data integrity and consistent behaviour across development, enquiry submission, and staff management workflows.
+| Check | Result | Notes |
+|-------|--------|-------|
+|Foreign keys | Pass | Enquiries linked correctly |
+| Unique contraints | Pass | No duplicate unit types |
+| Required fields | Pass | Validated at model + form level |
+| Cascade deletion | Pass | No orphaned records |
+| Indexed queries | Pass | Efficient filtering |
 
 ---
 
@@ -157,111 +150,73 @@ Full Lighthouse reports have been generated and stored for reference:
 
 Lighthouse audits were conducted on both **mobile** and **desktop** views using Chrome DevTools to assess performance, accessibility, best practice, and SEO.
 
-### Mobile results
+### Mobile
 
-- **Performance:** 73
-- **Accessibility:** 96
-- **Best Practice:** 100
-- **SEO:** 100
+- **Performance:** 
+- **Accessibility:** 
+- **Best Practice:** 
+- **SEO:** 
 
-Key observations:
-- Largest Contentful Paint is primarily influenced by large hero and city card images.
-- Total Blocking Time and Cumulative Layout Shift both score optimally.
-- Accessibility and SEO targets are fully met.
+### Desktop
 
-### Desktop results
-
-- **Performance:** 83
-- **Accessibility:** 96
-- **Best Practice:** 100
-- **SEO:** 100
-
-Key observations:
-- Desktop performance is stronger due to increased viewport and faster image rendering.
-- Image delivery remains the primary performance constraint.
-- No blocking issues were identified.
-
-### Summary
-
-All Lighthouse audits meet or exceed recommended thresholds for accessibility, best practices, and SEO.
-Performance scores are within range for an image-rich directory application and were consciously balanced against visual quality.
-
-No blocking issues were identified.
-
+- **Performance:** 
+- **Accessibility:** 
+- **Best Practice:** 
+- **SEO:** 
 
 ---
 
 ## HTML & CSS Validation
 
-Validation was carried out using **W3C Markup Validator** and **W3C CCS Validator** to ensure templates and styles follow standards and avoid structural issues.
+### HTML
 
-### HTML validation
+- All key templates validated via W3C
+- Errors fixed:
+    - Heading hierarchy
+    - Section labels
+    - Invalid attributes
 
-Key templates were validated by copying the rendered HTML.
+### CSS 
 
-| Page | Result | Notes |
-|------|--------|-------|
-| Homepage | Pass | Minor template attribute ordering fixes applied |
-| Cities index | Pass | Heading hierarchy adjusted to maintain logical structure |
-| Development detail | Pass | Added hidden section headers, and corrected closing tag structure |
-| Enquiry form | Pass | No validation issues found |
-| Dashboard pages | Pass | No validation issues found |
-
-### HTML fixes applied during validation
-
-The following changes were made during validation to resolve markup errors and improve accessibility:
-
-- Reordered `<a>` tag attributes so `href` appears first
-- Added hidden headings to sectioons that triggered "section lacks heading" warnings
-- Updated heading hierarchy in card titles from h3 → h2
-- Removed invalid `aria-label` usage on a `<div>` and replaced with semantic structure where appropiate
-- Fixed invalid markup inside `<button>` elements
-
-### CSS validation
-
-Custom CSS was validated using the W3C CSS Validator. No critical issues found.
-
+- No critical issues found
 
 ---
 
-## JavaScript checks (Console)
+## JavaScript Testing
 
-JavaScript was reviewed using Chrome DevTools Console during manual testing. No console error were found during core renter journey or staff workflow.
-
----
-
-## Screenshots (Documentation Evidence)
-
-Screenshots were captured using **browser developer tools** at the following breakpoints:
-
-- **Mobile:** 390px
-- **Tablet:** 768px
-- **Desktop:** 1440px
-
-All screenshots are stored in:
-
-`docs/testing/screenshots`
-
-Additional screenshots are referenced in the README under the **Feature Screenshots** section, to provide visual evidence of functionality implemented across breakpoints.
+- No console errors detected
+- All interactions behave as expected
 
 ---
 
+## Screenshots (Evidence)
+
+- Screenshots stored in:
+
+```
+doc/testing/screenshots
+```
+
+Include:
+- Homepage
+- Listings
+- Detail page
+- Dashboard
+- Delete confirmation
+
+---
 
 ## Known MVP Limitations
 
-| Limitation | Confirmed |
-|-----------|-----------|
-| Mailto enquiry forwarding | [x] |
-| No renter/operator accounts | [x] |
-| Limited search logic | [x] |
-| Default Django auth only | [x] |
+- Mailto-based forwarding
+- No user accounts
+- No advancedsearch filters
+- Basic authentication only
 
 ---
 
-
 ## Testing Status
 
-- **Manual testing started:** [x]
-- **Manual testing completed:** [x]
-- **Blocking issues identified:** none
-- **Ready for automated testing:** [x]
+- Manual testing completed
+- No blocking issues identified
+- Ready for submission
