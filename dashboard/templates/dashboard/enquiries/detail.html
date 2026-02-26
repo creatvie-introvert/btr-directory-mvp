@@ -85,7 +85,7 @@
                     <form action="{% url 'dashboard:enquiry_update_status' enquiry.id %}" method="POST">
                         {% csrf_token %}
 
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" name="action" value="forward" class="btn btn-primary">
                             <i class="fa-solid fa-paper-plane me-2"></i>
                             Forward enquiry
                         </button>
@@ -110,7 +110,7 @@
                                 </option>
                             {% endfor %}
                         </select>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" name="action" value="update_status" class="btn btn-primary">
                             Update status
                         </button>
                     </form>

@@ -307,55 +307,78 @@ def enquiry_update_status(request, pk):
 
     enquiry = get_object_or_404(Enquiry, pk=pk)
 
-    operator_email = (enquiry.development.operator_contact_email or "").strip()
+    action = request.POST.get("action")
 
-    # Build mailto logic
-    mailto_address = operator_email
+    # Handle status update
+    if action == "update_status":
+        new_status = request.POST.get("status")
 
-    # If operator_email exists, log forwarding + update status
-    if operator_email:
-        enquiry.forwarded_to_email = operator_email
-        enquiry.forwarded_at = timezone.now()
+        if new_status:
+            enquiry.status = new_status
+            enquiry.save(update_fields=["status"])
+        
+        return redirect("dashboard:enquiry_detail", pk=pk)
+    
+    # Handle forward enquiry
+    elif action == "forward":
+        operator_email = (enquiry.development.operator_contact_email or "").strip()
 
-        # If current status is NEW, update to IN-PROGRESS
-        if enquiry.status == Enquiry.Status.NEW:
-            enquiry.status = Enquiry.Status.IN_PROGRESS
+        # If operator_email exists, log forwarding + update status
+        if operator_email:
+            enquiry.forwarded_to_email = operator_email
+            enquiry.forwarded_at = timezone.now()
 
-        enquiry.save(
-            update_fields=[
-                "forwarded_to_email",
-                "forwarded_at",
-                "status",
-            ]
+            # If current status is NEW, update to IN-PROGRESS
+            if enquiry.status == Enquiry.Status.NEW:
+                enquiry.status = Enquiry.Status.IN_PROGRESS
+
+            enquiry.save(
+                update_fields=[
+                    "forwarded_to_email",
+                    "forwarded_at",
+                    "status",
+                ]
+            )
+        
+        # Build mailto content
+        subject = f"New rental enquiry: {enquiry.development.name}"
+
+        msg_body = [
+            f"Development: {enquiry.development.name}",
+            f"From: {enquiry.full_name}",
+            f"Contact email: {enquiry.email}",
+            (
+                f"Move timeframe: "
+                f"{enquiry.get_move_timeframe_display() or 'Not specified'}"
+            ),
+            f"Submitted: {enquiry.created_at:%d %b %Y, %H:%M}",
+            "",
+            "Message:",
+            enquiry.message,
+        ]
+        body = "\n".join(msg_body)
+
+        # Build mailto logic
+        mailto_address = operator_email
+
+        mailto_url = (
+            f"mailto:{mailto_address}"
+            f"?subject={quote(subject)}"
+            f"&body={quote(body)}"
         )
 
-    # Build mailto content
-    subject = f"New rental enquiry: {enquiry.development.name}"
+        response = HttpResponse(status=302)
+        response["Location"] = mailto_url
+        return response
 
-    msg_body = [
-        f"Development: {enquiry.development.name}",
-        f"From: {enquiry.full_name}",
-        f"Contact email: {enquiry.email}",
-        (
-            f"Move timeframe: "
-            f"{enquiry.get_move_timeframe_display() or 'Not specified'}"
-        ),
-        f"Submitted: {enquiry.created_at:%d %b %Y, %H:%M}",
-        "",
-        "Message:",
-        enquiry.message,
-    ]
-    body = "\n".join(msg_body)
+    # fallback safely to enquiry detail
+    return redirect("dashboard:enquiry_detail", pk=pk)
 
-    mailto_url = (
-        f"mailto:{mailto_address}"
-        f"?subject={quote(subject)}"
-        f"&body={quote(body)}"
-    )
+    
 
-    response = HttpResponse(status=302)
-    response["Location"] = mailto_url
-    return response
+    
+
+    
 
 
 @login_required
