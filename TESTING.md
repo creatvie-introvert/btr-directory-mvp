@@ -88,29 +88,70 @@ Testing was performed incrementally throughout development and finalise prior to
 
 ---
 
-Accessibility Testing
+## Accessibility Testing
 
 Accessibility was tested using:
 - Chrome Lighthouse
+- WAVE (WebAIM accessibility evaluation tool)
 - Keyboard navigation
-- Manual semantic review
+- Manual semantic HTML and ARIA review
 
 ### Accessibility checks
 
 | Check | Result | Notes |
 |-------|--------|-------|
-|Semantic HTML |  |  |
+|Semantic HTML | Pass | Pages structured using appropiate semantic elements such as <section>, <nav>, <article>, and headings |
 | Heading hierachy | Pass | Logical order maintained |
 | Alt text | Pass | All images include descriptive alt text |
-| Form labels | | |
+| Form labels | Pass | Explicit <label> added to search input (visually hidden but accesible to screen readers) |
 | Keyboard navigation | Pass | Forms and button accessible via tab |
-| Colour contrast | | |
+| Colour contrast | Partial | Majority of UI elements accessible via keyboard (tab, enter, focus states visible) |
 |ARIA usage | Pass | Used only where necessary |
 
 ### Lighthouse Accessibility Score
 
-- **Mobile:**
-- **Desktop:**
+- **Mobile:** 96
+- **Desktop:** 96
+
+Lighthouse audits indicate a high level of accessibility compliance, with no critical or blocking issues identified.
+
+### Accessibility Limitations (Known Issues)
+
+- **7 low contrast warnings** were identified using WAVE.
+- These occur primarily in:
+    - Hero section over background image
+    - Footer text using brand colour palette
+
+**Cause:**
+
+- Background image variabilty affects contrast consistency
+- Brand colour palette limits contrast options
+- Bootstrap utility classes may override custom styles
+
+**Mitigation steps taken:**
+
+- Increased hero overlay opacity to improve readability
+- Applied text-shadow colours to higher contrast variants
+- Ensured all critical content remains readable
+
+**Reason not fully reloved:**
+
+- Fully resolving these warnings would require:
+    - Redesigning the brand colour system or
+    - Removing/replacing the image-based hero section
+
+**Impact:**
+
+- No blocking accessibility issues
+- Core content remains readable and usable
+- High Lghthouse accessibility score maintained
+
+### Future Improvements
+
+In a production environment, furtherimprovements could include:
+- Dynamic contrast overlays based on background brightness
+- Alternative non-image hero design for guaranteed contrast compliance
+- Full WCAG 2.1 AA colour audit across all components
 
 ---
 
@@ -152,17 +193,17 @@ Lighthouse audits were conducted on both **mobile** and **desktop** views using 
 
 ### Mobile
 
-- **Performance:** 
-- **Accessibility:** 
-- **Best Practice:** 
-- **SEO:** 
+- **Performance:** 73
+- **Accessibility:** 96
+- **Best Practice:** 100
+- **SEO:** 100
 
 ### Desktop
 
-- **Performance:** 
-- **Accessibility:** 
-- **Best Practice:** 
-- **SEO:** 
+- **Performance:** 83
+- **Accessibility:** 96
+- **Best Practice:** 100
+- **SEO:** 100
 
 ---
 
