@@ -20,22 +20,22 @@ Testing was performed incrementally throughout development and finalise prior to
 
 | User Story | Test | Result | Evidence |
 |------------|------|--------|----------|
-| Browse cities | Navigate to cities index | Pass | [View evidence &mdash; Cities Index](docs/testing/screenshots/cities-index-desktop.jpeg) |
-| View developments in a city | Select city → view listings | Pass | [View evidence &mdash; City Listings](docs/testing/screenshots/city-developments-list-desktop.jpeg) |
-| View development details | Open development page | Pass | [View evidence &mdash; Development Detail ](docs/testing/screenshots/development-detail-top-desktop.jpeg) |
-| View images | Check images load correctly | Pass | Cloudinary images displayed |
-| Submit enquiry | Complete and submit form | Pass | Enquiry appears in dashboard |
-| Recieve confirmation | Redirect to confirmation page | Pass | Confirmation screenshot |
+| Browse cities | Navigate to cities index | Pass | [Cities Index (Desktop)](docs/testing/screenshots/cities-index-desktop.jpeg) |
+| View developments in a city | Select city → view listings | Pass | [City Listings (Desktop)](docs/testing/screenshots/city-developments-list-desktop.jpeg) |
+| View development details | Open development page | Pass | [Development Detail (Desktop)](docs/testing/screenshots/development-detail-info-desktop.jpeg) |
+| View images | Check images load correctly | Pass | [Gallery Interaction (Desktop)](docs/testing/screenshots/development-detail-top-desktop.jpeg) |
+| Submit enquiry | Complete and submit form | Pass | [Enquiry form submission](docs/testing/screenshots/enquiry-form-empty-desktop.jpeg) |
+| Recieve confirmation | Redirect to confirmation page | Pass | [Confirmation page](docs/testing/screenshots/enquiry-confirmation-desktop.jpeg) |
 
 ### Staff User (Dashboard)
 
 | User Story | Test | Result | Evidence |
 |------------|------|--------|----------|
-| View enquiires | Access dashboard list | Pass |  Dashboard screenshot |
-| Update status | Change status via dropdown | Pass | Status updates in UI |
-| Forward enquiry | Click forward button | Pass | Mail client opens |
-| Close enquiry | Click close button | Pass | Status changes to closed |
-| Delete enquiry | Use delete confirmation flow | Pass | Enquiry removed from DB |
+| View enquires | Access dashboard list | Pass |  [Dashboard list](docs/testing/screenshots/staff-enquiries-dashboard.jpeg) |
+| Update status | Change status via dropdown | Pass | [Status update](docs/testing/screenshots/staff-enquiry-status-update.jpeg) |
+| Forward enquiry | Click forward button | Pass | [Mailto trigger](docs/testing/screenshots/mailto.png) |
+| Close enquiry | Click close button | Pass | [Closed status](docs/testing/screenshots/staff-enquiry-closed.jpeg) |
+| Delete enquiry | Use delete confirmation flow | Pass | [Delete confirmation](docs/testing/screenshots/staff-enquiry-delete-confirmation.jpeg) |
 
 ---
 
@@ -162,9 +162,9 @@ In a production environment, furtherimprovements could include:
 | Home | [x] | [x] | [x] | Pass |
 | Cities | [x] | [x] | [x] | Pass |
 | Listings | [x] | [x] | [x] | Pass |
-|Detail | [x] | [x] | [x] | Pass |
-|Form | [x] | [x] | [x] | Pass |
-|Dashboard | [x] | [x] | [x] | Pass |
+| Detail | [x] | [x] | [x] | Pass |
+| Form | [x] | [x] | [x] | Pass |
+| Dashboard | [x] | [x] | [x] | Pass |
 
 All layouts tested using DevTools and real devices.
 
