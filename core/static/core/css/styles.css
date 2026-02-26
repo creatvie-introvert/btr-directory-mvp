@@ -162,7 +162,7 @@ footer a:focus {
 }
 
 footer .text-muted {
-    color: var(--btr-text-secondary);
+    color: var(--btr-text-primary);
 }
 
 .footer-logo {
@@ -191,7 +191,7 @@ footer .text-muted {
 #hero-section .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.65);
     z-index: 1;
 }
 

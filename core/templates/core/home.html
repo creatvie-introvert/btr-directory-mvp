@@ -21,6 +21,9 @@
                     Browse purpose-built rental developments across UK cities.
                 </p>
                 <form method="GET" action="{% url 'core:search' %}" class="d-grid gap-3 d-sm-flex mt-4">
+                    <label for="heroSearch" class="visually-hidden">
+                        Search developments by city or postcode
+                    </label>
                     <input type="text" name="q" id="heroSearch" class="form-control flex-sm-grow-1" placeholder="London, Manchester..." value="{{ request.GET.q|default_if_none:'' }}">
                     <button type="submit" class="btn btn-primary btn-lg px-4 py-2">
                         Search
