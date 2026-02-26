@@ -19,14 +19,14 @@
 
 **BTR Directory — MVP** is a renter-focused Build-to-Rent discovery platform that enables users to easily browse BTR developments by city, compare essential details, and submit enquiries with minimal friction.
 
-The MVP is intentionally scoped to validate the core renter journey and establish a efficient operational workflow. Enquiries are managed through a **custom staff dashboard** and forwarded to the relevant operator using a **pre-filled email** workfloe. Development listings are centrally managed by authenticated admin users.
+The MVP is deliberately scoped to validate the primary renter journey and establish an efficient operational workflow. Enquiries are managed via a **custom staff dashboard** and routed to the appropiate operator using a **pre-filled email** process. Development listings are centrally controlled by authenticated admin users.
 
 ## Responsive Design Preview
 
 ![Responsive homepage showing mobile, tablet, and desktop layouts](docs/images/homepage-responsive.png)
 
 > Composite screenshot showing the homepage hero and key sections across **mobile, tablet, and desktop** breakpoints.
-> Screens were captured using browser developer tools and combined into a single composite image to demonstrate responsive behaviour across breakpoints.
+> Screens were captured using browser developer tools and combined into one composite image to demonstrate responsive behaviour across breakpoints.
 
 ---
 
@@ -61,61 +61,61 @@ The MVP is intentionally scoped to validate the core renter journey and establis
 
 **Who they are:** Renters searching for a long-term home in a Build-to-Rent development, using the platform to browse, compare, and enquire.
 
-- Discover Build-to-Rent developments in a chosen city
-- Compare developments quickly using clear, scannable information
-- View essential details including amenities, tenancy information, and images
-- Submit an enquiry through a short, low-friction form
-- Build trust through transparent legal information and accessibility-focused content
+- Discover Build-to-Rent developments in a chosen city.
+- Compare developments quickly using clear, scannable information.
+- View essential details, including amenities, tenancy information, and images.
+- Submit an enquiry through a short, low-friction form.
+- Build trust through transparent legal information and accessibility-focused content.
 
 ### Secondary user goals (Operators / Developers — indirect for MVP)
 
 **Who they are:** BTR operators or developers receiving renter enquiries and needing leads delivered in a clear, usable format.
 
-- Recieve structured enquiries that reduce back-and-forth and clrify renter intent early
-- Receive complete enquiry details in one message to minimise follow-up
+- Receive structured enquiries that minimise exhanges and clarify renter intent early.
+- Receive complete enquiry details in one message to minimise follow-up.
 
 ---
 
 ## User Stories
 
-User stories were defined to clearly capture the needs of each user type interacting with the platform. These stories informed feature scope, information architecture, and testing decisions throughout the project.
+User stories were defined to clearly capture the needs of each user type interacting with the platform. These stories informed feature scope, information architecture, and testing decisions.
 
 ### Primary user stories (Renters)
 
 **User type:** Renter searching for Build-to-Rent properties.
 
-- As a user, I want to browse cities so that I can quickly narrow my search by location
-- As a user, I want to view a list of developments within a city so that I can compare available options
-- As a user, I want to view detailed information about a development so that I can decide if it meets my needs
-- As a user, I want to view images of a development so that I can better understand the space and environment
-- As a user, I want to submit an enquiry so that I can request more information or express interest
+- As a user, I want to browse cities so that I can quickly narrow my search by location.
+- As a user, I want to view a list of developments within a city so that I can compare available options.
+- As a user, I want to view detailed information about a development so that I can decide if it meets my needs.
+- As a user, I want to view images of a development so that I can better understand the space and environment.
+- As a user, I want to submit an enquiry to request more information or express interest.
 
 ### Secondary user stories (Staff / Admin workflow)
 
-**User type:** Staff users managing enquiries and content on the platform
+**User type:** Staff users managing enquiries and content on the platform.
 
-- As a user, I want to view all enquiries in one place so that I can manage incoming leads efficiently
-- As a user, I want to update the status of an enquiry so that I can track and follow progress
-- As a user, I want to forward enquiries to the relevant operator so that leads are delivered quickly and accurately
-- As a user, I want to delete enquiries via a confirmation step so that data can be managed responsibly
+- As a user, I want to view all enquiries in one place to manage incoming leads efficiently.
+- As a user, I want to update the status of an enquiry so that I can track and follow progress.
+- As a user, I want to forward enquiries to the relevant operator so that leads are delivered quickly and accurately.
+- As a user, I want to delete enquiries via a confirmation step to ensure data is managed responsibly.
 
 ---
 
 ## Website Goals and Objectives
 
-The following goals define the purpose of the website and guided key design, feature, and scope decisions throughout the MVP. They balance user needs, business intent, and course assessment requirements.
+The following goals define the website's purpose and guide key design, feature, and scope decisions throughout the MVP. They balance user needs, business intent, and course assessment requirements.
 
-- Provide a renter-focused directory of BTR developments by city
-- Support a complete **browse → view → enquiries** user journey
-- Maintain a centralised content management using Django's admin authentication
-- Establish trust through transparency and accessibility-focused content
-- Demonstrate Django relational database implementation
+- Provide a renter-focused directory of BTR developments by city.
+- Support a complete **browse → view → enquiries** user journey.
+- Maintain a centralised content management system using Django's admin authentication.
+- Establish trust through transparency and accessibility-focused content.
+- Demonstrate Django relational database implementation.
 
 ---
 
 ## Target Audience
 
-This section defines who the platform is designed for at MVP stage, as well as which users and features are intentionally out of scope. Clearly defining the target audience helped guide scope decisions and maintain focus during development.
+This section defines whom the platform targets at the MVP stageand which users and features are out of scope. Defining the target audience guided scope decisions and maintained development focus.
 
 ### Primary audience
 
@@ -153,7 +153,7 @@ This project follows a user-centred design approach guided by the **Five Planes 
 - City development listings
 - Development detail pages (with multiple images)
 - Enquiry form
-- Custom staff enquiries dashboard (full CRUD including delete with confirmation)
+- Custom staff enquiries dashboard (full CRUD, including delete with confirmation)
 - Admin-only content management (developments and cities)
 - Trust and legal pages
 - 404 error page
@@ -170,8 +170,7 @@ This project follows a user-centred design approach guided by the **Five Planes 
 **Public flow:**
 Home → Cities → City Developments → Development Detail → Enquiry
 
-**Staff flow:**
-Enquiries List → Enquiry Detail → Status Update / Delete / Email operator (mailto)
+**Staff flow:** Staff users access an Enquiries List where they can view all incoming leads. For each enquiry, staff can review details, update its status, and choose to forward the enquiry to the relevant operator via a pre-filled mailto link. This process ensures efficent and consistent lead delivery, keeping both enquiry tracking and operator communication clear. Staff can also delete enquiries after confirmation for responsible data management.
 
 ### Skeleton Plane
 
@@ -190,7 +189,7 @@ Enquiries List → Enquiry Detail → Status Update / Delete / Email operator (m
 
 ## Wireframes
 
-Low-fidelity wireframe were created for **all MVP screens** across three breakpoints to guide layout, structure, and user flow.
+Low-fidelity wireframes were created for **all MVP screens** across three breakpoints to guide layout, structure, and user flow.
 
 ### Breakpoints
 
@@ -200,7 +199,7 @@ Low-fidelity wireframe were created for **all MVP screens** across three breakpo
 
 ### Exported Wireframes
 
-To ensire accessibility without requiring a Figma account, all wireframes have been exported and included on the repository:
+To ensure accessibility without requiring a Figma account, all wireframes have been exported and included in the repository:
 
 - Mobile wireframes (390px)
 ![Mobile wireframes](docs/wireframes/mobile-wireframes-390px.png)
@@ -244,7 +243,7 @@ The typographic scale was designed to support clear hierarchy and responsive rea
 
 ### Colour Scheme
 
-A restrained, neutral colour palette was chosen to prioritise **readability, clarity, and trust**, which are essential for a property discovery platform.
+A streamlined, neutral colour palette was selected to enhancr **readability, clarity, and trust**, which are essential for a property discovery platform.
 
 The palette supports a calm, professional tone while maintaining sufficient contrast for accessibility.
 
@@ -259,17 +258,17 @@ Colours are used consistently to indicate hierarchy, actions, and states, while 
 
 ### Imagery
 
-- Development listings support **multiple images** to give renters a realistic impression of each property
-- City images are used to support discovery and location context
-- Images are stored externally using **Cloudinary** to comply with Heroku's ephemeral file system
-- Consistent image ratios are used across cards and listings to maintain layout stability
+- Development listings support **multiple images** to give renters a realistic impression of each property.
+- City images are used to support discovery and location context.
+- Images are hosted externally with **Cloudinary** due to Heroku's ephemeral file system.
+- Consistent image ratios are used across cards and listings to maintain layout stability.
 
 ### Responsiveness
 
-- Mobile-first layouts were designed for clarity and ease of navigation
-- Layouts adapt cleanly across mobile, tablet, and desktop
-- The **Bootstrap grid system** is used extensively to ensure consistent responsive behaviour
-- Spacing, typography, and image scaling were tested across breakpoints during wireframing
+- Mobile-first layouts were designed for clarity and ease of navigation.
+- Layouts adapt cleanly across mobile, tablet, and desktop.
+- The **Bootstrap grid system** is widely used to ensure consistent, responsive behaviour.
+- Spacing, typography, and image scaling were tested across breakpoints during wireframing.
 
 ---
 
@@ -280,15 +279,15 @@ The MVP focuses on delivering a clear, renter-first discovery experience while s
 ### Public-facing features (Renters)
 
 - **Hero search**
-    - Prominent search bar is positioned in the homepage hero section
+    - The prominent search bar is positioned in the homepage hero section.
     - Search by:
         - City name (e.g. *London, Manchester*)
         - Postcode or postcode area (e.g. SW14)
-    - Postcode and area searches resolve to the relevant city results page, allowing renters to quickly access appropiate listings without complex geolocation logic
+    - Postcode and area searches resolve to the relevant city results page, allowing renters to quickly access appropriate listings without complex geolocation logic.
 
 - **City-based browsing**
-    - Browse Build-to-Rent developments grouped by city
-    - Cities used as the primary discovery entry point to simplify navigation
+    - Browse Build-to-Rent developments grouped by city.
+    - Cities are used as the primary discovery entry point to simplify navigation.
 
 - **Development listings**
     - List of available BTR developments shown per city
@@ -300,12 +299,12 @@ The MVP focuses on delivering a clear, renter-first discovery experience while s
         - Amenities and key features
         - Tenancy-related information
         - Multiple development images hosted via Cloudinary
-    - Content structured to support comparison and informed decision-making
+    - Content structured to support comparison and informed decision-making.
 
 - **Enquiry submission**
-    - Enquiry submitted directly from a development detail page
-    - Essential renter intent captured without requiring account creation
-    - Clear confirmation feedback provided after submission
+    - Enquiry submitted directly from a development detail page.
+    - Essential renter intent captured without requiring account creation.
+    - Clear confirmation feedback is provided after submission.
 
 - **Trust and legal content**
     - Dedicated pages for:
@@ -315,45 +314,45 @@ The MVP focuses on delivering a clear, renter-first discovery experience while s
         - Accessibility statement
         - Privacy policy
         - Terms of use
-    - Pages promote transparency and build user trust
+    - Pages promote transparency and build user trust.
 
 - **Responsive design**
-    - Fully responsive layouts across mobile, tablet, and desktop
-    - Mobile-first approach ensures usability on smaller screens
+    - Fully responsive layouts across mobile, tablet, and desktop.
+    - Mobile-first approach ensures usability on smaller screens.
 
 ### Staff / Admin features (MVP)
 
 - **Full CRUD functionality (Enquiries)**
-    - Create: Enquiries are cresated via the public enquiry form
-    - Read: Staff can view all enquiries and individual enquiry details
-    - Update: Staff can update enquiry status
-    - Delete: Staff can permanently delete enquiries via a confirmation screen
+    - Create: Enquiries are created via the public enquiry form.
+    - Read: Staff can view all enquiries and the details of individual enquiries.
+    - Update: Staff can update the enquiry status.
+    - Delete: Staff can permanently delete enquiries via a confirmation screen.
 
 - **Custom enquiries dashboard**
-    - Staff can view all enquiries in a centralised dashboard
-    - Each enquiry is linked to the relevant development
-    - Staff can update enquiry status
-    - Staff can close enquiries when appropriate
-    - Staff can permanently delete enquiries via a confirmation screen
+    - Staff can view all enquiries in a centralised dashboard.
+    - Each enquiry is linked to the relevant development.
+    - Staff can update the enquiry status.
+    - Staff can close enquiries when appropriate.
+    - Staff can permanently delete enquiries via a confirmation screen.
     
 - **Enquiry forwarding workflow**
-    - Each development stores an operator contact email
-    - Staff can forward enquiries using pre-filled email action (mailto workflow)
-    - This enables fast manual routing without requiring automated email infrastructure
-    - Forwarding actions are logged with timestamp
-    - A visual "Forwarded" badge is shown in the staff dashboard for audit clarity
+    - Each development stores an operator contact email.
+    - Staff can forward enquiries using a pre-filled email action (mailto workflow).
+    - This enables fast manual routing without requiring automated email infrastructure.
+    - Forwarding actions are logged with a timestamp.
+    - A visual "Forwarded" badge is shown in the staff dashboard for audit clarity.
 
 - **Admin-only content management**
     - Authenticated admin users manage:
         - Cities
         - Developments
         - Development metadata and imagery
-    - Content is maintained centrally to ensure consistency and data integrity
+    - Content is maintained centrally to ensure consistency and data integrity.
 
 ### Error handling and edge cases
 - **Custom 404 page**
-    - A user-friendly 404 page is displayed for invalid routes
-    - Ensures a graceful experience when content cannot be found
+    - A user-friendly 404 page is displayed for invalid routes.
+    - Ensures a graceful experience when content cannot be found.
 
 ---
 
@@ -397,77 +396,77 @@ The following features were intentionally excluded from the MVP to maintain focu
 ### Enhanced search and discovery
 
 - **Postcode radius search**
-    - Allow users to search for developments within a specified distance of a postcode
-    - Requires geocoding and latitude/longitude data for developments
+    - Allow users to search for developments within a specified distance of a postcode.
+    - Requires geocoding and latitude/longitude data for developments.
 
 - **Map-based browsing**
-    - Interactive map view showing developments by location
-    - Enables visual discovery and spatial filtering
+    - Interactive map view showing developments by location.
+    - Enables visual discovery and spatial filtering.
 
 - **Advanced filtering**
-    - Filter developments by amenities, price range, tenancy length, or furnishing options
-    - Improves comparison for users with specific requirements
+    - Filter developments by amenities, price range, tenancy length, or furnishing options.
+    - Improves comparison for users with specific requirements.
 
 ### User accounts and personalisation
 
 - **Renter accounts**
-    - Save favourite developments
-    - Track submitted enquiries
-    - Receive updates on new developments in selected cities
+    - Save favourite developments.
+    - Track submitted enquiries.
+    - Receive updates on new developments in selected cities.
 
 - **Saved searches**
-    - Allow users to store and revisit common search criteria
+    - Allow users to store and revisit common search criteria.
 
 ### Operator / Developer features
 
 - **Operator dashboard**
-    - Secure login for operators to manage their own developments
-    - View and respond to enquiries within the platform
+    - Secure login for operators to manage their own developments.
+    - View and respond to enquiries within the platform.
 
 - **Automated enquiry delivery**
-    - Replace manual mailto workflow with server-side email delivery
-    - Add email templates and tracking
+    - Replace the manual mailto workflow with server-side email delivery.
+    - Add email templates and tracking.
 
 ### Monetisation and platform search
 
 - **Pay-per-lead model**
-    - Charge operators for qualified enquiries
-    - Provide basic lead analytics and reporting
+    - Charge operators for qualified enquiries.
+    - Provide basic lead analytics and reporting.
 
 - **Featured listings**
-    - Allow operators to promote developments within city listings
+    - Allow operators to promote developments within city listings.
 
 - **Analytics ad insights**
-    - Track user interactions, popular cities, and enquiry trends
-    - Support data-driven platform improvements
+    - Track user interactions, popular cities, and enquiry trends.
+    - Support data-driven platform improvements.
 
 ### Accessibility and performance enhancements
 
 - **Expanded accessibility testing**
-    - Conduct user testing with assistive technologies
-    - Further refine keyboard and screen reader support
+    - Conduct user testing with assistive technologies.
+    - Further refine keyboard and screen reader support.
 
 - **Performance optimisation**
-    - Improve image delivery and caching
-    - Introduce pagination or lazy loading for large datasets
+    - Improve image delivery and caching.
+    - Introduce pagination or lazy loading for large datasets.
 
 ---
 
 ## Known MVP limitations
 
-- Enquiry forwarding uses a mailto workflow rather than server-side delivery
-- No renter or operator authentication is implemented
-- Search functionality is limited to city and postcode resolution
+- Enquiry forwarding uses a mailto workflow rather than server-side delivery.
+- No renter or operator authentication is implemented.
+- Search functionality is limited to city and postcode resolution.
 - Admin and dashboard access is restricted to authenticated staff and superusers using Django's built-in authentication system.
-- No role-based permission levels are implemented beyond Django's default auth
-- Enquiries use permanent deletion rather than soft-delete to meet assessment requirments.
+- No role-based permission levels are implemented beyond Django's default auth.
+- Enquiries use permanent deletion rather than soft-delete to meet assessment requirements.
 - In a production system, a soft-delete approach would be preferred for audit and recovery purposes.
 
 ---
 
 ## Data Model
 
-The application uses a relational database to store and manage structured data related to Build-to-Rent developments and user enquiries. The data model was designed to support the core renter journey while remaining simple, scalable, and aligned with MVP scope.
+The application uses a relational database to store and manage structured data related to Build-to-Rent developments and user enquiries. The data model was designed to support the core renter journey while remaining simple, scalable, and aligned with the MVP scope.
 
 Each model uses Django's default auto-generated primary key (`id`) unless otherwise specified. Relationships between entities are implemented using foreign keys to enforce referential integrity across the data model.
 
@@ -479,7 +478,7 @@ The database structure was designed to support city-based browsing, development 
 
 ![BTR Directory ERD](docs/erd/erd-btr-directory-mvp.png)
 
-The ERD shows the relatioships between City, Development, Amenity, UnitType, and Enquiry models, including one-to-many and many-to-manay relationships used throuighout the application.
+The ERD shows the relationships between City, Development, Amenity, UnitType, and Enquiry models, including one-to-many and many-to-many relationships used throughout the application.
 
 **Interactive Versions (Reference only)**
 
@@ -487,7 +486,7 @@ The ERD shows the relatioships between City, Development, Amenity, UnitType, and
 
 ### Data model updates
 
-During development, the data model was expanded beyond the initial MVP ERD to support renter expectations and improve listing completeness.
+During development, the data model was expanded beyond the initial MVP ERD to better align with renter expectations and improve listing completeness.
 
 **Additions:**
 - **Pricing**
@@ -508,7 +507,7 @@ During development, the data model was expanded beyond the initial MVP ERD to su
 - A **City** can have **many Developments**
 - A **Development** belongs to **one City**
 - A **Development** can have **many Enquiries**
-- A **Enquiry** belongs to **one Development**
+- An **Enquiry** belongs to **one Development**
 
 This structure allows users to browse developments by city and submit enquiries for individual developments, while enabling staff  to manage enquiries centrally.
 
@@ -577,13 +576,13 @@ Enquiries  are managed through a custom staff dashboard and can be forwarded to 
 
 ### Data integrity and validation
 
-- Foreign key relationships enforce data integrity between cities, developments, and enquiries
-- Unique constraints prevent duplicate unit types per development
-- Indexes are applied to frequently queried fields (status, created date, relationships)
-- Required fields are validated at both model and form level
-- Cascade deletion rules prevent orphaned records
-- Enquiries can be permanently deleted by staff users via a confirmation step
-- Deletion removes the record from the database and cannot be undone
+- Foreign key relationships enforce data integrity between cities, developments, and enquiries.
+- Unique constraints prevent duplicate unit types per development.
+- Indexes are applied to frequently queried fields (status, created date, relationships).
+- Required fields are validated at both the model and form level.
+- Cascade deletion rules prevent orphaned records.
+- Enquiries can be permanently deleted by staff users via a confirmation step.
+- Deletion removes the record from the database and cannot be undone.
 
 ### Future data model extensions
 
@@ -636,7 +635,7 @@ Used to store and serve images for developments and city pages. This avoids reli
 
 - **Heroku**  
 Used to deploy and host the live application.
-Heroku Postgres is used for the production database, and environment variables are used to manage configuration securely.
+Heroku Postgres is used for the production database, and environment variables are used to securely manage configuration.
 
 ### Version control
 
@@ -746,9 +745,9 @@ python manage.py createsuperuser
 ```
 
 This account is used to:
-- Manage cities and developments
-- Access the Django admin panel
-- Support internal content management
+- Manage cities and developments.
+- Access the Django admin panel.
+- Support internal content management.
 
 ### Run the development server
 
@@ -794,10 +793,10 @@ Password: Testpassword123
 
 ### Setup rationale
 
-- PostgreSQL is used in both development and production to ensure consistency across environments
-- Environment variables protect sensitive credentials
-- Django's built-in tooling supports rapid local setup and testing
-- The setup aligns with Heroku deployment requirements 
+- PostgreSQL is used in both development and production to ensure consistency across environments.
+- Environment variables protect sensitive credentials.
+- Django's built-in tooling supports rapid local setup and testing.
+- The setup aligns with Heroku deployment requirements.
 
 ---
 
@@ -827,7 +826,7 @@ DEBUG=False
 
 **Important:** Do not set DEBUG=True in production.
 
-### Add postgreSQL database
+### Add a PostgreSQL database
 
 1. In the Heroku dashboard, go to the **Resources tab**
 2. Add the **Heroku Postgres** add-on
@@ -878,14 +877,14 @@ Confirm admin access via /admin
 
 ## Security considerations
 
-- Django CSRF protection enabled on all forms
-- Admin and staff routes protected by authentication
-- No sensitive credentials stored in version control
-- Environment variables used for all secrets
+- Django CSRF protection is enabled on all forms.
+- Admin and staff routes are protected by authentication.
+- No sensitive credentials stored in version control.
+- Environment variables used for all secrets.
 - Role-based access control:
-    - Public users can only submit enquiries
-    - Staff users can manage enquiries via the dashboard
-    - Superusers can manage all data via Django admin
+    - Public users can only submit enquiries.
+    - Staff users can manage enquiries via the dashboard.
+    - Superusers can manage all data via the Django admin.
 
 ---
 
@@ -929,9 +928,9 @@ Lighthouse audits confirm the application is production-ready and meets modern w
 This project uses **Git** for version control and is hosted on **GitHub**.
 
 **Version control workflow**
-- Changes were made locally within the VS Code workspace
-- Updates were staged and committed regularly using conventional commits
-- Work was pushed to the remote GitHub repository to maintain a clear development history
+- Changes were made locally within the VS Code workspace.
+- Updates were staged and committed regularly using conventional commits.
+- Work was pushed to the remote GitHub repository to maintain a clear development history.
 
 **Common Git commands used**
 ```bash
@@ -942,7 +941,7 @@ git push
 ```
 
 **Repository**
-- **GitHub Repository:** [View on Github](https://github.com/creatvie-introvert/btr-directory-mvp?tab=readme-ov-file)
+- **GitHub Repository:** [View on GitHub](https://github.com/creatvie-introvert/btr-directory-mvp?tab=readme-ov-file)
 - **Main branch:** main
 
 **Rationale**  
@@ -989,9 +988,9 @@ https://www.airtable.com/
 
 ### Images and media
 
-- City and hero images used in wireframes and UI design were sourced from royalty-free stock or AI-generated imagery during the design phase
-- Production images for developments are intended to be provided by operators or sourced with appropriate permissions
-- All images are served via Cloudinary
+- City and hero images used in wireframes and UI design were sourced from royalty-free stock or AI-generated imagery during the design phase.
+- Production images for developments are intended to be provided by operators or sourced with appropriate permissions.
+- All images are served via Cloudinary.
 
 Where third-party images are used in the final implementation, the original source and creator will be credited accordingly.
 
@@ -1015,7 +1014,7 @@ No code was copied directly from tutorials or third-party repositories. where sm
 
 ### Attribution statement
 
-All third-party tools and resources used have been credited appropiately. Any future additions of external code, assets or media will be documented here and within the codebase where applicable.
+All third-party tools and resources used have been credited appropriately. Any future additions of external code, assets, or media will be documented here and in the codebase, where applicable.
 
 ---
 
@@ -1023,7 +1022,7 @@ All third-party tools and resources used have been credited appropiately. Any fu
 
 This README is treated as a **living document** and was updated throughout the planning and development of the MVP.
 
-Key sections such as **UX decisions, features, data model, testing, and deployment** were documented incrementally to ensure accuracy and traceability.   
+Key sections, including **UX decisions, features, data model, testing, and deployment** were documented incrementally to ensure accuracy and traceability.   
 Any significant changes to scope, architecture, or implementation were reflected in the README as they occurred.
 
 This approach ensures that the documentation remains reliable for future development, collaboration, and project handover.
@@ -1032,6 +1031,6 @@ This approach ensures that the documentation remains reliable for future develop
 
 ## License
 
-This project is provided for educational purposes as part of a Code Institue assessment.
+This project is provided for educational purposes as part of a Code Institute assessment.
 All rights reserved.
 The code may not be copied, distributed, modified, or reused without explicit permission from the author.
